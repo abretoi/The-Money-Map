@@ -26,11 +26,15 @@ const css = `
     color: ${art.ink}; background: ${art.cream}; margin: 0;
     font-size: 12.5pt; line-height: 1.55;
   }
-  .cover { text-align: center; padding: 40mm 0 20mm; page-break-after: always; }
-  .cover .rose { width: 150px; margin: 0 auto 14mm; }
+  .cover { text-align: center; padding: 50mm 14mm 30mm; page-break-after: always;
+    background: radial-gradient(ellipse 80% 60% at 50% 30%, #1a1b13 0%, ${art.darkbg} 70%);
+    color: ${art.cream}; margin: -20mm -18mm 0; min-height: 239mm; }
+  .cover .rose { width: 160px; margin: 0 auto 14mm; }
   .kicker { letter-spacing: .28em; text-transform: uppercase; color: ${art.gold}; font-size: 11pt; }
-  h1 { font-size: 40pt; margin: 6mm 0 4mm; line-height: 1; text-transform: uppercase; letter-spacing: -.01em; }
-  .cover .tag { font-style: italic; font-size: 15pt; color: #4a4a3f; }
+  .cover h1 { color: #f6edd6; }
+  h1 { font-size: 42pt; margin: 6mm 0 4mm; line-height: 1; text-transform: uppercase; letter-spacing: -.01em; }
+  .cover .tag { font-style: italic; font-size: 15pt; color: #cbb98a; }
+  .cover .lead { color: #b9ad8e; }
   h2 { font-size: 20pt; margin: 10mm 0 3mm; border-bottom: 2px solid ${art.gold}; padding-bottom: 2mm; }
   h3 { font-size: 14pt; margin: 6mm 0 2mm; color: #2a2a20; }
   code, pre { font-family: 'SF Mono', ui-monospace, monospace; font-size: 10.5pt; }
@@ -47,19 +51,20 @@ const css = `
 `
 
 const html = `<!doctype html><html><head><meta charset="utf-8"><style>${css}</style></head><body>
+${art.goldDefs()}
 <section class="cover">
-  <div class="rose">${art.compassRose()}</div>
+  <div class="rose">${art.compassStar()}</div>
   <div class="kicker">Launch Guide</div>
   <h1>The Money Map</h1>
   <div class="tag">Navigate Your Journey to Financial Freedom</div>
-  ${art.frieze(art.gold, 0.6)}
+  ${art.frieze(0.9)}
   <p class="lead">A local-first atlas of personal finance — 92 maps, a doubloon economy,<br/>and a voyage certificate. This guide gets it running in minutes.</p>
 </section>
 
 <h2>What you are launching</h2>
 <p class="lead">The Money Map is a Next.js application where <strong>Markdown is the source of truth</strong>. Ninety-two infographics have been extracted into structured, searchable content that renders as an interactive website — and powers a flipbook, PDF, and search index from one source.</p>
 <div class="card">${art.treasureChest()} <strong>Gamified:</strong> reading a map earns doubloons; filling a chapter chest pays a bounty; charting all 92 mints your certificate.</div>
-<div class="card">${art.compassRose()} <strong>Themed:</strong> a black / white / green design system with gold reserved for treasure, in Garamond throughout.</div>
+<div class="card">${art.compassStar()} <strong>Themed:</strong> a black / white / green design system with gold reserved for treasure, in Garamond throughout.</div>
 
 <h2>Requirements</h2>
 <ul>
@@ -82,7 +87,7 @@ npm run generate   # rebuild content JSON + search + treasure manifest
 npm run audit:provenance   # verify figures + table integrity
 npm run pdf        # regenerate this guide and the e-book</pre>
 
-${art.frieze(art.gold, 0.5)}
+${art.frieze(0.85)}
 
 <h2>Adding or editing a map</h2>
 <p>Every lesson is one Markdown file at <code>content/chapters/&lt;chapter&gt;/&lt;lesson&gt;.mdx</code>. Frontmatter holds the typed content blocks; the body is short framing prose. After editing:</p>
@@ -105,7 +110,7 @@ ${art.frieze(art.gold, 0.5)}
   <li><code>generated/</code> — disposable build output (never hand-edit)</li>
 </ul>
 
-<div class="frieze">${art.pirateShip()}${art.lighthouse()}${art.goldPile()}${art.compassRose()}</div>
+<div class="frieze">${art.pirateShip()}${art.lighthouse()}${art.goldPile()}${art.compassStar()}</div>
 <p class="foot">Educational content, not financial advice. Fair winds and following seas.</p>
 </body></html>`
 

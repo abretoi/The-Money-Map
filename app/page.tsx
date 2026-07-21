@@ -3,7 +3,7 @@ import { allChapters, lessonsInChapter, readingOrder } from '@/lib/content'
 import { ProgressSummary } from '@/components/reader/ProgressSummary'
 import { ChapterChest } from '@/components/treasure/ChapterChest'
 import { PirateFrieze, PirateBackdrop } from '@/components/art/PirateScene'
-import { CompassRose } from '@/components/art/Icons'
+import { CompassStar } from '@/components/art/Pirate'
 
 // Rotating backdrop motif per chapter card, so the grid feels illustrated.
 const CARD_MOTIFS = [
@@ -19,11 +19,11 @@ export default function Home() {
     <div>
       {/* ================= HERO — spans the full page ================= */}
       <section className="relative flex min-h-[86vh] flex-col justify-center overflow-hidden px-[var(--s-5)] py-[var(--s-9)] text-center">
-        <PirateBackdrop motif="ship" className="left-[-6%] top-[6%] h-[42vh] w-auto" opacity={0.07} />
-        <PirateBackdrop motif="lighthouse" className="right-[2%] top-[8%] h-[40vh] w-auto" opacity={0.07} />
-        <CompassRose
+        <PirateBackdrop motif="ship" className="left-[-6%] top-[6%] h-[42vh] w-auto" opacity={0.13} />
+        <PirateBackdrop motif="lighthouse" className="right-[2%] top-[8%] h-[40vh] w-auto" opacity={0.13} />
+        <CompassStar
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 h-[125vmin] w-[125vmin] -translate-x-1/2 -translate-y-1/2 text-[var(--gold)] opacity-[0.05]"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[120vmin] w-[120vmin] -translate-x-1/2 -translate-y-1/2 opacity-[0.08]"
         />
 
         <div className="relative mx-auto flex max-w-[1500px] flex-col items-center">

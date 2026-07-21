@@ -47,6 +47,14 @@
   --gold: #d9b86b;
   --gold-soft: rgba(217, 184, 107, 0.14);
 
+  /* Metallic gold ramp for struck-relief treasure art (dark → highlight). */
+  --gold-shadow: #5a4111;
+  --gold-deep: #8a6a1f;
+  --gold-mid: #c9a24a;
+  --gold-bright: #ecca77;
+  --gold-highlight: #fff4cf;
+  --gold-dust: rgba(217, 184, 107, 0.09);
+
   /* --- Semantic ------------------------------------------------- */
   --warn: #ff9f0a;
   --danger: #ff375f;

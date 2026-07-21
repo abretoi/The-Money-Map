@@ -3,6 +3,7 @@ import './globals.css'
 import { Sidebar } from '@/components/reader/Sidebar'
 import { TopBar } from '@/components/reader/TopBar'
 import { buildOutline } from '@/lib/outline'
+import { GoldDefs } from '@/components/art/GoldDefs'
 
 export const metadata: Metadata = {
   title: {
@@ -44,6 +45,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
       </head>
       <body>
+        <GoldDefs />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-[var(--r-md)] focus:bg-[var(--bg-3)] focus:px-4 focus:py-2"

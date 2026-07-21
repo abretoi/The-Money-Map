@@ -121,12 +121,13 @@ async function main() {
 
   // Cover + TOC
   let body = `
+  ${art.goldDefs()}
   <section class="cover">
-    <div class="rose">${art.compassRose()}</div>
+    <div class="rose">${art.compassStar()}</div>
     <div class="kicker">The Complete Atlas</div>
     <h1>The Money Map</h1>
     <div class="tag">Navigate Your Journey to Financial Freedom</div>
-    ${art.frieze(art.gold, 0.6)}
+    ${art.frieze(0.9)}
     <div class="sub">${lessons.length} maps · ${chapters.length} chapters</div>
   </section>
   <section class="toc">
@@ -139,7 +140,7 @@ async function main() {
       .join('')}</ol>
   </section>`
 
-  const motifs = [art.pirateShip, art.lighthouse, art.goldPile, art.crossedSwords, art.jollyRoger, art.cannon, art.rum, art.jewel, art.compassRose, art.treasureChest, art.pirateShip]
+  const motifs = [art.pirateShip, art.lighthouse, art.goldPile, art.crossedSwords, art.jollyRoger, art.cannon, art.rum, art.jewel, art.compassStar, art.treasureChest, art.pirateShip]
 
   for (const [ci, c] of chapters.entries()) {
     const motif = motifs[ci % motifs.length]()
@@ -171,7 +172,7 @@ async function main() {
         ${actions}
       </section>`
     }
-    body += art.frieze(art.gold, 0.4)
+    body += art.frieze(0.85)
   }
 
   const css = `
@@ -182,20 +183,26 @@ async function main() {
     h2{ font-size:22pt; }
     h3{ font-size:17pt; margin:0 0 2mm; }
     .kicker{ letter-spacing:.26em; text-transform:uppercase; color:${art.gold}; font-size:10pt; }
-    .cover{ text-align:center; padding:45mm 0 0; page-break-after:always; }
-    .cover .rose{ width:140px; margin:0 auto 12mm; }
-    .cover .tag{ font-style:italic; font-size:15pt; color:#4a4a3f; }
-    .cover .sub{ margin-top:6mm; letter-spacing:.1em; color:#7a7461; }
+    .cover{ text-align:center; padding:52mm 15mm 30mm; page-break-after:always;
+      background:radial-gradient(ellipse 80% 60% at 50% 32%, #1a1b13 0%, ${art.darkbg} 72%);
+      color:${art.cream}; margin:-16mm -15mm 0; min-height:247mm; }
+    .cover .rose{ width:150px; margin:0 auto 12mm; }
+    .cover h1{ color:#f6edd6; }
+    .cover .tag{ font-style:italic; font-size:15pt; color:#cbb98a; }
+    .cover .sub{ margin-top:6mm; letter-spacing:.1em; color:#a99b78; }
     .toc{ page-break-after:always; }
     .toc h2{ border-bottom:2px solid ${art.gold}; padding-bottom:2mm; }
     .toc ol{ list-style:none; padding:0; }
     .toc li{ padding:2.4mm 0; border-bottom:1px solid #e3dcc7; }
     .toc .isle{ color:${art.gold}; text-transform:uppercase; font-size:8.5pt; letter-spacing:.14em; margin-right:3mm; }
     .toc .n{ float:right; color:#8a8471; font-size:9pt; }
-    .chapter-open{ page-break-before:always; text-align:center; padding:30mm 0 8mm; }
-    .cmotif{ width:120px; margin:0 auto 8mm; opacity:.85; }
-    .ctitle{ margin:3mm 0; }
-    .cintro{ max-width:150mm; margin:4mm auto 0; font-size:12pt; color:#3a382d; }
+    .chapter-open{ page-break-before:always; text-align:center; padding:44mm 18mm;
+      background:radial-gradient(ellipse 80% 60% at 50% 30%, #1a1b13 0%, ${art.darkbg} 74%);
+      color:${art.cream}; margin:-16mm -15mm 0; min-height:180mm; }
+    .chapter-open .kicker{ color:${art.gold}; }
+    .cmotif{ width:130px; margin:0 auto 10mm; }
+    .ctitle{ margin:3mm 0; color:#f6edd6; }
+    .cintro{ max-width:150mm; margin:6mm auto 0; font-size:12.5pt; color:#c3b790; }
     .lesson{ page-break-inside:auto; margin:0 0 8mm; padding-top:6mm; border-top:1px solid #e3dcc7; }
     .lhead{ display:flex; justify-content:space-between; font-size:8.5pt; text-transform:uppercase; letter-spacing:.12em; color:#9a917a; margin-bottom:2mm; }
     .summary{ font-size:12.5pt; font-style:italic; color:#3a382d; margin:0 0 3mm; }

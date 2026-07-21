@@ -3,6 +3,35 @@
 All notable changes to The Money Map. Format follows
 [Keep a Changelog](https://keepachangelog.com/); versioning is semver.
 
+## [0.4.0] — 2026-07-21
+
+Cinematic treasure art — the pirate imagery re-cut from flat line-icons to
+struck-gold reliefs, guided by the ui-ux-pro-max skill's skeuomorphic /
+hyperreal direction.
+
+### Changed
+
+- **All pirate art is now dimensional metallic gold** (`components/art/Pirate.tsx`).
+  Filled silhouettes painted with a multi-stop gold gradient, dark engraving
+  outlines, and a drop-shadow relief filter — struck coins, heraldic seals, a
+  real galleon, a gleaming compass rose — instead of thin uniform strokes that
+  read as cartoon. New shared paint defs in `components/art/GoldDefs.tsx`
+  (`url(#mm-gold)`, `#mm-gold-radial`, `#mm-relief`), mounted once in the layout.
+- **Cinematic atmosphere** — deep vignette, gold-dust light sources, and a fixed
+  film-grain overlay give the dark theme chiaroscuro; friezes and backdrops sit
+  at higher opacity now that the emblems hold up as dimensional gold.
+- **PDFs re-cut to match** — both the Launch Guide and the e-book open on a
+  full-bleed **dark, gold-lit cover**; the e-book's chapter dividers are dramatic
+  dark plates, with content on warm parchment for readability. Gold-gradient art
+  throughout (`scripts/pdf-art.mjs` now emits filled reliefs + a shared `<defs>`).
+- Richer gold token ramp (`--gold-shadow` → `--gold-highlight`) for the metallic
+  gradient.
+
+### Fixed
+
+- Corrected a malformed light-mode `body::before` selector introduced with the
+  atmosphere layer.
+
 ## [0.3.0] — 2026-07-21
 
 Garamond, bold pirate identity, progress management, and PDF outputs.
