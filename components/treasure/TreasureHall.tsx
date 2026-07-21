@@ -7,6 +7,7 @@ import { Doubloon, TreasureChest } from '@/components/art/Icons'
 import { GoldPile, CompassStar } from '@/components/art/Pirate'
 import { PirateFrieze } from '@/components/art/PirateScene'
 import { Certificate } from './Certificate'
+import { TreasureMapProgress } from './TreasureMapProgress'
 
 export function TreasureHall() {
   const t = useTreasure()
@@ -23,6 +24,11 @@ export function TreasureHall() {
 
   return (
     <div className="mx-auto max-w-[1000px] px-[var(--s-5)] py-[var(--s-8)]">
+      {/* ---- The treasure map ---- */}
+      <div className="mb-[var(--s-5)]">
+        <TreasureMapProgress />
+      </div>
+
       {/* ---- Hoard header ---- */}
       <section className="relative overflow-hidden rounded-[var(--r-xl)] border border-[color-mix(in_oklab,var(--gold)_26%,var(--line-1))] bg-[var(--bg-2)] p-[var(--s-7)]">
         <CompassStar aria-hidden className="pointer-events-none absolute -right-12 -top-12 size-64 opacity-[0.12]" />

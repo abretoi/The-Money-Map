@@ -95,6 +95,21 @@ export const progressStore = {
     return true
   },
 
+  /**
+   * Un-complete a single map — the per-section "restart" used by the outline
+   * checkmarks. Deliberately only meaningful for a map that was completed
+   * first (you cannot manually check an unread map; you can only uncheck a
+   * read one). No-op if it was not read.
+   */
+  markUnread(url: string): void {
+    if (!state.read[url]) return
+    const next = { ...state.read }
+    delete next[url]
+    state = { ...state, read: next }
+    persist()
+    emit()
+  },
+
   toggleBookmark(url: string): void {
     const has = state.bookmarks.includes(url)
     state = {

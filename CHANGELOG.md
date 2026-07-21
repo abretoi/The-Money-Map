@@ -3,6 +3,35 @@
 All notable changes to The Money Map. Format follows
 [Keep a Changelog](https://keepachangelog.com/); versioning is semver.
 
+## [0.5.0] — 2026-07-21
+
+Treasure-map progress, in-outline restart, a prominent Reset button, and
+print-corrected PDFs.
+
+### Added
+
+- **The voyage as an actual treasure map** (`components/treasure/TreasureMapProgress.tsx`)
+  — a dashed sea route winding past the eleven island chapters to buried
+  treasure ("A rich life", X-marks-the-spot) at the end. A gold ship sails to
+  your exact progress; the charted route behind it is solid gold, the route
+  ahead faint. Islands glow gold as their chapter completes. On the treasure
+  hall (and it recalculates live).
+- **Clickable outline checkmarks.** Each completed map shows a gold check in the
+  sidebar that you can click to un-complete it — a per-section restart. Unread
+  maps show an inert marker: you can only *remove* a check once the map has
+  actually been charted (`markUnread` on the shared store).
+- **Reset button in the top bar**, next to Save, in the matching gold style,
+  with an inline confirm — so restarting the whole journey is one obvious click
+  (the sidebar reset control remains too).
+
+### Changed
+
+- **PDF margins corrected for print.** Both the guide and the e-book now use
+  20–22 mm page margins with the cover/chapter bleeds kept in sync, and friezes
+  sized to fit — text and imagery sit cleanly within print-safe margins with
+  proper gutters, verified in a PDF viewer.
+- More cinematic backdrops (e.g. a treasure-map motif on the bookmarks page).
+
 ## [0.4.0] — 2026-07-21
 
 Cinematic treasure art — the pirate imagery re-cut from flat line-icons to

@@ -19,16 +19,17 @@ const CHROME =
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 
 const css = `
-  @page { size: Letter; margin: 20mm 18mm; }
+  @page { size: Letter; margin: 22mm; }
   * { box-sizing: border-box; }
   body {
     font-family: Garamond, 'EB Garamond', 'Adobe Garamond Pro', Georgia, serif;
     color: ${art.ink}; background: ${art.cream}; margin: 0;
-    font-size: 12.5pt; line-height: 1.55;
+    font-size: 12pt; line-height: 1.55;
   }
-  .cover { text-align: center; padding: 50mm 14mm 30mm; page-break-after: always;
+  /* Cover bleeds to the physical page edge (negative margin === @page margin). */
+  .cover { text-align: center; padding: 48mm 20mm 30mm; page-break-after: always;
     background: radial-gradient(ellipse 80% 60% at 50% 30%, #1a1b13 0%, ${art.darkbg} 70%);
-    color: ${art.cream}; margin: -20mm -18mm 0; min-height: 239mm; }
+    color: ${art.cream}; margin: -22mm -22mm 0; min-height: 235mm; }
   .cover .rose { width: 160px; margin: 0 auto 14mm; }
   .kicker { letter-spacing: .28em; text-transform: uppercase; color: ${art.gold}; font-size: 11pt; }
   .cover h1 { color: #f6edd6; }
@@ -42,10 +43,10 @@ const css = `
   code { background: #efe9d9; padding: 1px 4px; border-radius: 3px; }
   ul, ol { padding-left: 6mm; }
   li { margin: 1.5mm 0; }
-  .frieze { display: flex; align-items: center; justify-content: center; gap: 10mm; height: 22mm; margin: 8mm 0; }
+  .frieze { display: flex; align-items: center; justify-content: center; gap: 7mm; height: 17mm; margin: 9mm 0; max-width: 100%; }
   .frieze svg { height: 100%; width: auto; }
-  .card { border: 1px solid #d9cfb4; border-radius: 8px; padding: 4mm 5mm; margin: 3mm 0; page-break-inside: avoid; }
-  .card svg { height: 30px; vertical-align: middle; margin-right: 3mm; }
+  .card { border: 1px solid #d9cfb4; border-radius: 8px; padding: 4mm 6mm; margin: 3mm 0; page-break-inside: avoid; }
+  .card svg { height: 26px; vertical-align: middle; margin-right: 4mm; }
   .lead { font-size: 13.5pt; }
   .foot { text-align: center; color: #7a7461; font-size: 10pt; font-style: italic; margin-top: 10mm; }
 `

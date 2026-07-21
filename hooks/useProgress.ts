@@ -34,6 +34,7 @@ export function useProgress() {
   )
 
   const markRead = useCallback((url: string) => progressStore.markRead(url), [])
+  const markUnread = useCallback((url: string) => progressStore.markUnread(url), [])
   const toggleBookmark = useCallback(
     (url: string) => progressStore.toggleBookmark(url),
     []
@@ -48,6 +49,7 @@ export function useProgress() {
     isRead,
     isBookmarked,
     markRead,
+    markUnread,
     toggleBookmark,
     reset,
     serialize,

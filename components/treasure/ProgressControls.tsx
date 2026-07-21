@@ -1,21 +1,27 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { RotateCcw, Check } from 'lucide-react'
+import { RotateCcw, Check, X } from 'lucide-react'
 import { Doubloon, TreasureChest } from '@/components/art/Icons'
 import { useProgress } from '@/hooks/useProgress'
 
 /**
  * Save (export a backup) + Reset (wipe the voyage) controls.
  *
- * `variant="menu"` renders the labelled pair for the sidebar; `variant="chip"`
- * renders a single compact Save button for the top bar, styled to match the
- * doubloon counter (gold, treasure imagery).
+ * `variant="menu"` renders the labelled set for the sidebar; `variant="chip"`
+ * renders a compact Save button for the top bar; `variant="reset-chip"` renders
+ * a compact Reset Journey button for the top bar. All share the gold treasure
+ * styling of the doubloon counter.
  */
-export function ProgressControls({ variant = 'menu' }: { variant?: 'menu' | 'chip' }) {
+export function ProgressControls({
+  variant = 'menu',
+}: {
+  variant?: 'menu' | 'chip' | 'reset-chip'
+}) {
   const { serialize, restore, reset, hydrated } = useProgress()
   const [saved, setSaved] = useState(false)
   const [confirming, setConfirming] = useState(false)
+  const [confirmingChip, setConfirmingChip] = useState(false)
   const fileRef = useRef<HTMLInputElement>(null)
 
   function download() {
@@ -39,6 +45,12 @@ export function ProgressControls({ variant = 'menu' }: { variant?: 'menu' | 'chi
 
   if (!hydrated) return null
 
+  const chipStyle = {
+    borderColor: 'color-mix(in oklab, var(--gold) 32%, var(--line-1))',
+    background: 'var(--gold-soft)',
+    color: 'var(--gold)',
+  } as const
+
   if (variant === 'chip') {
     return (
       <button
@@ -46,14 +58,51 @@ export function ProgressControls({ variant = 'menu' }: { variant?: 'menu' | 'chi
         onClick={download}
         aria-label="Save your voyage — download a progress backup"
         className="inline-flex items-center gap-[var(--s-2)] rounded-[var(--r-md)] border px-[var(--s-3)] py-[7px] text-[13px] transition-all duration-[var(--d-fast)] ease-[var(--ease)] hover:-translate-y-px"
-        style={{
-          borderColor: 'color-mix(in oklab, var(--gold) 32%, var(--line-1))',
-          background: 'var(--gold-soft)',
-          color: 'var(--gold)',
-        }}
+        style={chipStyle}
       >
         {saved ? <Check size={15} /> : <TreasureChest className="size-[17px]" />}
         <span className="hidden sm:inline">{saved ? 'Saved' : 'Save'}</span>
+      </button>
+    )
+  }
+
+  if (variant === 'reset-chip') {
+    if (confirmingChip) {
+      return (
+        <span className="inline-flex items-center gap-[2px] rounded-[var(--r-md)] border px-[var(--s-2)] py-[5px] text-[12px]"
+          style={{ borderColor: 'color-mix(in oklab, var(--danger) 45%, var(--line-1))' }}>
+          <button
+            type="button"
+            onClick={() => {
+              reset()
+              setConfirmingChip(false)
+            }}
+            className="px-[var(--s-2)] py-[2px] font-medium"
+            style={{ color: 'var(--danger)' }}
+          >
+            Reset all?
+          </button>
+          <button
+            type="button"
+            onClick={() => setConfirmingChip(false)}
+            aria-label="Cancel reset"
+            className="grid size-5 place-items-center rounded-full text-[var(--ink-3)] hover:text-[var(--ink-1)]"
+          >
+            <X size={13} />
+          </button>
+        </span>
+      )
+    }
+    return (
+      <button
+        type="button"
+        onClick={() => setConfirmingChip(true)}
+        aria-label="Reset your journey — clear all progress"
+        className="inline-flex items-center gap-[var(--s-2)] rounded-[var(--r-md)] border px-[var(--s-3)] py-[7px] text-[13px] transition-all duration-[var(--d-fast)] ease-[var(--ease)] hover:-translate-y-px"
+        style={chipStyle}
+      >
+        <RotateCcw size={15} />
+        <span className="hidden sm:inline">Reset</span>
       </button>
     )
   }

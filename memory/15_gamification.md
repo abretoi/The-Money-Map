@@ -38,10 +38,23 @@ gold is correct everywhere in this system. See [02_brand](02_brand.md).
 
 ## Surfaces
 
-- `/treasure` — the hall: hoard total, rank, chest grid, certificate.
+- `/treasure` — the hall: **treasure-map route** (`TreasureMapProgress` — a ship
+  sailing a winding sea route past island chapters to buried treasure at the
+  end, advancing with progress), hoard total, rank, chest grid, certificate.
 - `/bookmarks` — saved maps.
-- Top-bar `DoubloonCounter` (gold, links to the hall).
-- Home `ProgressSummary`, chapter `ChapterChest`, lesson award toast + `LessonRow` checks.
+- Top-bar `DoubloonCounter`, a gold **Save** chip, and a gold **Reset** chip
+  (both `ProgressControls` variants), all matching the doubloon style.
+- Home `ProgressSummary`, chapter `ChapterChest`, lesson award toast.
+
+## Restart / un-complete
+
+Progress can be undone at two grains:
+- **Whole journey** — Reset (top-bar chip + sidebar `ProgressControls`), calls
+  `progressStore.reset()`.
+- **One map** — the sidebar outline check (`ChapterNav`). A charted map shows a
+  gold check you can click to un-complete (`markUnread`); an unread map's marker
+  is inert. So a check can only be *removed* after the map was completed once —
+  you can never manually check an unread map.
 
 ## Future (Milestone 5 proper)
 

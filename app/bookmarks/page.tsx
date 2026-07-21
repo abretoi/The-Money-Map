@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { allLessons } from '@/lib/content'
 import { BookmarksList } from '@/components/reader/BookmarksList'
+import { PirateBackdrop } from '@/components/art/PirateScene'
 
 export const metadata: Metadata = {
   title: 'Saved Maps',
@@ -18,8 +19,9 @@ export default function BookmarksPage() {
   }))
 
   return (
-    <div className="mx-auto max-w-[820px] px-[var(--s-5)] py-[var(--s-8)]">
-      <h1 className="m-0 font-serif text-[var(--text-h2)] tracking-[-0.03em] text-[var(--ink-1)]">
+    <div className="relative mx-auto max-w-[820px] overflow-hidden px-[var(--s-5)] py-[var(--s-8)]">
+      <PirateBackdrop motif="map" className="-right-10 top-[1vh] h-[32vh] w-auto" opacity={0.08} />
+      <h1 className="relative m-0 font-serif text-[var(--text-h2)] tracking-[-0.03em] text-[var(--ink-1)]">
         Saved maps
       </h1>
       <p className="mt-[var(--s-3)] mb-[var(--s-7)] text-[var(--text-lede)] text-[var(--ink-2)]">

@@ -16,6 +16,7 @@ export function TopBar({ outline }: { outline: OutlineChapter[] }) {
       <div className="flex-1" />
       <DoubloonCounter />
       <ProgressControls variant="chip" />
+      <ProgressControls variant="reset-chip" />
       <SearchTrigger />
       <ThemeToggle />
     </header>

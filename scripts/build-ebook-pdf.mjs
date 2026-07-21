@@ -176,16 +176,16 @@ async function main() {
   }
 
   const css = `
-    @page { size: Letter; margin: 16mm 15mm; }
+    @page { size: Letter; margin: 20mm; }
     * { box-sizing: border-box; }
     body { font-family: Garamond,'EB Garamond','Adobe Garamond Pro',Georgia,serif; color:${art.ink}; background:${art.cream}; margin:0; font-size:11pt; line-height:1.5; }
     h1{ font-size:44pt; text-transform:uppercase; margin:6mm 0 3mm; line-height:1; }
     h2{ font-size:22pt; }
     h3{ font-size:17pt; margin:0 0 2mm; }
     .kicker{ letter-spacing:.26em; text-transform:uppercase; color:${art.gold}; font-size:10pt; }
-    .cover{ text-align:center; padding:52mm 15mm 30mm; page-break-after:always;
+    .cover{ text-align:center; padding:52mm 20mm 30mm; page-break-after:always;
       background:radial-gradient(ellipse 80% 60% at 50% 32%, #1a1b13 0%, ${art.darkbg} 72%);
-      color:${art.cream}; margin:-16mm -15mm 0; min-height:247mm; }
+      color:${art.cream}; margin:-20mm -20mm 0; min-height:239mm; }
     .cover .rose{ width:150px; margin:0 auto 12mm; }
     .cover h1{ color:#f6edd6; }
     .cover .tag{ font-style:italic; font-size:15pt; color:#cbb98a; }
@@ -196,9 +196,9 @@ async function main() {
     .toc li{ padding:2.4mm 0; border-bottom:1px solid #e3dcc7; }
     .toc .isle{ color:${art.gold}; text-transform:uppercase; font-size:8.5pt; letter-spacing:.14em; margin-right:3mm; }
     .toc .n{ float:right; color:#8a8471; font-size:9pt; }
-    .chapter-open{ page-break-before:always; text-align:center; padding:44mm 18mm;
+    .chapter-open{ page-break-before:always; text-align:center; padding:44mm 22mm;
       background:radial-gradient(ellipse 80% 60% at 50% 30%, #1a1b13 0%, ${art.darkbg} 74%);
-      color:${art.cream}; margin:-16mm -15mm 0; min-height:180mm; }
+      color:${art.cream}; margin:-20mm -20mm 0; min-height:200mm; }
     .chapter-open .kicker{ color:${art.gold}; }
     .cmotif{ width:130px; margin:0 auto 10mm; }
     .ctitle{ margin:3mm 0; color:#f6edd6; }
@@ -237,7 +237,7 @@ async function main() {
     .note.disclaimer{ border-left-color:#9a917a; color:#5a5445; font-size:9pt; }
     .note.warning{ border-left-color:#c07000; }
     .note.insight{ border-left-color:${art.gold}; font-style:italic; }
-    .frieze{ display:flex; align-items:center; justify-content:center; gap:8mm; height:18mm; margin:6mm 0; }
+    .frieze{ display:flex; align-items:center; justify-content:center; gap:5mm; height:15mm; margin:7mm 0; max-width:100%; overflow:hidden; }
     .frieze svg{ height:100%; width:auto; }
   `
 

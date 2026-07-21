@@ -16,7 +16,7 @@ export interface OutlineChapter {
 
 export function ChapterNav({ outline }: { outline: OutlineChapter[] }) {
   const pathname = usePathname()
-  const { isRead } = useProgress()
+  const { isRead, markUnread } = useProgress()
   const activeChapter = pathname.split('/')[2] ?? ''
   const [open, setOpen] = useState<string | null>(activeChapter)
 
@@ -63,26 +63,40 @@ export function ChapterNav({ outline }: { outline: OutlineChapter[] }) {
                   const active = pathname === l.url
                   const read = isRead(l.url)
                   return (
-                    <li key={l.slug}>
+                    <li key={l.slug} className="flex items-start">
+                      {/* Completion check. A read map shows a gold check that can
+                          be clicked to un-complete it (restart that section). An
+                          unread map shows an inert marker — you can't manually
+                          complete one without reading it. */}
+                      {read ? (
+                        <button
+                          type="button"
+                          onClick={() => markUnread(l.url)}
+                          aria-label={`Mark "${l.title}" not charted — restart this map`}
+                          title="Charted — click to restart"
+                          className="group mt-[5px] grid size-[15px] shrink-0 place-items-center rounded-full border transition-colors duration-[var(--d-fast)]"
+                          style={{
+                            borderColor: 'color-mix(in oklab, var(--gold) 55%, transparent)',
+                            background: 'var(--gold-soft)',
+                          }}
+                        >
+                          <Check size={10} style={{ color: 'var(--gold)' }} aria-hidden />
+                        </button>
+                      ) : (
+                        <span
+                          className="mt-[5px] size-[15px] shrink-0 rounded-full border border-[var(--line-1)]"
+                          aria-hidden
+                        />
+                      )}
                       <Link
                         href={l.url}
                         aria-current={active ? 'page' : undefined}
-                        className="flex items-start gap-[var(--s-2)] rounded-[var(--r-sm)] px-[var(--s-2)] py-[6px] text-[12px] leading-snug no-underline transition-colors duration-[var(--d-fast)] hover:bg-[var(--bg-2)]"
+                        className="flex flex-1 items-start gap-[var(--s-2)] rounded-[var(--r-sm)] px-[var(--s-2)] py-[6px] text-[12px] leading-snug no-underline transition-colors duration-[var(--d-fast)] hover:bg-[var(--bg-2)]"
                         style={{
-                          color: active ? 'var(--green-3)' : 'var(--ink-2)',
+                          color: active ? 'var(--green-3)' : read ? 'var(--gold)' : 'var(--ink-2)',
                           background: active ? 'var(--bg-2)' : undefined,
                         }}
                       >
-                        {read ? (
-                          <Check
-                            size={12}
-                            aria-label="Read"
-                            className="mt-[3px] shrink-0"
-                            style={{ color: 'var(--gold)' }}
-                          />
-                        ) : (
-                          <span className="mt-[3px] size-3 shrink-0" aria-hidden />
-                        )}
                         {l.title}
                       </Link>
                     </li>
