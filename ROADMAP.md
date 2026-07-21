@@ -5,20 +5,31 @@ Do not build ahead.
 
 ## ✅ Milestone 1 — Content pipeline + design system + reader
 
-**Built.**
+**Complete — all 92 maps.**
 
 - Velite + Zod content pipeline; 8-block schema locked on exemplars.
+- **All 92 lessons extracted** across 11 chapters (607 typed blocks).
 - Design system: black/white/green tokens, gold-as-treasure, 8pt grid, spring
   motion, light/dark parity, reduced-motion.
-- Reader: three-panel shell, chapter/lesson routing, sidebar outline, ⌘K
-  full-text search, quiz, local-first progress + bookmarks, original-map
-  download.
-- Provenance audit; production build (76 static pages); browser-verified.
+- Reader: three-panel shell, chapter/lesson routing, sidebar outline, mobile
+  drawer, ⌘K full-text search, quiz, local-first progress + bookmarks,
+  original-map download.
+- Provenance + table-width audit; production build (108 static pages);
+  browser-verified.
 
-**Remaining in M1:** extract the final **30 of 92 lessons** (the first 62 are
-done). Procedure in [`docs/EXTRACTION_GUIDE.md`](docs/EXTRACTION_GUIDE.md); the
-list is derivable from `data/outline.json` minus existing files. Purely additive
-— write MDX, validate, done. No code changes.
+## ✅ Milestone 5 (core) — Gamification, pulled forward
+
+**Built.** The doubloon economy landed early because it is what makes the reader
+want to finish the atlas.
+
+- 10 doubloons per map, 25 per chapter chest, 1,195 for the full voyage.
+- Treasure hall (`/treasure`), chapter chests, saved maps (`/bookmarks`).
+- Printable voyage certificate, minted at 100%.
+- Shared progress store so every surface updates live.
+- See [`memory/15_gamification.md`](memory/15_gamification.md).
+
+**Remaining in M5:** cloud sync + accounts (the store shape already anticipates
+this), and achievement badges beyond chapter chests.
 
 ## Milestone 2 — Flipbook
 

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { Sidebar } from '@/components/reader/Sidebar'
 import { TopBar } from '@/components/reader/TopBar'
+import { buildOutline } from '@/lib/outline'
 
 export const metadata: Metadata = {
   title: {
@@ -36,6 +37,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const outline = buildOutline()
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -51,7 +53,7 @@ export default function RootLayout({
         <div className="relative z-1 grid min-h-dvh lg:grid-cols-[300px_1fr]">
           <Sidebar />
           <div className="min-w-0">
-            <TopBar />
+            <TopBar outline={outline} />
             <main id="main" className="min-w-0">
               {children}
             </main>

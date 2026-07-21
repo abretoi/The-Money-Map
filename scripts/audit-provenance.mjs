@@ -51,6 +51,23 @@ for (const l of lessons) {
   const known = extractedFigures(l)
   const ungrounded = (text) => [...figs(text)].filter((f) => !known.has(f))
 
+  // Structural integrity: a table row must match its header width. Velite's
+  // schema does not enforce this, and an unquoted comma inside a cell silently
+  // splits it — so guard it here (hard failure).
+  for (const b of l.blocks ?? []) {
+    if (b.type === 'table') {
+      const w = b.headers.length
+      b.rows.forEach((r, i) => {
+        if (r.length !== w) {
+          console.error(
+            `[HARD] ${l.chapter}/${l.slug}: table "${b.title ?? ''}" row ${i} has ${r.length} cells, expected ${w}`
+          )
+          hardFail++
+        }
+      })
+    }
+  }
+
   for (const b of l.blocks ?? []) {
     if (b.source === 'extracted') {
       extractedBlocks++

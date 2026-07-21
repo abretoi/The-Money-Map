@@ -37,18 +37,20 @@ trade-offs, and the connective reasoning between decisions.
 
 ## Feature matrix
 
-| Feature | M1 (now) | Later |
+| Feature | Now | Later |
 |---|---|---|
-| Reader website | ✅ | — |
+| Reader website (all 92 maps) | ✅ | — |
 | Typed content blocks (8) | ✅ | +calculator block (M4) |
 | ⌘K full-text search | ✅ | — |
-| Progress / bookmarks (local) | ✅ | cloud sync (M5) |
+| Progress / bookmarks (shared local store) | ✅ | cloud sync (M5) |
+| Doubloon economy + chapter chests | ✅ | badges beyond chests (M5) |
+| Voyage certificate (printable, at 100%) | ✅ | — |
+| Mobile navigation drawer | ✅ | — |
 | Light / dark, a11y, reduced-motion | ✅ | — |
 | Original-map download | ✅ | — |
 | Flipbook | — | M2 |
 | PDF / print | — | M3 |
 | Calculators (12) | — | M4 |
-| Gamification (islands, XP, badges) | partial (progress) | M5 |
 | Accounts, sync, premium | — | M5+ |
 
 ## Technical architecture

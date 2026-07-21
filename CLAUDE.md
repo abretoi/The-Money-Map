@@ -25,7 +25,7 @@ content/**/*.mdx  →  velite (Zod)  →  generated/json  →  ┬→ search ind
 - **Velite** for content (not Contentlayer — unmaintained) · **Zod** schema
 - **Fuse.js** search · **Framer Motion** · **Lucide** icons
 
-## The three rules that matter most
+## The four rules that matter most
 
 1. **Markdown is the source of truth.** Everything in `generated/` is
    disposable. A fact that exists only in a generated artifact is a bug.
@@ -33,9 +33,13 @@ content/**/*.mdx  →  velite (Zod)  →  generated/json  →  ┬→ search ind
 2. **Provenance.** Every content block is `extracted` (verbatim from a source
    map) or `authored` (pedagogy). Authored content asserting a fact may never
    introduce a financial figure absent from extracted blocks. `npm run
-   audit:provenance` enforces it. → `memory/04`, `memory/05`, `memory/07`
+   audit:provenance` enforces it (and checks table-row widths).
+   → `memory/04`, `memory/05`, `memory/07`
 3. **The gold rule.** Gold marks treasure only — earned states and cartographic
    labels — never generic UI chrome. Green is the accent. → `memory/02_brand.md`
+4. **Progress is one shared store.** `lib/progress-store.ts` via
+   `useSyncExternalStore` — so the doubloon counter, sidebar, and treasure hall
+   update the instant a map is completed. → `memory/15_gamification.md`
 
 ## Content model
 
@@ -69,8 +73,13 @@ motion (`transform`/`opacity`), search index lazy-loaded. → `memory/03`.
 
 ## Status
 
-Milestone 1 (content pipeline + design system + reader) is built. Content is
-**62 of 92 lessons extracted** — see `CHANGELOG.md` and `ROADMAP.md` for the
-remaining 30 and the extraction procedure (`docs/EXTRACTION_GUIDE.md`).
+Milestone 1 is **complete — all 92 maps extracted**. The gamification core
+(doubloon economy + voyage certificate) was pulled forward from Milestone 5 and
+is built — see `memory/15_gamification.md`. Production build: 108 static pages.
 
-Do not build Milestones 2–5 ahead of their specs. → `memory/14`.
+Progress is a **shared external store** (`lib/progress-store.ts` +
+`useSyncExternalStore`); never reintroduce per-component progress `useState` — it
+breaks live updates across the doubloon counter, sidebar, and treasure hall.
+
+Do not build Milestones 2–4 (flipbook, PDF, calculators) ahead of their specs.
+→ `memory/14`.

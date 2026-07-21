@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { allChapters, lessonsInChapter, readingOrder } from '@/lib/content'
 import { ProgressSummary } from '@/components/reader/ProgressSummary'
+import { CompassRose } from '@/components/art/Icons'
 
 export default function Home() {
   const chapters = allChapters()
@@ -8,13 +9,16 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-[1100px] px-[var(--s-5)] py-[var(--s-9)]">
-      <section className="mb-[var(--s-10)]">
+      <section className="relative mb-[var(--s-10)]">
+        {/* Compass watermark — cartographic atmosphere behind the hero. */}
+        <CompassRose className="pointer-events-none absolute -right-8 -top-16 -z-1 hidden size-[340px] text-[var(--gold)] opacity-[0.06] md:block" />
+
         <p className="m-0 inline-flex items-center gap-[var(--s-2)] rounded-full border border-[var(--line-1)] bg-[var(--bg-2)] px-[var(--s-3)] py-[5px] text-[11px] uppercase tracking-[0.16em] text-[var(--ink-2)]">
           <span
             className="size-[6px] rounded-full bg-[var(--green-3)]"
             aria-hidden
           />
-          {chapters.length} chapters · {total} maps
+          {chapters.length} chapters · {total} maps · chart them all for the certificate
         </p>
 
         <h1 className="mt-[var(--s-5)] mb-0 max-w-[16ch] font-serif text-[var(--text-h1)] leading-[0.95] tracking-[-0.04em] text-[var(--ink-1)]">
@@ -35,11 +39,12 @@ export default function Home() {
 
         <p className="mt-[var(--s-5)] max-w-[62ch] text-[var(--text-lede)] leading-relaxed text-[var(--ink-2)]">
           A topic-sorted atlas of personal finance — from money psychology and
-          cash flow through taxes, retirement, housing, and legacy. Every map is
-          structured, searchable, and built to be read rather than squinted at.
+          cash flow through taxes, retirement, housing, and legacy. Chart each
+          map to collect doubloons, fill your chapter chests, and earn the
+          voyage certificate.
         </p>
 
-        <ProgressSummary total={total} />
+        <ProgressSummary />
       </section>
 
       <section aria-labelledby="chapters-heading">

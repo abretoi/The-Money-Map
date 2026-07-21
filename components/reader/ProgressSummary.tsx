@@ -1,45 +1,55 @@
 'use client'
 
-import { useProgress } from '@/hooks/useProgress'
+import Link from 'next/link'
+import { useTreasure } from '@/hooks/useTreasure'
+import { rankFor } from '@/lib/treasure'
+import { Doubloon, TreasureChest } from '@/components/art/Icons'
 
 /**
- * Voyage progress. The bar fills green while underway and turns gold only on
- * completion — the earned state.
+ * Home-page hoard summary. The voyage bar fills green underway and turns gold
+ * on completion; the doubloon count and rank make progress feel like treasure,
+ * and the whole card links into the treasure hall.
  */
-export function ProgressSummary({ total }: { total: number }) {
-  const { readCount, hydrated } = useProgress()
-  if (!hydrated || total === 0) return null
+export function ProgressSummary() {
+  const t = useTreasure()
+  if (!t.hydrated) return null
 
-  const pct = Math.round((readCount / total) * 100)
-  const complete = readCount === total
+  const complete = t.certificateEarned
 
   return (
-    <div className="mt-[var(--s-7)] max-w-[420px]">
-      <div className="mb-[var(--s-2)] flex items-baseline justify-between text-[12px]">
-        <span className="text-[var(--ink-3)]">Your voyage</span>
-        <span
-          style={{ color: complete ? 'var(--gold)' : 'var(--ink-2)' }}
-          className="font-serif"
-        >
-          {readCount} / {total} maps
+    <Link
+      href="/treasure"
+      className="card mt-[var(--s-7)] block max-w-[460px] p-[var(--s-5)] no-underline"
+      data-earned={complete ? 'true' : undefined}
+    >
+      <div className="flex items-center justify-between gap-[var(--s-3)]">
+        <span className="inline-flex items-center gap-[var(--s-2)] text-[13px] text-[var(--ink-2)]">
+          <TreasureChest
+            open={t.chestsFilled > 0}
+            className="size-5"
+            style={{ color: t.chestsFilled > 0 ? 'var(--gold)' : 'var(--ink-3)' }}
+          />
+          Your voyage · <span className="text-[var(--gold)]">{rankFor(t.percent)}</span>
+        </span>
+        <span className="inline-flex items-center gap-[var(--s-1)] font-serif text-[15px] font-semibold text-[var(--gold)] tabular-nums">
+          <Doubloon className="size-[18px]" />
+          {t.doubloons.toLocaleString()}
         </span>
       </div>
-      <div
-        role="progressbar"
-        aria-valuenow={pct}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-label="Reading progress"
-        className="h-[6px] overflow-hidden rounded-full bg-[var(--bg-3)]"
-      >
+
+      <div className="mt-[var(--s-3)] h-[6px] overflow-hidden rounded-full bg-[var(--bg-3)]">
         <div
           className="h-full rounded-full transition-[width] duration-[var(--d-slow)] ease-[var(--ease)]"
           style={{
-            width: `${pct}%`,
+            width: `${t.percent}%`,
             background: complete ? 'var(--gold)' : 'var(--grad-green)',
           }}
         />
       </div>
-    </div>
+
+      <p className="m-0 mt-[var(--s-2)] text-[12px] text-[var(--ink-3)] tabular-nums">
+        {t.mapsCollected} / {t.totalMaps} maps charted · {t.chestsFilled} / {t.chests.length} chests filled
+      </p>
+    </Link>
   )
 }

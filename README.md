@@ -20,12 +20,15 @@ into structured content — typed blocks that render natively, reflow on mobile,
 and are fully full-text searchable — rather than shipped as a flat image.
 
 - 📚 **11 chapters, 92 lessons** — from money mindset through taxes, retirement,
-  housing, and legacy.
+  housing, and legacy. Every map is extracted, not just an image.
 - 🧩 **8 typed content blocks** — timeline, comparison, buckets, flow, table,
   phase bands, stat strip, note — one source, many render targets.
 - 🔎 **Instant ⌘K search** — full-text across every figure and label.
-- 🌓 **Light & dark**, keyboard-accessible, reduced-motion aware.
-- 🏴‍☠️ **Progress as a voyage** — islands, completion, earned-gold milestones.
+- 🪙 **The doubloon economy** — chart a map to earn doubloons, fill a chapter's
+  treasure chest for a bounty, and mint the **voyage certificate** at 100%.
+- 🧭 **Cartographic identity** — compass roses, chests, and gold reserved
+  strictly for treasure.
+- 🌓 **Light & dark**, keyboard-accessible, reduced-motion aware, mobile drawer.
 
 ## Quick start
 
@@ -59,15 +62,18 @@ green `npx velite --clean` means the content is valid.
 ```
 content/chapters/     MDX source — the source of truth (11 chapters × lessons)
 components/blocks/     one React component per block type
-components/reader/     sidebar, search palette, quiz, progress, theme
-lib/                   content access + search flattening
-hooks/                 useProgress (local-first)
-scripts/               search index + provenance audit
+components/reader/     sidebar, search palette, quiz, progress, theme, mobile nav
+components/treasure/   doubloon counter, treasure hall, chests, certificate, award
+components/art/        cartographic + pirate SVG iconography
+lib/                   content access, search, treasure economy, progress store
+hooks/                 useProgress (shared store), useTreasure
+scripts/               search index + provenance/table audit
 styles/tokens.css      design tokens (black/white/green; gold = treasure)
 generated/             DISPOSABLE — velite output, never hand-edited
 public/infographics/   original maps, retained as downloadable artifacts
+public/treasure-map.json  chapter→lesson manifest for the doubloon economy
 data/                  canonical outline (survives velite --clean)
-memory/                14-file knowledge base — load these first
+memory/                knowledge base (00–15) — load these first
 docs/                  design spec + extraction guide
 ```
 

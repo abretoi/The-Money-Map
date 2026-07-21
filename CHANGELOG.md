@@ -3,6 +3,55 @@
 All notable changes to The Money Map. Format follows
 [Keep a Changelog](https://keepachangelog.com/); versioning is semver.
 
+## [0.2.0] — 2026-07-21
+
+Full content, gamification, and pirate/cartographic identity.
+
+### Added
+
+- **All 92 maps extracted.** The atlas is complete — 92 lessons across 11
+  chapters, 607 typed blocks (235 buckets, 164 notes, 75 tables, 51 flows, 38
+  stats, 22 comparisons, 16 phase bands, 6 timelines). Every lesson has
+  takeaways, action steps, and a quiz.
+- **The doubloon economy** (`lib/treasure.ts`, `hooks/useTreasure.ts`). Each map
+  read earns 10 doubloons; filling a chapter's chest pays a 25-doubloon bounty;
+  the full voyage is worth 1,195. Ranks from Stowaway to Master Cartographer.
+- **Voyage certificate.** Mints when all 92 maps are charted — printable,
+  personalised, gold-sealed (`components/treasure/Certificate.tsx`).
+- **Treasure hall** (`/treasure`) — hoard total, rank, chapter-chest grid, and
+  the certificate. **Saved maps** page (`/bookmarks`).
+- **Reward moment.** Completing a map fires a doubloon award toast and, when it
+  fills a chest, announces the bounty. Sidebar and chapter rows show gold
+  completion checks.
+- **Cartographic + pirate imagery** — inline SVG compass rose, doubloon, treasure
+  chest, anchor, map-X, and scroll (`components/art/Icons.tsx`), woven through
+  the hero, sidebar, chapter cards, treasure hall, and certificate.
+- **Mobile navigation** — a slide-in drawer with the full chapter outline
+  (`components/reader/MobileNav.tsx`); the sidebar was previously desktop-only.
+- **Sidebar utility nav** — atlas / saved maps / treasure hall links.
+
+### Changed
+
+- **Progress is now a shared external store** (`lib/progress-store.ts` +
+  `useSyncExternalStore`). Every surface — doubloon counter, sidebar, lesson
+  meta, treasure hall — updates the instant a map is completed and syncs across
+  tabs. Replaces per-component `useState`, which did not sync live.
+- Home hero and progress summary reframed around the voyage: doubloons, chests,
+  and the certificate.
+
+### Fixed
+
+- **13 tables across the corpus** had rows split by unquoted commas inside cells
+  (misaligned columns). All corrected; a row-width check was added to
+  `audit:provenance` so it fails closed if it recurs — a class of bug Velite's
+  schema does not catch.
+
+### Verified
+
+- Production build: 108 static pages, TypeScript clean.
+- Browser: the full doubloon loop (award toast → counter → sidebar checks →
+  chest fill → certificate mint at 100%), treasure hall, both themes.
+
 ## [0.1.0] — 2026-07-20
 
 Milestone 1: content pipeline + design system + reader website.
@@ -15,38 +64,18 @@ Milestone 1: content pipeline + design system + reader website.
   `table`, `phases`, `stat`, `note`. Locked against three exemplar
   infographics before batch extraction.
 - **Provenance system** — every block tagged `extracted` | `authored`;
-  `audit:provenance` hard-fails when a fact-asserting figure (quiz answer,
-  explanation, authored block) is not grounded in extracted content, and
-  reports derived/distractor figures for review.
-- **Content** — 62 of 92 lessons extracted across all 11 chapters. 412 typed
-  blocks (159 buckets, 117 notes, 42 tables, 35 flows, 28 stats, 15
-  comparisons, 10 phase bands, 6 timelines). Every lesson has takeaways,
-  action steps, and a quiz.
-- **Design system** — black/white/green token system with gold reserved for
-  treasure (earned states + cartographic labels). 8pt grid, Apple spring
-  motion, light/dark parity, global `prefers-reduced-motion`.
-- **Reader** — three-panel shell; chapter and lesson routes (static); sidebar
-  outline with live progress; ⌘K full-text search (lazy-loaded Fuse.js index);
-  interactive quiz; local-first progress + bookmarks; original-map download.
-- **Docs** — 14-file `memory/` knowledge base, `CLAUDE.md`, `README.md`,
-  `PRODUCT_SPEC.md`, `ROADMAP.md`, design spec, extraction guide.
-
-### Verified
-
-- Production build: 76 static pages, TypeScript clean.
-- Browser: home, lesson (all block types), ⌘K search, light + dark — all
-  confirmed rendering. Search surfaces lessons by extracted body content, not
-  just titles.
-
-### Known gaps
-
-- **30 of 92 lessons remain to extract** — the parallel extraction run was cut
-  short by an external session limit. Purely additive; procedure in
-  `docs/EXTRACTION_GUIDE.md`, list derivable from `data/outline.json`.
-- Flipbook, PDF, and calculators are scoped (see `ROADMAP.md`) but not built.
+  `audit:provenance` hard-fails when a fact-asserting figure is not grounded in
+  extracted content.
+- **Content** — 62 of 92 lessons extracted (the rest followed in 0.2.0).
+- **Design system** — black/white/green tokens with gold reserved for treasure.
+  8pt grid, Apple spring motion, light/dark parity, `prefers-reduced-motion`.
+- **Reader** — three-panel shell; static chapter/lesson routes; sidebar with
+  progress; ⌘K full-text search; interactive quiz; local-first progress +
+  bookmarks; original-map download.
+- **Docs** — memory knowledge base, `CLAUDE.md`, `README.md`, `PRODUCT_SPEC.md`,
+  `ROADMAP.md`, design spec, extraction guide.
 
 ### Stack notes
 
 - Contentlayer → **Velite** (Contentlayer unmaintained since 2023).
-- react-pageflip → **CSS 3D transforms** planned for the flipbook (M2);
-  react-pageflip unmaintained since 2022.
+- react-pageflip → **CSS 3D transforms** planned for the flipbook (M2).

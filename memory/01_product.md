@@ -26,10 +26,11 @@ definitions; they are capable people who need sequencing and trade-offs.
 
 ## Milestones
 
-1. **Content pipeline + design system + reader** ← current
+1. **Content pipeline + design system + reader** — ✅ complete, all 92 maps.
 2. Flipbook engine (CSS 3D page-turn)
 3. PDF + print pipeline
 4. Interactive calculators (12)
-5. Gamification, then SaaS foundation
+5. Gamification core (doubloons + certificate) — ✅ pulled forward and built,
+   see [15_gamification](15_gamification.md). Cloud sync/accounts remain.
 
 Each milestone gets its own spec. Do not build ahead of the current one.

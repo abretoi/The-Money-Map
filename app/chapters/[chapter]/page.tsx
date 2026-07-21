@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { allChapters, chapterBySlug, lessonsInChapter } from '@/lib/content'
+import { ChapterChest } from '@/components/treasure/ChapterChest'
+import { LessonRow } from '@/components/reader/LessonRow'
 
 export function generateStaticParams() {
   return allChapters().map((c) => ({ chapter: c.slug }))
@@ -41,32 +43,18 @@ export default async function ChapterPage({
         {c.intro}
       </p>
 
-      <ol className="mt-[var(--s-8)] m-0 list-none space-y-[var(--s-2)] p-0">
+      <ChapterChest slug={c.slug} />
+
+      <ol className="mt-[var(--s-7)] m-0 list-none space-y-[var(--s-2)] p-0">
         {lessons.map((l, i) => (
-          <li key={l.slug}>
-            <Link
-              href={l.url}
-              className="card flex items-start gap-[var(--s-4)] p-[var(--s-4)] no-underline"
-            >
-              <span
-                className="grid size-8 shrink-0 place-items-center rounded-full border border-[var(--line-2)] font-serif text-[13px] text-[var(--ink-3)]"
-                aria-hidden
-              >
-                {i + 1}
-              </span>
-              <span className="min-w-0 flex-1">
-                <span className="block text-[15px] leading-snug text-[var(--ink-1)]">
-                  {l.title}
-                </span>
-                <span className="mt-[var(--s-1)] block text-[13px] leading-relaxed text-[var(--ink-2)]">
-                  {l.summary}
-                </span>
-              </span>
-              <span className="shrink-0 self-center text-[12px] text-[var(--ink-3)]">
-                {l.readingMinutes} min
-              </span>
-            </Link>
-          </li>
+          <LessonRow
+            key={l.slug}
+            index={i + 1}
+            url={l.url}
+            title={l.title}
+            summary={l.summary}
+            readingMinutes={l.readingMinutes}
+          />
         ))}
       </ol>
     </div>

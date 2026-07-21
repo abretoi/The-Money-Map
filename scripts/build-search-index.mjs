@@ -11,8 +11,10 @@ import path from 'node:path'
 
 const ROOT = process.cwd()
 const LESSONS = path.join(ROOT, 'generated/json/lessons.json')
+const CHAPTERS = path.join(ROOT, 'generated/json/chapters.json')
 const OUT_PUBLIC = path.join(ROOT, 'public/search-index.json')
 const OUT_GEN = path.join(ROOT, 'generated/search/index.json')
+const OUT_TREASURE = path.join(ROOT, 'public/treasure-map.json')
 
 function flattenBlock(b) {
   const parts = [b.title ?? '']
@@ -79,3 +81,31 @@ const words = docs.reduce((n, d) => n + d.text.split(/\s+/).filter(Boolean).leng
 const kb = Math.round(Buffer.byteLength(json) / 1024)
 
 console.log(`[search] ${docs.length} lessons indexed · ~${words.toLocaleString()} words · ${kb} KB`)
+
+/* ---- Treasure manifest: chapter → lesson URLs, for the doubloon economy ---- */
+const chapters = existsSync(CHAPTERS)
+  ? JSON.parse(await readFile(CHAPTERS, 'utf8'))
+  : []
+
+const treasure = {
+  totalMaps: lessons.length,
+  chapters: chapters
+    .slice()
+    .sort((a, b) => a.order - b.order)
+    .map((c) => ({
+      slug: c.slug,
+      title: c.title,
+      island: c.island ?? '',
+      lessonUrls: lessons
+        .filter((l) => l.chapter === c.slug)
+        .sort((a, b) => a.order - b.order)
+        .map((l) => l.url),
+    })),
+}
+
+await writeFile(OUT_TREASURE, JSON.stringify(treasure))
+
+const doubloons = treasure.totalMaps * 10 + treasure.chapters.length * 25
+console.log(
+  `[treasure] ${treasure.totalMaps} maps · ${treasure.chapters.length} chests · ${doubloons} doubloons at 100%`
+)

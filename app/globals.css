@@ -134,3 +134,25 @@ body::before {
   );
   opacity: 1;
 }
+
+/* ---- Print: isolate the certificate ----------------------------- */
+@media print {
+  body::before,
+  aside,
+  header,
+  nav,
+  .no-print {
+    display: none !important;
+  }
+  html,
+  body {
+    background: #fff;
+    color: #000;
+  }
+  #mm-certificate {
+    border-color: #b8933f !important;
+    background: #fff !important;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+}

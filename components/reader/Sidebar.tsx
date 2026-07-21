@@ -1,29 +1,25 @@
 import Link from 'next/link'
-import { allChapters, lessonsInChapter } from '@/lib/content'
+import { buildOutline } from '@/lib/outline'
 import { ChapterNav } from './ChapterNav'
+import { SidebarFooter } from './SidebarFooter'
+import { CompassRose } from '@/components/art/Icons'
 
 /**
- * Server component. Builds a slim outline and hands it to the client nav —
- * the full lesson set with all blocks must never reach the browser bundle.
+ * Desktop sidebar (server). Builds the slim outline and hands it to the client
+ * nav — the full lesson set with all blocks must never reach the browser bundle.
+ * The mobile equivalent is MobileNav, rendered from the top bar.
  */
 export function Sidebar() {
-  const outline = allChapters().map((c) => ({
-    slug: c.slug,
-    title: c.title,
-    island: c.island ?? '',
-    order: c.order,
-    lessons: lessonsInChapter(c.slug).map((l) => ({
-      slug: l.slug,
-      title: l.title,
-      url: l.url,
-    })),
-  }))
-
+  const outline = buildOutline()
   const total = outline.reduce((n, c) => n + c.lessons.length, 0)
 
   return (
     <aside className="sticky top-0 z-20 hidden h-dvh overflow-y-auto border-r border-[var(--line-1)] bg-[color-mix(in_oklab,var(--bg)_86%,transparent)] p-[var(--s-5)] backdrop-blur-xl lg:block">
-      <Link href="/" className="block no-underline">
+      <Link href="/" className="group relative block overflow-hidden no-underline">
+        {/* faint compass watermark — cartographic texture, not illustration */}
+        <CompassRose
+          className="pointer-events-none absolute -right-6 -top-6 size-24 text-[var(--gold)] opacity-[0.07] transition-opacity duration-[var(--d-slow)] group-hover:opacity-[0.12]"
+        />
         <p className="m-0 text-[10px] uppercase tracking-[0.2em] text-[var(--gold)]">
           Navigate your journey
         </p>
@@ -38,6 +34,8 @@ export function Sidebar() {
       <nav aria-label="Chapters" className="mt-[var(--s-6)]">
         <ChapterNav outline={outline} />
       </nav>
+
+      <SidebarFooter />
     </aside>
   )
 }

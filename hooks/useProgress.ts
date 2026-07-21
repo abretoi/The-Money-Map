@@ -1,93 +1,42 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
-
-const KEY = 'mm-progress'
+import { useCallback, useSyncExternalStore } from 'react'
+import { progressStore } from '@/lib/progress-store'
 
 /**
- * Local-first reading progress.
- *
- * Shape is deliberately a plain serialisable record keyed by lesson URL so a
- * future sync layer (Milestone 5+) can adopt it without a migration.
- * localStorage is used rather than IndexedDB while the payload is this small;
- * the interface here is what callers depend on, so swapping the store later
- * does not touch consumers.
+ * Reading progress + bookmarks, backed by the shared module-level store so
+ * every consumer updates the instant a lesson is completed. See
+ * lib/progress-store.ts for the storage and cross-tab-sync details.
  */
-export interface ProgressState {
-  read: Record<string, number>
-  bookmarks: string[]
-}
-
-const EMPTY: ProgressState = { read: {}, bookmarks: [] }
-
-function load(): ProgressState {
-  if (typeof window === 'undefined') return EMPTY
-  try {
-    const raw = window.localStorage.getItem(KEY)
-    if (!raw) return EMPTY
-    const parsed = JSON.parse(raw) as Partial<ProgressState>
-    return { read: parsed.read ?? {}, bookmarks: parsed.bookmarks ?? [] }
-  } catch {
-    return EMPTY
-  }
-}
-
 export function useProgress() {
-  const [state, setState] = useState<ProgressState>(EMPTY)
-  const [hydrated, setHydrated] = useState(false)
-
-  // Read after mount so server and client markup match on first paint.
-  useEffect(() => {
-    setState(load())
-    setHydrated(true)
-  }, [])
-
-  const persist = useCallback((next: ProgressState) => {
-    setState(next)
-    try {
-      window.localStorage.setItem(KEY, JSON.stringify(next))
-    } catch {
-      /* storage unavailable (private mode, quota) — progress is non-critical */
-    }
-  }, [])
-
-  const markRead = useCallback(
-    (url: string) => {
-      setState((prev) => {
-        if (prev.read[url]) return prev
-        const next = { ...prev, read: { ...prev.read, [url]: Date.now() } }
-        try {
-          window.localStorage.setItem(KEY, JSON.stringify(next))
-        } catch {
-          /* non-critical */
-        }
-        return next
-      })
-    },
-    []
+  const state = useSyncExternalStore(
+    progressStore.subscribe,
+    progressStore.getSnapshot,
+    progressStore.getServerSnapshot
   )
 
-  const toggleBookmark = useCallback(
-    (url: string) => {
-      const has = state.bookmarks.includes(url)
-      persist({
-        ...state,
-        bookmarks: has
-          ? state.bookmarks.filter((b) => b !== url)
-          : [...state.bookmarks, url],
-      })
-    },
-    [state, persist]
+  // `hydrated` gates first paint so server and client markup match: on the
+  // server (and the very first client render) it is false, and we treat
+  // progress as unknown until the store has read localStorage.
+  const hydrated = useSyncExternalStore(
+    progressStore.subscribe,
+    () => progressStore.isHydrated(),
+    () => false
   )
 
   const isRead = useCallback(
     (url: string) => hydrated && Boolean(state.read[url]),
     [state.read, hydrated]
   )
-
   const isBookmarked = useCallback(
     (url: string) => hydrated && state.bookmarks.includes(url),
     [state.bookmarks, hydrated]
+  )
+
+  const markRead = useCallback((url: string) => progressStore.markRead(url), [])
+  const toggleBookmark = useCallback(
+    (url: string) => progressStore.toggleBookmark(url),
+    []
   )
 
   return {

@@ -70,9 +70,9 @@ export default async function LessonPage({
 
       <LessonMeta
         url={l.url}
+        chapter={l.chapter}
         readingMinutes={l.readingMinutes}
         tags={l.tags}
-        originalMap={l.originalMap}
       />
 
       <div className="prose mt-[var(--s-7)]">
