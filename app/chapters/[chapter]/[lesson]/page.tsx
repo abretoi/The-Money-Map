@@ -12,6 +12,12 @@ import { Blocks } from '@/components/blocks'
 import { MDXContent } from '@/components/MDXContent'
 import { LessonMeta } from '@/components/reader/LessonMeta'
 import { Quiz } from '@/components/reader/Quiz'
+import { PirateBackdrop, PirateFrieze, type MotifName } from '@/components/art/PirateScene'
+
+const LESSON_MOTIFS: MotifName[] = [
+  'map', 'compass', 'gold', 'ship', 'crest', 'jewel',
+  'lighthouse', 'hat', 'flag', 'swords', 'wheel',
+]
 
 export function generateStaticParams() {
   return allLessons().map((l) => ({ chapter: l.chapter, lesson: l.slug }))
@@ -44,9 +50,12 @@ export default async function LessonPage({
   const c = chapterBySlug(chapter)
   const { prev, next, position, total } = neighbours(l)
 
+  const motif = LESSON_MOTIFS[(l.sourcePage ?? 0) % LESSON_MOTIFS.length]
+
   return (
-    <article className="mx-auto max-w-[820px] px-[var(--s-5)] py-[var(--s-8)]">
-      <nav className="mb-[var(--s-5)] text-[12px]" aria-label="Breadcrumb">
+    <article className="relative mx-auto max-w-[820px] overflow-hidden px-[var(--s-5)] py-[var(--s-8)]">
+      <PirateBackdrop motif={motif} className="-right-10 top-[1vh] h-[30vh] w-auto" opacity={0.06} />
+      <nav className="relative mb-[var(--s-5)] text-[12px]" aria-label="Breadcrumb">
         <Link
           href={`/chapters/${chapter}`}
           className="text-[var(--ink-3)] no-underline hover:text-[var(--green-3)]"
@@ -173,6 +182,8 @@ export default async function LessonPage({
           </Link>
         )}
       </nav>
+
+      <PirateFrieze className="mt-[var(--s-8)] h-16" opacity={0.14} />
     </article>
   )
 }

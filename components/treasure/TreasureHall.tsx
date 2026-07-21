@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useTreasure } from '@/hooks/useTreasure'
 import { rankFor, DOUBLOONS_PER_MAP, CHAPTER_CHEST_BOUNTY } from '@/lib/treasure'
 import { Doubloon, TreasureChest, CompassRose } from '@/components/art/Icons'
+import { GoldPile } from '@/components/art/Pirate'
+import { PirateFrieze } from '@/components/art/PirateScene'
 import { Certificate } from './Certificate'
 
 export function TreasureHall() {
@@ -24,6 +26,7 @@ export function TreasureHall() {
       {/* ---- Hoard header ---- */}
       <section className="relative overflow-hidden rounded-[var(--r-xl)] border border-[color-mix(in_oklab,var(--gold)_26%,var(--line-1))] bg-[var(--bg-2)] p-[var(--s-7)]">
         <CompassRose className="pointer-events-none absolute -right-10 -top-10 size-56 text-[var(--gold)] opacity-[0.06]" />
+        <GoldPile aria-hidden className="pointer-events-none absolute bottom-[-8px] right-[8%] h-24 w-auto text-[var(--gold)] opacity-[0.1]" />
 
         <p className="m-0 text-[11px] uppercase tracking-[0.18em] text-[var(--gold)]">
           Your rank · {rank}
@@ -110,6 +113,8 @@ export function TreasureHall() {
           ))}
         </div>
       </section>
+
+      <PirateFrieze className="mt-[var(--s-9)] h-20" />
     </div>
   )
 }

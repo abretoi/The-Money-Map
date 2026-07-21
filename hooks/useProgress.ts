@@ -38,6 +38,9 @@ export function useProgress() {
     (url: string) => progressStore.toggleBookmark(url),
     []
   )
+  const reset = useCallback(() => progressStore.reset(), [])
+  const serialize = useCallback(() => progressStore.serialize(), [])
+  const restore = useCallback((json: string) => progressStore.restore(json), [])
 
   return {
     hydrated,
@@ -46,5 +49,8 @@ export function useProgress() {
     isBookmarked,
     markRead,
     toggleBookmark,
+    reset,
+    serialize,
+    restore,
   }
 }

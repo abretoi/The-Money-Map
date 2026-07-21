@@ -44,10 +44,21 @@ npm run dev           # http://localhost:3000
 |---|---|
 | `npm run dev` | Velite watch + Next dev server |
 | `npm run build` | Validate content, then production build (static) |
-| `npm run generate` | Regenerate JSON + search index from MDX |
-| `npm run generate:search` | Rebuild only the search index |
-| `npm run audit:provenance` | Verify every fact-asserting figure is grounded |
+| `npm run generate` | Regenerate JSON + search + treasure manifest from MDX |
+| `npm run pdf` | Regenerate the launch guide + full e-book PDFs |
+| `npm run audit:provenance` | Verify figures grounded + table integrity |
 | `npx velite --clean` | Validate content against the schema (fails closed) |
+
+## PDF outputs
+
+`npm run pdf` renders two self-contained PDFs into `generated/pdf/` using your
+system Chrome (no extra dependency):
+
+- **The-Money-Map-Launch-Guide.pdf** — a short, illustrated setup guide.
+- **The-Money-Map-Ebook.pdf** — the complete atlas, all 92 maps with their
+  blocks and pirate imagery, ready to read or print.
+
+Set `CHROME_BIN` if Chrome lives somewhere non-standard.
 
 ## Writing content
 

@@ -3,6 +3,43 @@
 All notable changes to The Money Map. Format follows
 [Keep a Changelog](https://keepachangelog.com/); versioning is semver.
 
+## [0.3.0] — 2026-07-21
+
+Garamond, bold pirate identity, progress management, and PDF outputs.
+
+### Added
+
+- **Two generated PDFs** (`npm run pdf`, via headless Chrome — no new
+  dependency): a 4-page **Launch Guide**
+  (`generated/pdf/The-Money-Map-Launch-Guide.pdf`) and the full **228-page
+  e-book** of all 92 maps with their blocks and matching pirate imagery
+  (`The-Money-Map-Ebook.pdf`). Generators in `scripts/build-guide-pdf.mjs`,
+  `scripts/build-ebook-pdf.mjs`, shared art in `scripts/pdf-art.mjs`.
+- **Large pirate art library** (`components/art/Pirate.tsx`) — crest, pirate
+  ship, Jolly Roger, rum, gold pile, cannon, crossed swords, lighthouse, jewel,
+  pirate hat, treasure map, ship's wheel. Plus `PirateFrieze` / `PirateBackdrop`
+  scene helpers (`components/art/PirateScene.tsx`), woven prominently across the
+  home, chapter, lesson, and treasure pages.
+- **Full-page hero** — the title now spans the viewport at a new `--text-display`
+  scale, over ship/lighthouse/compass backdrops.
+- **Progress management** — Save progress (download a backup), Load a saved
+  voyage (restore), and Reset progress, in the sidebar's *Your Voyage* menu; a
+  matching gold **Save** chip in the top bar beside the doubloon counter.
+- **Green/white/black hover gradient** on cards and interactive rows
+  (`.card`, `.hover-gradient`).
+
+### Changed
+
+- **All typography is now Garamond** — a single `--font-garamond` stack drives
+  both the sans and serif tokens.
+- Home reframed as "the eleven islands"; chapter cards carry per-island motifs
+  and chest chips.
+
+### Fixed
+
+- The sidebar compass watermark overlapped the chapter titles — removed; the
+  brand header now uses a Jolly Roger mark that stays clear of the outline.
+
 ## [0.2.0] — 2026-07-21
 
 Full content, gamification, and pirate/cartographic identity.

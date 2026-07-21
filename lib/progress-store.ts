@@ -106,4 +106,36 @@ export const progressStore = {
     persist()
     emit()
   },
+
+  /** Wipe all progress and bookmarks. Used by the "reset voyage" control. */
+  reset(): void {
+    state = { read: {}, bookmarks: [] }
+    persist()
+    emit()
+  },
+
+  /** Serialise progress for a downloadable backup file. */
+  serialize(): string {
+    return JSON.stringify(
+      { app: 'the-money-map', version: 1, savedAt: Date.now(), ...state },
+      null,
+      2
+    )
+  },
+
+  /** Restore progress from a previously saved backup. Returns success. */
+  restore(json: string): boolean {
+    try {
+      const parsed = JSON.parse(json) as Partial<ProgressState>
+      state = {
+        read: parsed.read ?? {},
+        bookmarks: parsed.bookmarks ?? [],
+      }
+      persist()
+      emit()
+      return true
+    } catch {
+      return false
+    }
+  },
 }

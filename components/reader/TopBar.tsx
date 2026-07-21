@@ -2,6 +2,7 @@ import { SearchTrigger } from './SearchTrigger'
 import { ThemeToggle } from './ThemeToggle'
 import { MobileNav } from './MobileNav'
 import { DoubloonCounter } from '@/components/treasure/DoubloonCounter'
+import { ProgressControls } from '@/components/treasure/ProgressControls'
 import type { OutlineChapter } from '@/lib/outline'
 
 /** Frosted sticky header. Canonical recipe from the dashboard-design system. */
@@ -14,6 +15,7 @@ export function TopBar({ outline }: { outline: OutlineChapter[] }) {
       </span>
       <div className="flex-1" />
       <DoubloonCounter />
+      <ProgressControls variant="chip" />
       <SearchTrigger />
       <ThemeToggle />
     </header>

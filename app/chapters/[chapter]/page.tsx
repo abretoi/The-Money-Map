@@ -4,6 +4,12 @@ import type { Metadata } from 'next'
 import { allChapters, chapterBySlug, lessonsInChapter } from '@/lib/content'
 import { ChapterChest } from '@/components/treasure/ChapterChest'
 import { LessonRow } from '@/components/reader/LessonRow'
+import { PirateBackdrop, PirateFrieze, type MotifName } from '@/components/art/PirateScene'
+
+const CHAPTER_MOTIFS: MotifName[] = [
+  'compass', 'gold', 'ship', 'map', 'crest', 'jewel',
+  'lighthouse', 'hat', 'flag', 'swords', 'wheel',
+]
 
 export function generateStaticParams() {
   return allChapters().map((c) => ({ chapter: c.slug }))
@@ -31,9 +37,12 @@ export default async function ChapterPage({
 
   const lessons = lessonsInChapter(c.slug)
 
+  const motif = CHAPTER_MOTIFS[(c.order - 1) % CHAPTER_MOTIFS.length]
+
   return (
-    <div className="mx-auto max-w-[900px] px-[var(--s-5)] py-[var(--s-9)]">
-      <p className="m-0 text-[11px] uppercase tracking-[0.16em] text-[var(--gold)]">
+    <div className="relative mx-auto max-w-[900px] overflow-hidden px-[var(--s-5)] py-[var(--s-9)]">
+      <PirateBackdrop motif={motif} className="-right-8 top-[2vh] h-[36vh] w-auto" opacity={0.07} />
+      <p className="relative m-0 text-[11px] uppercase tracking-[0.16em] text-[var(--gold)]">
         {c.island ?? `Chapter ${c.order}`}
       </p>
       <h1 className="mt-[var(--s-2)] mb-0 font-serif text-[var(--text-h2)] leading-tight tracking-[-0.03em] text-[var(--ink-1)]">
@@ -57,6 +66,8 @@ export default async function ChapterPage({
           />
         ))}
       </ol>
+
+      <PirateFrieze className="mt-[var(--s-9)] h-20" />
     </div>
   )
 }

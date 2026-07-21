@@ -70,9 +70,11 @@
   --r-xl: 24px;
 
   /* --- Type ----------------------------------------------------- */
-  --font-sans:
-    ui-sans-serif, -apple-system, 'SF Pro Text', 'Inter', system-ui, sans-serif;
-  --font-serif: 'Iowan Old Style', 'Palatino', Georgia, serif;
+  /* Garamond everywhere — a single typographic voice across the atlas. */
+  --font-garamond: Garamond, 'EB Garamond', 'Adobe Garamond Pro',
+    'Cormorant Garamond', 'Iowan Old Style', 'Palatino', Georgia, serif;
+  --font-sans: var(--font-garamond);
+  --font-serif: var(--font-garamond);
   --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', monospace;
 
   --text-body: 15px;
@@ -80,6 +82,8 @@
   --text-h3: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
   --text-h2: clamp(1.5rem, 1.2rem + 1vw, 2.125rem);
   --text-h1: clamp(2.25rem, 1.6rem + 3vw, 4rem);
+  /* Full-page hero display — deliberately enormous. */
+  --text-display: clamp(3rem, 1rem + 11vw, 11rem);
 
   --measure: 68ch;
 
