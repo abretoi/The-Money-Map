@@ -176,16 +176,22 @@ async function main() {
   }
 
   const css = `
-    @page { size: Letter; margin: 20mm; }
+    /* Chrome's --print-to-pdf CLI ignores @page margins; the .sheet spacer
+       table creates cushion on every page instead (thead/tfoot = top/bottom,
+       td padding = left/right). @page margin stays 0. */
+    @page { size: Letter; margin: 0; }
     * { box-sizing: border-box; }
     body { font-family: Garamond,'EB Garamond','Adobe Garamond Pro',Georgia,serif; color:${art.ink}; background:${art.cream}; margin:0; font-size:11pt; line-height:1.5; }
+    .sheet { width:100%; border-collapse:collapse; }
+    .sheet > thead td, .sheet > tfoot td { height:15mm; }
+    .sheet > tbody > tr > td { padding:0 20mm; }
     h1{ font-size:44pt; text-transform:uppercase; margin:6mm 0 3mm; line-height:1; }
     h2{ font-size:22pt; }
     h3{ font-size:17pt; margin:0 0 2mm; }
     .kicker{ letter-spacing:.26em; text-transform:uppercase; color:${art.gold}; font-size:10pt; }
-    .cover{ text-align:center; padding:52mm 20mm 30mm; page-break-after:always;
+    .cover{ text-align:center; padding:46mm 10mm; page-break-after:always;
       background:radial-gradient(ellipse 80% 60% at 50% 32%, #1a1b13 0%, ${art.darkbg} 72%);
-      color:${art.cream}; margin:-20mm -20mm 0; min-height:239mm; }
+      color:${art.cream}; border-radius:14px; min-height:234mm; }
     .cover .rose{ width:150px; margin:0 auto 12mm; }
     .cover h1{ color:#f6edd6; }
     .cover .tag{ font-style:italic; font-size:15pt; color:#cbb98a; }
@@ -196,9 +202,9 @@ async function main() {
     .toc li{ padding:2.4mm 0; border-bottom:1px solid #e3dcc7; }
     .toc .isle{ color:${art.gold}; text-transform:uppercase; font-size:8.5pt; letter-spacing:.14em; margin-right:3mm; }
     .toc .n{ float:right; color:#8a8471; font-size:9pt; }
-    .chapter-open{ page-break-before:always; text-align:center; padding:44mm 22mm;
+    .chapter-open{ page-break-before:always; text-align:center; padding:40mm 12mm;
       background:radial-gradient(ellipse 80% 60% at 50% 30%, #1a1b13 0%, ${art.darkbg} 74%);
-      color:${art.cream}; margin:-20mm -20mm 0; min-height:200mm; }
+      color:${art.cream}; border-radius:14px; min-height:210mm; margin:4mm 0; }
     .chapter-open .kicker{ color:${art.gold}; }
     .cmotif{ width:130px; margin:0 auto 10mm; }
     .ctitle{ margin:3mm 0; color:#f6edd6; }
@@ -241,8 +247,16 @@ async function main() {
     .frieze svg{ height:100%; width:auto; }
   `
 
+  // `goldDefs` is emitted at the very start of `body`; keep it outside the
+  // spacer table (it is a 0-size <svg defs>), then wrap the flowing content so
+  // every printed page gets margins.
+  const defsEnd = body.indexOf('</svg>') + '</svg>'.length
+  const defs = body.slice(0, defsEnd)
+  const content = body.slice(defsEnd)
+  const wrapped = `${defs}<table class="sheet"><thead><tr><td></td></tr></thead><tfoot><tr><td></td></tr></tfoot><tbody><tr><td>${content}</td></tr></tbody></table>`
+
   await mkdir(OUT_DIR, { recursive: true })
-  await writeFile(HTML, `<!doctype html><html><head><meta charset="utf-8"><style>${css}</style></head><body>${body}</body></html>`)
+  await writeFile(HTML, `<!doctype html><html><head><meta charset="utf-8"><style>${css}</style></head><body>${wrapped}</body></html>`)
 
   if (!existsSync(CHROME)) {
     console.error(`[ebook] Chrome not found at ${CHROME}. Set CHROME_BIN. HTML written to ${HTML}.`)

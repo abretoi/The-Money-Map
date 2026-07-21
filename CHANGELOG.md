@@ -3,6 +3,21 @@
 All notable changes to The Money Map. Format follows
 [Keep a Changelog](https://keepachangelog.com/); versioning is semver.
 
+## [0.5.1] — 2026-07-21
+
+### Fixed
+
+- **PDF print margins — real fix.** The prior `@page { margin }` had no effect:
+  Chrome's `--print-to-pdf` CLI ignores CSS page margins outright (confirmed by
+  test — a 25 mm margin rendered as 0 mm), so text and imagery sat flush against
+  the paper edge. Both PDFs now bake per-page margins into the layout with a
+  `thead`/`tfoot` spacer table (repeats top/bottom margin on every page) plus
+  `td` side padding (left/right) — ~15–20 mm cushion on every page, verified in
+  a PDF viewer across content, cover, and chapter-divider pages. Covers and
+  chapter dividers are now dark matted plates within the margin (print-safe;
+  consumer printers can't bleed to the edge). Documented in
+  `memory/10_pdf_generation.md`.
+
 ## [0.5.0] — 2026-07-21
 
 Treasure-map progress, in-outline restart, a prominent Reset button, and

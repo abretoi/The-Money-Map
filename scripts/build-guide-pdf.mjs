@@ -19,17 +19,24 @@ const CHROME =
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 
 const css = `
-  @page { size: Letter; margin: 22mm; }
+  /* Chrome's --print-to-pdf CLI ignores @page margins, so cushion is created
+     by the .sheet spacer table below (thead/tfoot repeat top/bottom margin on
+     every page; td padding gives left/right). @page margin stays 0. */
+  @page { size: Letter; margin: 0; }
   * { box-sizing: border-box; }
   body {
     font-family: Garamond, 'EB Garamond', 'Adobe Garamond Pro', Georgia, serif;
     color: ${art.ink}; background: ${art.cream}; margin: 0;
     font-size: 12pt; line-height: 1.55;
   }
-  /* Cover bleeds to the physical page edge (negative margin === @page margin). */
-  .cover { text-align: center; padding: 48mm 20mm 30mm; page-break-after: always;
+  .sheet { width: 100%; border-collapse: collapse; }
+  .sheet > thead td, .sheet > tfoot td { height: 16mm; }        /* top/bottom margin, every page */
+  .sheet > tbody > tr > td { padding: 0 20mm; }                  /* left/right margin, every page */
+  /* Cover: a dark matted plate within the page margin (print-safe — home
+     printers cannot bleed to the edge anyway). */
+  .cover { text-align: center; padding: 42mm 10mm; page-break-after: always;
     background: radial-gradient(ellipse 80% 60% at 50% 30%, #1a1b13 0%, ${art.darkbg} 70%);
-    color: ${art.cream}; margin: -22mm -22mm 0; min-height: 235mm; }
+    color: ${art.cream}; border-radius: 14px; min-height: 232mm; }
   .cover .rose { width: 160px; margin: 0 auto 14mm; }
   .kicker { letter-spacing: .28em; text-transform: uppercase; color: ${art.gold}; font-size: 11pt; }
   .cover h1 { color: #f6edd6; }
@@ -53,6 +60,7 @@ const css = `
 
 const html = `<!doctype html><html><head><meta charset="utf-8"><style>${css}</style></head><body>
 ${art.goldDefs()}
+<table class="sheet"><thead><tr><td></td></tr></thead><tfoot><tr><td></td></tr></tfoot><tbody><tr><td>
 <section class="cover">
   <div class="rose">${art.compassStar()}</div>
   <div class="kicker">Launch Guide</div>
@@ -113,6 +121,7 @@ ${art.frieze(0.85)}
 
 <div class="frieze">${art.pirateShip()}${art.lighthouse()}${art.goldPile()}${art.compassStar()}</div>
 <p class="foot">Educational content, not financial advice. Fair winds and following seas.</p>
+</td></tr></tbody></table>
 </body></html>`
 
 await mkdir(OUT_DIR, { recursive: true })
