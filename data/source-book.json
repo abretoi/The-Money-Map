@@ -1,0 +1,749 @@
+{
+  "sections": [
+    {
+      "title": "Purpose, Money Mindset & Behavioral Finance",
+      "page": 5,
+      "count": 22
+    },
+    {
+      "title": "Cash Flow, Savings, Net Worth & Wealth Stages",
+      "page": 28,
+      "count": 13
+    },
+    {
+      "title": "Debt, Credit & Financial Safety",
+      "page": 42,
+      "count": 3
+    },
+    {
+      "title": "Investing, Markets & Portfolio Strategy",
+      "page": 46,
+      "count": 8
+    },
+    {
+      "title": "Taxes, Capital Gains & Account Buckets",
+      "page": 55,
+      "count": 6
+    },
+    {
+      "title": "Retirement, FIRE & Benefits",
+      "page": 62,
+      "count": 9
+    },
+    {
+      "title": "Insurance, Healthcare & Protection Planning",
+      "page": 72,
+      "count": 5
+    },
+    {
+      "title": "Housing & Real Estate",
+      "page": 78,
+      "count": 3
+    },
+    {
+      "title": "Family, Couples, Kids & College Planning",
+      "page": 82,
+      "count": 9
+    },
+    {
+      "title": "Income, Entrepreneurship & Alternative Assets",
+      "page": 92,
+      "count": 7
+    },
+    {
+      "title": "Life Morality, Meaning & Legacy",
+      "page": 100,
+      "count": 7
+    }
+  ],
+  "pages": [
+    {
+      "type": "cover",
+      "title": "The Money Map",
+      "subtitle": "A Personal Finance Knowledge Map"
+    },
+    {
+      "type": "intro",
+      "title": "Introduction",
+      "paragraphs": [
+        "The Money Map series was created to make personal finance feel visual, navigable, and memorable. Most people do not struggle because they lack access to financial information; they struggle because that information is scattered across books, rules of thumb, tax rules, investment accounts, insurance decisions, and life-stage trade-offs.",
+        "This web flipbook brings the series together as a practical personal finance knowledge map: a set of compact visual frameworks that can be revisited whenever a household faces a new decision. Each infographic translates a complex topic into a clear framework: the core idea, the key learning, common traps, and practical takeaways.",
+        "Read linearly for a full personal finance curriculum, or use the table of contents as a decision guide. The strongest use case is not memorizing every number; it is building a repeatable way to think and making money decisions easier to navigate."
+      ]
+    },
+    {
+      "type": "timeline",
+      "title": "The Money Map Learning Timeline",
+      "steps": [
+        [
+          "Orientation",
+          "Build the mental models: purpose, behavior, values, and the psychology of money."
+        ],
+        [
+          "Stability",
+          "Create cash-flow clarity, emergency reserves, credit health, and debt payoff discipline."
+        ],
+        [
+          "Accumulation",
+          "Direct savings into accounts, portfolios, benefits, real estate, and tax-efficient structures."
+        ],
+        [
+          "Optimization",
+          "Rebalance, manage market cycles, use tax buckets, and coordinate retirement withdrawals."
+        ],
+        [
+          "Expansion",
+          "Add entrepreneurship, alternative income, collectibles, and family wealth systems carefully."
+        ],
+        [
+          "Legacy",
+          "Connect financial success to health, relationships, estate planning, generosity, and fewer regrets."
+        ]
+      ]
+    },
+    {
+      "type": "toc",
+      "title": "Table of Contents"
+    },
+    {
+      "type": "section",
+      "section": 1,
+      "title": "Purpose, Money Mindset & Behavioral Finance",
+      "intro": "This opening section frames money as a system of behavior, identity, incentives, and choices. The infographics connect practical personal finance to the mental models behind wealth: patience, discipline, simplicity, emotional control, and values-driven decision-making. It is the foundation for the rest of The Money Map because the best financial plan is only useful when it matches how people actually think, feel, and act.",
+      "items": [
+        "How to Think About Money",
+        "Rich Dad Poor Dad",
+        "The Richest Man in Babylon",
+        "The Index Card",
+        "Same as Ever",
+        "The Psychology of Money",
+        "Taming Your Money Monster",
+        "The Little Book of Behavioural Investing",
+        "From Monk to Money Manager",
+        "Get a Financial Life",
+        "Your Money or Your Life",
+        "Smart Mom, Rich Mom",
+        "The Intelligent Investor",
+        "A Random Walk Down Wall Street",
+        "The Behavior Gap",
+        "How to Money",
+        "Broke Millennial",
+        "The Only Investment Guide You'll Ever Need",
+        "I Will Teach You to Be Rich",
+        "The One-Page Financial Plan",
+        "Soul of Wealth",
+        "Thinking, Fast and Slow"
+      ]
+    },
+    {
+      "type": "image",
+      "title": "How to Think About Money",
+      "src": "assets/infographics/page_001.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Rich Dad Poor Dad",
+      "src": "assets/infographics/page_002.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The Richest Man in Babylon",
+      "src": "assets/infographics/page_007.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The Index Card",
+      "src": "assets/infographics/page_008.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Same as Ever",
+      "src": "assets/infographics/page_010.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The Psychology of Money",
+      "src": "assets/infographics/page_014.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Taming Your Money Monster",
+      "src": "assets/infographics/page_018.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The Little Book of Behavioural Investing",
+      "src": "assets/infographics/page_028.jpg"
+    },
+    {
+      "type": "image",
+      "title": "From Monk to Money Manager",
+      "src": "assets/infographics/page_040.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Get a Financial Life",
+      "src": "assets/infographics/page_041.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Your Money or Your Life",
+      "src": "assets/infographics/page_044.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Smart Mom, Rich Mom",
+      "src": "assets/infographics/page_046.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The Intelligent Investor",
+      "src": "assets/infographics/page_047.jpg"
+    },
+    {
+      "type": "image",
+      "title": "A Random Walk Down Wall Street",
+      "src": "assets/infographics/page_048.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The Behavior Gap",
+      "src": "assets/infographics/page_054.jpg"
+    },
+    {
+      "type": "image",
+      "title": "How to Money",
+      "src": "assets/infographics/page_070.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Broke Millennial",
+      "src": "assets/infographics/page_074.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The Only Investment Guide You'll Ever Need",
+      "src": "assets/infographics/page_076.jpg"
+    },
+    {
+      "type": "image",
+      "title": "I Will Teach You to Be Rich",
+      "src": "assets/infographics/page_077.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The One-Page Financial Plan",
+      "src": "assets/infographics/page_081.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Soul of Wealth",
+      "src": "assets/infographics/page_083.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Thinking, Fast and Slow",
+      "src": "assets/infographics/page_088.jpg"
+    },
+    {
+      "type": "section",
+      "section": 2,
+      "title": "Cash Flow, Savings, Net Worth & Wealth Stages",
+      "intro": "Wealth begins with the gap between income and spending, then compounds through consistent saving, intentional budgeting, and measurable net worth progress. This section organizes the core mechanics of household finance: savings rates, emergency capacity, spending categories, age-band benchmarks, compounding, and the wealth ladder from earned income to financial freedom.",
+      "items": [
+        "Family Size and Its Impact on Financial Planning",
+        "Savings Rate vs. Time to Financial Independence",
+        "The Wealth Conversion Ladder",
+        "Monthly Cash Flow Blueprint for U.S. Households in Their 30s",
+        "The 30s / 40s / 50s Money Map",
+        "Compound Growth Over Time",
+        "Net Worth by Age Band in the United States",
+        "Top Best Life Decisions You Can Make",
+        "Net Worth Dashboard for U.S. Households in Their 30s",
+        "Best Periods to Make Wealth in Your Life",
+        "Order of Operations for U.S. Households in Their 30s",
+        "The Net Worth Map",
+        "Household Budgeting by Relationship Status"
+      ]
+    },
+    {
+      "type": "image",
+      "title": "Family Size and Its Impact on Financial Planning",
+      "src": "assets/infographics/page_003.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Savings Rate vs. Time to Financial Independence",
+      "src": "assets/infographics/page_004.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The Wealth Conversion Ladder",
+      "src": "assets/infographics/page_012.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Monthly Cash Flow Blueprint for U.S. Households in Their 30s",
+      "src": "assets/infographics/page_013.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The 30s / 40s / 50s Money Map",
+      "src": "assets/infographics/page_031.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Compound Growth Over Time",
+      "src": "assets/infographics/page_043.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Net Worth by Age Band in the United States",
+      "src": "assets/infographics/page_005.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Top Best Life Decisions You Can Make",
+      "src": "assets/infographics/page_055.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Net Worth Dashboard for U.S. Households in Their 30s",
+      "src": "assets/infographics/page_058.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Best Periods to Make Wealth in Your Life",
+      "src": "assets/infographics/page_068.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Order of Operations for U.S. Households in Their 30s",
+      "src": "assets/infographics/page_075.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The Net Worth Map",
+      "src": "assets/infographics/page_084.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Household Budgeting by Relationship Status",
+      "src": "assets/infographics/page_087.jpg"
+    },
+    {
+      "type": "section",
+      "section": 3,
+      "title": "Debt, Credit & Financial Safety",
+      "intro": "A strong financial life requires defense as much as offense. These maps focus on the systems that protect cash flow and optionality: emergency funds, credit health, debt payoff order, and resilience against life disruptions. The goal is not just to eliminate bad debt, but to build a stable base that makes every other financial decision easier.",
+      "items": [
+        "Emergency Fund Blueprint",
+        "Credit Score & Credit Health",
+        "Debt Payoff Strategy"
+      ]
+    },
+    {
+      "type": "image",
+      "title": "Emergency Fund Blueprint",
+      "src": "assets/infographics/page_064.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Credit Score & Credit Health",
+      "src": "assets/infographics/page_078.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Debt Payoff Strategy",
+      "src": "assets/infographics/page_093.jpg"
+    },
+    {
+      "type": "section",
+      "section": 4,
+      "title": "Investing, Markets & Portfolio Strategy",
+      "intro": "This section moves from saving money to deploying capital. The infographics cover allocation, diversification, rebalancing, market cycles, stock indicators, taxable investing choices, and disciplined selling. Together, they translate investing from a guessing game into a repeatable process built around risk, time horizon, valuation, and behavior.",
+      "items": [
+        "Peak Times to Buy & Sell Stock Market Equities",
+        "Decoding George Tritch's Periods to Make Money",
+        "Portfolio Rebalancing",
+        "Optimized Selling Cycles & Timing for Stocks",
+        "Asset Location Strategy",
+        "Top Key Financial Indicators to Track for a Stock",
+        "Asset Allocation & Diversification",
+        "Building an Algorithmic Trading Model"
+      ]
+    },
+    {
+      "type": "image",
+      "title": "Peak Times to Buy & Sell Stock Market Equities",
+      "src": "assets/infographics/page_015.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Decoding George Tritch's Periods to Make Money",
+      "src": "assets/infographics/page_017.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Portfolio Rebalancing",
+      "src": "assets/infographics/page_026.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Optimized Selling Cycles & Timing for Stocks",
+      "src": "assets/infographics/page_036.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Asset Location Strategy",
+      "src": "assets/infographics/page_045.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Top Key Financial Indicators to Track for a Stock",
+      "src": "assets/infographics/page_062.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Asset Allocation & Diversification",
+      "src": "assets/infographics/page_069.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Building an Algorithmic Trading Model",
+      "src": "assets/infographics/page_092.jpg"
+    },
+    {
+      "type": "section",
+      "section": 5,
+      "title": "Taxes, Capital Gains & Account Buckets",
+      "intro": "Taxes shape the real return of every financial decision. These maps simplify tax brackets, account types, capital gains, retirement withdrawal taxation, marital tax differences, and the three major investing buckets. The practical emphasis is on sequencing, location, timing, and using the tax code intentionally rather than reactively.",
+      "items": [
+        "Tax Bracket Planning",
+        "Brokerage Accounts & Capital Gains",
+        "The Tax Map",
+        "Tax Optimization in Retirement",
+        "Tax Differences for Single vs. Married Households",
+        "Tax Buckets of Investing"
+      ]
+    },
+    {
+      "type": "image",
+      "title": "Tax Bracket Planning",
+      "src": "assets/infographics/page_020.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Brokerage Accounts & Capital Gains",
+      "src": "assets/infographics/page_030.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The Tax Map",
+      "src": "assets/infographics/page_033.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Tax Optimization in Retirement",
+      "src": "assets/infographics/page_042.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Tax Differences for Single vs. Married Households",
+      "src": "assets/infographics/page_073.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Tax Buckets of Investing",
+      "src": "assets/infographics/page_095.jpg"
+    },
+    {
+      "type": "section",
+      "section": 6,
+      "title": "Retirement, FIRE & Benefits",
+      "intro": "Retirement planning is a timeline, not a single number. This section brings together withdrawal rates, account access rules, Social Security, workplace benefits, FIRE progress, retirement accounts, and single-versus-couple planning. The maps show how financial independence depends on savings rate, benefits strategy, taxes, healthcare, and flexible withdrawal design.",
+      "items": [
+        "Retirement Withdrawal Strategy",
+        "Early Access to Retirement Account Money",
+        "The Retirement Map",
+        "Workplace Benefits Playbook",
+        "FIRE Progress Tracker for U.S. Households in Their 30s",
+        "Retirement Account Map for U.S. Households in Their 30s",
+        "Retirement Planning for Singles vs. Couples",
+        "Social Security Foundation",
+        "FIRE Planning With Kids vs. Without Kids"
+      ]
+    },
+    {
+      "type": "image",
+      "title": "Retirement Withdrawal Strategy",
+      "src": "assets/infographics/page_006.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Early Access to Retirement Account Money",
+      "src": "assets/infographics/page_016.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The Retirement Map",
+      "src": "assets/infographics/page_037.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Workplace Benefits Playbook",
+      "src": "assets/infographics/page_039.jpg"
+    },
+    {
+      "type": "image",
+      "title": "FIRE Progress Tracker for U.S. Households in Their 30s",
+      "src": "assets/infographics/page_061.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Retirement Account Map for U.S. Households in Their 30s",
+      "src": "assets/infographics/page_063.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Retirement Planning for Singles vs. Couples",
+      "src": "assets/infographics/page_067.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Social Security Foundation",
+      "src": "assets/infographics/page_082.jpg"
+    },
+    {
+      "type": "image",
+      "title": "FIRE Planning With Kids vs. Without Kids",
+      "src": "assets/infographics/page_034.jpg"
+    },
+    {
+      "type": "section",
+      "section": 7,
+      "title": "Insurance, Healthcare & Protection Planning",
+      "intro": "Risk protection is one of the least glamorous but most important parts of wealth building. These infographics explain insurance layers, health plan trade-offs, Medicare versus Medicaid versus private insurance, and healthcare planning by life stage. The purpose is to help households protect their downside before pursuing higher-risk upside.",
+      "items": [
+        "Insurance Protection Stack",
+        "Health Insurance Costs in the United States",
+        "Healthcare Planning by Age & Life Stage",
+        "Coverage vs. Cost Trade-Offs in Insurance",
+        "Medicare vs. Medicaid vs. Private Insurance"
+      ]
+    },
+    {
+      "type": "image",
+      "title": "Insurance Protection Stack",
+      "src": "assets/infographics/page_011.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Health Insurance Costs in the United States",
+      "src": "assets/infographics/page_021.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Healthcare Planning by Age & Life Stage",
+      "src": "assets/infographics/page_022.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Coverage vs. Cost Trade-Offs in Insurance",
+      "src": "assets/infographics/page_057.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Medicare vs. Medicaid vs. Private Insurance",
+      "src": "assets/infographics/page_079.jpg"
+    },
+    {
+      "type": "section",
+      "section": 8,
+      "title": "Housing & Real Estate",
+      "intro": "Housing is often the largest line item, largest asset, and largest emotional purchase in a household budget. This section maps the cash-to-close process, affordability, and real estate decision rules. The focus is on understanding total cost, leverage, interest rates, reserves, and the difference between buying a home and making a good financial decision.",
+      "items": [
+        "Down Payment & Cash-to-Close",
+        "Home Affordability",
+        "The Real Estate Map"
+      ]
+    },
+    {
+      "type": "image",
+      "title": "Down Payment & Cash-to-Close",
+      "src": "assets/infographics/page_019.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Home Affordability",
+      "src": "assets/infographics/page_049.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The Real Estate Map",
+      "src": "assets/infographics/page_086.jpg"
+    },
+    {
+      "type": "section",
+      "section": 9,
+      "title": "Family, Couples, Kids & College Planning",
+      "intro": "Money becomes more complex when households grow, combine, or plan for children. These maps cover shared expenses, marriage versus single finances, family wealth systems, college funding, 529 plans, child-rearing costs, and education ROI. The section is designed to make family financial planning less reactive and more intentional.",
+      "items": [
+        "Shared Living Expenses & Cost Splitting",
+        "The Family Wealth Map",
+        "529 College Savings",
+        "Single vs. Married Finances",
+        "The College ROI",
+        "Cost of Raising a Family",
+        "The College Map: Top 100 U.S. Colleges and How to Pay for Them",
+        "The College Map",
+        "Child-Rearing Costs"
+      ]
+    },
+    {
+      "type": "image",
+      "title": "Shared Living Expenses & Cost Splitting",
+      "src": "assets/infographics/page_025.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The Family Wealth Map",
+      "src": "assets/infographics/page_027.jpg"
+    },
+    {
+      "type": "image",
+      "title": "529 College Savings",
+      "src": "assets/infographics/page_029.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Single vs. Married Finances",
+      "src": "assets/infographics/page_032.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The College ROI",
+      "src": "assets/infographics/page_050.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Cost of Raising a Family",
+      "src": "assets/infographics/page_052.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The College Map: Top 100 U.S. Colleges and How to Pay for Them",
+      "src": "assets/infographics/page_056.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The College Map",
+      "src": "assets/infographics/page_059.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Child-Rearing Costs",
+      "src": "assets/infographics/page_080.jpg"
+    },
+    {
+      "type": "section",
+      "section": 10,
+      "title": "Income, Entrepreneurship & Alternative Assets",
+      "intro": "The Money Map also treats wealth as an entrepreneurial system. This section explores income streams, side hustles, retail arbitrage, family and self-driven earning power, collectibles, and alternative assets. The common theme is optionality: expanding what can produce income or store value while understanding liquidity, concentration, and risk.",
+      "items": [
+        "Retail & Online Arbitrage Playbook",
+        "Collectibles Investing & Optimal Asset Allocation",
+        "Generation Earn",
+        "The Alternative Assets Map",
+        "Top Income Streams for Anyone in Life",
+        "The Economy of You",
+        "Top Alternative Income Ideas Outside 9-to-5"
+      ]
+    },
+    {
+      "type": "image",
+      "title": "Retail & Online Arbitrage Playbook",
+      "src": "assets/infographics/page_035.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Collectibles Investing & Optimal Asset Allocation",
+      "src": "assets/infographics/page_038.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Generation Earn",
+      "src": "assets/infographics/page_053.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The Alternative Assets Map",
+      "src": "assets/infographics/page_066.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Top Income Streams for Anyone in Life",
+      "src": "assets/infographics/page_071.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The Economy of You",
+      "src": "assets/infographics/page_072.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Top Alternative Income Ideas Outside 9-to-5",
+      "src": "assets/infographics/page_094.jpg"
+    },
+    {
+      "type": "section",
+      "section": 11,
+      "title": "Life Morality, Meaning & Legacy",
+      "intro": "The final section zooms out from tactics to meaning. These infographics explore life lessons, regrets, legacy, FIRE morals, dying with zero, estate planning, and the balance between money, health, relationships, and happiness. The purpose is to remind readers that wealth is a tool, and the highest return is a life lived with purpose, stewardship, and fewer regrets.",
+      "items": [
+        "Top Key Life Lessons & Morals to Live By",
+        "Elderly Wisdom for a Life with No Regrets",
+        "Biggest Life Regrets People Commonly Have",
+        "Estate Planning Basics",
+        "The FIRE Morals Map",
+        "Die with Zero",
+        "Optimizing Life for Money, Health, Meaning & Happiness"
+      ]
+    },
+    {
+      "type": "image",
+      "title": "Top Key Life Lessons & Morals to Live By",
+      "src": "assets/infographics/page_023.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Elderly Wisdom for a Life with No Regrets",
+      "src": "assets/infographics/page_024.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Biggest Life Regrets People Commonly Have",
+      "src": "assets/infographics/page_065.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Estate Planning Basics",
+      "src": "assets/infographics/page_085.jpg"
+    },
+    {
+      "type": "image",
+      "title": "The FIRE Morals Map",
+      "src": "assets/infographics/page_089.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Die with Zero",
+      "src": "assets/infographics/page_090.jpg"
+    },
+    {
+      "type": "image",
+      "title": "Optimizing Life for Money, Health, Meaning & Happiness",
+      "src": "assets/infographics/page_091.jpg"
+    }
+  ]
+}

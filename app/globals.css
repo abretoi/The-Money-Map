@@ -1,0 +1,136 @@
+@import 'tailwindcss';
+@import '../styles/tokens.css';
+
+/* Expose tokens to Tailwind v4 utilities */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-1: var(--bg-1);
+  --color-bg-2: var(--bg-2);
+  --color-bg-3: var(--bg-3);
+  --color-ink-1: var(--ink-1);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-green-1: var(--green-1);
+  --color-green-2: var(--green-2);
+  --color-green-3: var(--green-3);
+  --color-gold: var(--gold);
+  --color-line-1: var(--line-1);
+  --color-line-2: var(--line-2);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+}
+
+html {
+  background: var(--bg);
+  color: var(--ink-1);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+/* Depth-sounding texture: the map motif lives in the surface layer as
+ * low-opacity atmosphere, never as literal illustration. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 12% -5%, var(--green-glow), transparent 32rem),
+    radial-gradient(circle at 92% 8%, var(--green-glow), transparent 30rem);
+}
+
+::selection {
+  background: color-mix(in oklab, var(--green-3) 30%, transparent);
+  color: var(--ink-1);
+}
+
+:focus-visible {
+  outline: 2px solid var(--green-3);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* ---- Prose ------------------------------------------------------ */
+.prose {
+  max-width: var(--measure);
+  color: var(--ink-2);
+  line-height: 1.7;
+}
+.prose h2 {
+  font-family: var(--font-serif);
+  font-size: var(--text-h2);
+  color: var(--ink-1);
+  letter-spacing: -0.02em;
+  margin: var(--s-8) 0 var(--s-3);
+}
+.prose h3 {
+  font-size: var(--text-h3);
+  color: var(--ink-1);
+  margin: var(--s-6) 0 var(--s-2);
+}
+.prose p {
+  margin: 0 0 var(--s-4);
+}
+.prose a {
+  color: var(--green-3);
+  text-underline-offset: 3px;
+}
+.prose strong {
+  color: var(--ink-1);
+  font-weight: 600;
+}
+
+/* ---- Card: the base surface ------------------------------------ */
+.card {
+  position: relative;
+  background: var(--bg-2);
+  border: 1px solid var(--line-1);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-1);
+  transition:
+    transform var(--d-fast) var(--ease),
+    border-color var(--d-fast) var(--ease),
+    box-shadow var(--d-fast) var(--ease);
+}
+/* Top hairline gradient — the signature of the system */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--green-3) 55%, transparent),
+    transparent
+  );
+  opacity: 0.7;
+}
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-2);
+  box-shadow: var(--shadow-2);
+}
+
+/* Earned state — gold. Only ever applied to achievement. */
+.card[data-earned='true']::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    transparent
+  );
+  opacity: 1;
+}

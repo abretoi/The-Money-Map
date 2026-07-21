@@ -1,0 +1,139 @@
+---
+title: Building an Algorithmic Trading Model
+slug: building-an-algorithmic-trading-model
+chapter: investing-markets-portfolio-strategy
+order: 8
+summary: >-
+  A framework for building a systematic trading model — from universe
+  selection through a risk engine to backtesting discipline — aimed at
+  outperforming major indices over time, without any guarantee.
+tags: [algorithmic-trading, backtesting, risk-management, quant-investing, portfolio-strategy]
+sourceImage: page_092.jpg
+sourcePage: 92
+readingMinutes: 7
+
+blocks:
+  - type: flow
+    source: extracted
+    title: The System Blueprint
+    steps:
+      - label: Universe selection
+        detail: Define the investable universe.
+      - label: Data pipeline
+        detail: Collect, clean, and organize data.
+      - label: Signal engine
+        detail: Generate signals from alpha hypotheses.
+      - label: Risk management
+        detail: Control risk at the portfolio and trade levels.
+      - label: Execution & review
+        detail: Execute trades and review performance to improve.
+
+  - type: table
+    source: extracted
+    title: Illustrative Signal Stack
+    headers: [Signal Family, Example Input, Illustrative Weight]
+    rows:
+      - [Trend following, Moving-average regime, '25%']
+      - [Relative strength, 3 to 12 month momentum, '20%']
+      - [Earnings revisions, Estimate changes, '15%']
+      - [Quality, ROIC / margins / FCF, '15%']
+      - [Volatility control, ATR or realized volatility, '10%']
+      - [Macro regime filter, Rates / liquidity / breadth, '10%']
+      - [Mean reversion sleeve, Oversold bounce setups, '5%']
+
+  - type: note
+    source: extracted
+    variant: info
+    body: Weights are illustrative, not prescriptive.
+
+  - type: buckets
+    source: extracted
+    title: Risk Engine
+    items:
+      - label: Position cap per stock
+        description: Limit position size in any single stock.
+      - label: Sector exposure cap
+        description: Control concentration at the sector level.
+      - label: Stop or trailing exit rules
+        description: Define exits to protect capital and lock in gains.
+      - label: Max drawdown control
+        description: Set portfolio drawdown limits and response protocols.
+      - label: Turnover and transaction-cost control
+        description: Manage trading frequency and costs intelligently.
+
+  - type: table
+    source: extracted
+    title: Backtesting Checklist
+    headers: [Checklist Item, What It Means]
+    rows:
+      - [Train / test split, Use a clear in-sample and out-of-sample period.]
+      - [Walk-forward testing, Re-train over rolling windows to mimic live conditions.]
+      - [Out-of-sample validation, Validate on unseen data the model never saw.]
+      - [Slippage and fees included, Include realistic slippage, commissions, and borrow costs.]
+      - ['CAGR, Sharpe, max drawdown, win rate, turnover', Evaluate key performance and risk metrics.]
+      - ['Compare against S&P 500, Nasdaq 100, and Dow', Benchmark performance vs major market indices.]
+
+  - type: buckets
+    source: extracted
+    title: Non-Negotiable Truths
+    layout: chips
+    items:
+      - label: Robustness beats curve fitting.
+      - label: Simple models often generalize better.
+      - label: Alpha decays over time.
+      - label: Risk-adjusted return matters more than raw return.
+      - label: No model beats the market forever.
+
+  - type: note
+    source: extracted
+    variant: insight
+    body: >-
+      The goal is a repeatable edge with disciplined risk control — not
+      perfect prediction.
+
+keyTakeaways:
+  - A trading system is a five-stage pipeline — universe, data, signals, risk, execution — not a single model.
+  - The illustrative signal stack weights trend following and relative strength highest, at 25% and 20% respectively.
+  - The risk engine operates at multiple levels at once — per-stock, per-sector, per-trade exits, and portfolio drawdown.
+  - Backtesting only counts if it includes an out-of-sample period, walk-forward re-training, and realistic slippage and fees.
+
+actionSteps:
+  - >-
+      Sketch your own five-stage pipeline before writing any strategy code: universe, data, signals, risk, execution.
+  - List which signal families you'd weight most heavily and why, using the illustrative stack as a reference point, not a template to copy.
+  - Define your position cap, sector cap, and max drawdown rule before backtesting anything.
+  - Run every backtest through the six-item checklist, especially out-of-sample validation and realistic slippage and fees.
+
+quiz:
+  - question: In the System Blueprint, which stage comes immediately before risk management?
+    options: [Universe selection, Data pipeline, Signal engine, Execution & review]
+    answer: 2
+    explanation: The blueprint order is universe selection, data pipeline, signal engine, risk management, execution & review.
+  - question: In the illustrative signal stack, which signal family carries the highest weight?
+    options: [Relative strength, Trend following, Quality, Macro regime filter]
+    answer: 1
+    explanation: Trend following is weighted 25%, the highest of the seven listed signal families.
+  - question: According to the backtesting checklist, what should be included alongside CAGR, Sharpe, and max drawdown when evaluating a model?
+    options: [Only raw returns, Slippage, commissions, and borrow costs, Only in-sample results, Social media sentiment]
+    answer: 1
+    explanation: The checklist requires realistic slippage, commissions, and borrow costs to be included in evaluation.
+---
+
+Building a systematic trading model is less about finding one clever signal
+and more about assembling a pipeline: define a universe, build a clean data
+feed, generate signals, wrap them in a risk engine, then execute and review.
+Skip any one stage and the whole system is fragile, no matter how good the
+underlying idea is.
+
+The illustrative signal stack shown here — trend following and relative
+strength carrying the most weight, with quality, volatility control, macro
+filters, and a small mean-reversion sleeve underneath — is explicitly
+illustrative. The weights are a starting point for reasoning about signal
+diversification, not a formula to copy.
+
+The risk engine and backtesting checklist are where most amateur systems
+fail. A model that isn't validated out-of-sample, walk-forward tested, and
+evaluated with realistic slippage and fees isn't really tested — it's
+overfit to history. The non-negotiable truths at the bottom of the map exist
+precisely to guard against that: robustness over curve fitting, and no
+illusion that any edge lasts forever.

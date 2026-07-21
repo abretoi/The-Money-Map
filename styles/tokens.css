@@ -1,0 +1,167 @@
+/* ==================================================================
+ * The Money Map — Design Tokens
+ *
+ * Derived from the dashboard-design system: surface ladder, hairline
+ * outlines, 8pt grid, Apple spring motion, strict token discipline.
+ * Palette narrowed to black / white / green.
+ *
+ * THE GOLD RULE
+ * --gold appears ONLY on earned states: progress, unlocks, milestones,
+ * completion, badges. Never decoration, never nav chrome, never body
+ * text. Because gold only ever marks achievement, it reads as treasure
+ * rather than ornament. This is the single constraint that keeps the
+ * pirate theme from going cheesy. Do not relax it.
+ *
+ * Edit tokens, not rules.
+ * ================================================================== */
+
+:root {
+  /* --- Surface ladder ------------------------------------------- */
+  --bg: #000000;
+  --bg-1: #0a0b0a;
+  --bg-2: #121412;
+  --bg-3: #1b1e1b;
+
+  --line-1: rgba(255, 255, 255, 0.08);
+  --line-2: rgba(255, 255, 255, 0.14);
+
+  /* --- Text ----------------------------------------------------- */
+  --ink-1: #f4f6f4;
+  --ink-2: #a8b0a8;
+  --ink-3: #6c756c;
+
+  /* --- Green: the single semantic accent ------------------------ */
+  --green-1: #0b3d2c;
+  --green-2: #12805a;
+  --green-3: #30d158;
+  --green-glow: rgba(48, 209, 88, 0.16);
+
+  --grad-green: linear-gradient(
+    120deg,
+    var(--green-1) 0%,
+    var(--green-2) 48%,
+    var(--green-3) 100%
+  );
+
+  /* --- Gold: earned states only --------------------------------- */
+  --gold: #d9b86b;
+  --gold-soft: rgba(217, 184, 107, 0.14);
+
+  /* --- Semantic ------------------------------------------------- */
+  --warn: #ff9f0a;
+  --danger: #ff375f;
+
+  /* --- 8pt grid ------------------------------------------------- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 40px;
+  --s-8: 48px;
+  --s-9: 64px;
+  --s-10: 96px;
+
+  /* --- Radius --------------------------------------------------- */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 24px;
+
+  /* --- Type ----------------------------------------------------- */
+  --font-sans:
+    ui-sans-serif, -apple-system, 'SF Pro Text', 'Inter', system-ui, sans-serif;
+  --font-serif: 'Iowan Old Style', 'Palatino', Georgia, serif;
+  --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', monospace;
+
+  --text-body: 15px;
+  --text-lede: clamp(1.0625rem, 1rem + 0.3vw, 1.3125rem);
+  --text-h3: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  --text-h2: clamp(1.5rem, 1.2rem + 1vw, 2.125rem);
+  --text-h1: clamp(2.25rem, 1.6rem + 3vw, 4rem);
+
+  --measure: 68ch;
+
+  /* --- Motion (Apple spring) ------------------------------------ */
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --d-fast: 150ms;
+  --d-mid: 280ms;
+  --d-slow: 450ms;
+
+  /* --- Elevation ------------------------------------------------ */
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-2: 0 8px 30px rgba(0, 0, 0, 0.45);
+  --shadow-3: 0 20px 70px rgba(0, 0, 0, 0.55);
+}
+
+/* ==================================================================
+ * Light mode — full parity, not an afterthought.
+ * Green steps down to hold AA contrast on white.
+ * ================================================================== */
+:root[data-theme='light'] {
+  --bg: #fbfbfa;
+  --bg-1: #ffffff;
+  --bg-2: #ffffff;
+  --bg-3: #f1f3f1;
+
+  --line-1: rgba(0, 0, 0, 0.09);
+  --line-2: rgba(0, 0, 0, 0.16);
+
+  --ink-1: #10130f;
+  --ink-2: #4a524a;
+  --ink-3: #79817a;
+
+  --green-1: #0a3325;
+  --green-2: #00654a;
+  --green-3: #00854f;
+  --green-glow: rgba(0, 101, 74, 0.1);
+
+  --gold: #8a6b1f;
+  --gold-soft: rgba(138, 107, 31, 0.12);
+
+  --warn: #c93400;
+  --danger: #c9002f;
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --shadow-3: 0 20px 70px rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    --bg: #fbfbfa;
+    --bg-1: #ffffff;
+    --bg-2: #ffffff;
+    --bg-3: #f1f3f1;
+    --line-1: rgba(0, 0, 0, 0.09);
+    --line-2: rgba(0, 0, 0, 0.16);
+    --ink-1: #10130f;
+    --ink-2: #4a524a;
+    --ink-3: #79817a;
+    --green-1: #0a3325;
+    --green-2: #00654a;
+    --green-3: #00854f;
+    --green-glow: rgba(0, 101, 74, 0.1);
+    --gold: #8a6b1f;
+    --gold-soft: rgba(138, 107, 31, 0.12);
+    --warn: #c93400;
+    --danger: #c9002f;
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-2: 0 8px 30px rgba(0, 0, 0, 0.08);
+    --shadow-3: 0 20px 70px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Reduced motion is honored globally. Any animation added to this
+ * codebase must be disableable by this rule. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
