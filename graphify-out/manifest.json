@@ -1,0 +1,967 @@
+{
+  "app/bookmarks/page.tsx": {
+    "mtime": 1784650693.944684,
+    "ast_hash": "254639073271fff5875e21f6414e3d56",
+    "semantic_hash": "254639073271fff5875e21f6414e3d56"
+  },
+  "app/chapters/[chapter]/[lesson]/page.tsx": {
+    "mtime": 1784641491.9460812,
+    "ast_hash": "1e49b8486027bef3f4299724da145ee2",
+    "semantic_hash": "1e49b8486027bef3f4299724da145ee2"
+  },
+  "app/chapters/[chapter]/page.tsx": {
+    "mtime": 1784641467.3574283,
+    "ast_hash": "4ed6681e462e23cab11df12eac23a766",
+    "semantic_hash": "4ed6681e462e23cab11df12eac23a766"
+  },
+  "app/layout.tsx": {
+    "mtime": 1784642588.3907852,
+    "ast_hash": "c07eb5d5dcc555ff01e295e80e46f3f3",
+    "semantic_hash": "c07eb5d5dcc555ff01e295e80e46f3f3"
+  },
+  "app/page.tsx": {
+    "mtime": 1784642729.8207903,
+    "ast_hash": "5008afba454e5ec4b52ce18b0c3f5abe",
+    "semantic_hash": "5008afba454e5ec4b52ce18b0c3f5abe"
+  },
+  "app/treasure/page.tsx": {
+    "mtime": 1784601193.60934,
+    "ast_hash": "6eb715f4b1d48e0c843b9a96686db8c5",
+    "semantic_hash": "6eb715f4b1d48e0c843b9a96686db8c5"
+  },
+  "components/MDXContent.tsx": {
+    "mtime": 1784576764.346184,
+    "ast_hash": "cda9cb503bdbec73733c0410d14a0306",
+    "semantic_hash": "cda9cb503bdbec73733c0410d14a0306"
+  },
+  "components/art/GoldDefs.tsx": {
+    "mtime": 1784642574.740965,
+    "ast_hash": "519a7d337567344eadf2526a05ab464e",
+    "semantic_hash": "519a7d337567344eadf2526a05ab464e"
+  },
+  "components/art/Icons.tsx": {
+    "mtime": 1784601010.8449774,
+    "ast_hash": "faeb03329796e764603d916a10b5df30",
+    "semantic_hash": "faeb03329796e764603d916a10b5df30"
+  },
+  "components/art/Pirate.tsx": {
+    "mtime": 1784642692.415776,
+    "ast_hash": "2df4d71076b51c9bbd5b9251efdffef2",
+    "semantic_hash": "2df4d71076b51c9bbd5b9251efdffef2"
+  },
+  "components/art/PirateScene.tsx": {
+    "mtime": 1784642707.3319335,
+    "ast_hash": "00ae63fb7009a34484e4c07924be407f",
+    "semantic_hash": "00ae63fb7009a34484e4c07924be407f"
+  },
+  "components/blocks/BlockShell.tsx": {
+    "mtime": 1784576679.1115625,
+    "ast_hash": "5c8f03032d6a921856b4e54fcfc02de8",
+    "semantic_hash": "5c8f03032d6a921856b4e54fcfc02de8"
+  },
+  "components/blocks/Buckets.tsx": {
+    "mtime": 1784576704.017771,
+    "ast_hash": "f35293deccd465152b96b3d69d526e1e",
+    "semantic_hash": "f35293deccd465152b96b3d69d526e1e"
+  },
+  "components/blocks/Comparison.tsx": {
+    "mtime": 1784576698.3007255,
+    "ast_hash": "674d80ffa79f6a13c63708a3f81abeac",
+    "semantic_hash": "674d80ffa79f6a13c63708a3f81abeac"
+  },
+  "components/blocks/DataTable.tsx": {
+    "mtime": 1784576718.1734176,
+    "ast_hash": "980a16fa0c90eb0de7fbd26eb583b7bd",
+    "semantic_hash": "980a16fa0c90eb0de7fbd26eb583b7bd"
+  },
+  "components/blocks/Flow.tsx": {
+    "mtime": 1784576708.5550847,
+    "ast_hash": "17957432251be8c8650343d6da3a08b4",
+    "semantic_hash": "17957432251be8c8650343d6da3a08b4"
+  },
+  "components/blocks/Note.tsx": {
+    "mtime": 1784576737.0433376,
+    "ast_hash": "f52daaa7f769dae6cf2031c6289f8df0",
+    "semantic_hash": "f52daaa7f769dae6cf2031c6289f8df0"
+  },
+  "components/blocks/Phases.tsx": {
+    "mtime": 1784576723.2004867,
+    "ast_hash": "182f3a86db16149dd1a525c1043c50ae",
+    "semantic_hash": "182f3a86db16149dd1a525c1043c50ae"
+  },
+  "components/blocks/Stats.tsx": {
+    "mtime": 1784576728.892543,
+    "ast_hash": "1d3651f3c80495aad9a96f3d9426564c",
+    "semantic_hash": "1d3651f3c80495aad9a96f3d9426564c"
+  },
+  "components/blocks/Timeline.tsx": {
+    "mtime": 1784576690.1983752,
+    "ast_hash": "aeb609b17d26c6703bd554e6a98e7f3a",
+    "semantic_hash": "aeb609b17d26c6703bd554e6a98e7f3a"
+  },
+  "components/blocks/index.tsx": {
+    "mtime": 1784576745.106491,
+    "ast_hash": "e82cf3e1e853865cccd693f2a8ccacfd",
+    "semantic_hash": "e82cf3e1e853865cccd693f2a8ccacfd"
+  },
+  "components/reader/BookmarksList.tsx": {
+    "mtime": 1784601307.2617571,
+    "ast_hash": "e16a8e7d3b31b31f4cb3d633443f3a1c",
+    "semantic_hash": "e16a8e7d3b31b31f4cb3d633443f3a1c"
+  },
+  "components/reader/ChapterNav.tsx": {
+    "mtime": 1784650219.7757275,
+    "ast_hash": "f0edebe359739383085e2c50d1eb134c",
+    "semantic_hash": "f0edebe359739383085e2c50d1eb134c"
+  },
+  "components/reader/LessonMeta.tsx": {
+    "mtime": 1784640502.6219225,
+    "ast_hash": "867645f49740fb66a1011e34c56fc46e",
+    "semantic_hash": "867645f49740fb66a1011e34c56fc46e"
+  },
+  "components/reader/LessonRow.tsx": {
+    "mtime": 1784601415.0062816,
+    "ast_hash": "91f0454bd5c93db97d7ddd1e05f4d4d1",
+    "semantic_hash": "91f0454bd5c93db97d7ddd1e05f4d4d1"
+  },
+  "components/reader/MobileNav.tsx": {
+    "mtime": 1784601165.2107239,
+    "ast_hash": "924c32cb8bfa0180304a48d43f778c9f",
+    "semantic_hash": "924c32cb8bfa0180304a48d43f778c9f"
+  },
+  "components/reader/ProgressSummary.tsx": {
+    "mtime": 1784601323.0673838,
+    "ast_hash": "6702f05fa115e115636bd6aae882d5b6",
+    "semantic_hash": "6702f05fa115e115636bd6aae882d5b6"
+  },
+  "components/reader/Quiz.tsx": {
+    "mtime": 1784576917.9271295,
+    "ast_hash": "5826ab19eafb7e4f29bfefcc3b0fee45",
+    "semantic_hash": "5826ab19eafb7e4f29bfefcc3b0fee45"
+  },
+  "components/reader/SearchTrigger.tsx": {
+    "mtime": 1784576843.5194461,
+    "ast_hash": "aed382b0b0165e6ad36c1b2c1c9c0736",
+    "semantic_hash": "aed382b0b0165e6ad36c1b2c1c9c0736"
+  },
+  "components/reader/Sidebar.tsx": {
+    "mtime": 1784641387.8016894,
+    "ast_hash": "9496a58c9fea62858aa3fc282ac60f53",
+    "semantic_hash": "9496a58c9fea62858aa3fc282ac60f53"
+  },
+  "components/reader/SidebarFooter.tsx": {
+    "mtime": 1784601148.0934956,
+    "ast_hash": "5572df9db5cda16bab358f8d9ebbc686",
+    "semantic_hash": "5572df9db5cda16bab358f8d9ebbc686"
+  },
+  "components/reader/ThemeToggle.tsx": {
+    "mtime": 1784576817.5094981,
+    "ast_hash": "b7969d4086065c51968a7f4063cc7b7c",
+    "semantic_hash": "b7969d4086065c51968a7f4063cc7b7c"
+  },
+  "components/reader/TopBar.tsx": {
+    "mtime": 1784650260.635301,
+    "ast_hash": "a43b8bae97ad26dd8800490fffceb605",
+    "semantic_hash": "a43b8bae97ad26dd8800490fffceb605"
+  },
+  "components/treasure/Certificate.tsx": {
+    "mtime": 1784601242.4391887,
+    "ast_hash": "d6a1147238323af9d5005e39d710c55c",
+    "semantic_hash": "d6a1147238323af9d5005e39d710c55c"
+  },
+  "components/treasure/ChapterChest.tsx": {
+    "mtime": 1784601386.2331398,
+    "ast_hash": "25dce80bc36b03a05d7120af4473a4fc",
+    "semantic_hash": "25dce80bc36b03a05d7120af4473a4fc"
+  },
+  "components/treasure/DoubloonAward.tsx": {
+    "mtime": 1784601269.134252,
+    "ast_hash": "cb9b3987c510b301966d20862e8d13ab",
+    "semantic_hash": "cb9b3987c510b301966d20862e8d13ab"
+  },
+  "components/treasure/DoubloonCounter.tsx": {
+    "mtime": 1784601099.0419168,
+    "ast_hash": "b0ade573e2bed518c1620b366a2c33e9",
+    "semantic_hash": "b0ade573e2bed518c1620b366a2c33e9"
+  },
+  "components/treasure/ProgressControls.tsx": {
+    "mtime": 1784650254.1347358,
+    "ast_hash": "75eec1b003381075718d12fb1ff6805a",
+    "semantic_hash": "75eec1b003381075718d12fb1ff6805a"
+  },
+  "components/treasure/TreasureHall.tsx": {
+    "mtime": 1784650354.784556,
+    "ast_hash": "409e4025f037b78f9c52a702e91767fd",
+    "semantic_hash": "409e4025f037b78f9c52a702e91767fd"
+  },
+  "components/treasure/TreasureMapProgress.tsx": {
+    "mtime": 1784650335.9986248,
+    "ast_hash": "b3505d1c5329ba2b5e6debe47c310a95",
+    "semantic_hash": "b3505d1c5329ba2b5e6debe47c310a95"
+  },
+  "data/outline.json": {
+    "mtime": 1784576576.183991,
+    "ast_hash": "229bbca2aabef460da7249bee1a38792",
+    "semantic_hash": "229bbca2aabef460da7249bee1a38792"
+  },
+  "data/source-book.json": {
+    "mtime": 1784576576.1844072,
+    "ast_hash": "99b878a87262acf099f4f821535209c1",
+    "semantic_hash": "99b878a87262acf099f4f821535209c1"
+  },
+  "hooks/useProgress.ts": {
+    "mtime": 1784650188.9862256,
+    "ast_hash": "fae8f29cace69cb58d7d6f27a8f488a9",
+    "semantic_hash": "fae8f29cace69cb58d7d6f27a8f488a9"
+  },
+  "hooks/useTreasure.ts": {
+    "mtime": 1784601060.3399131,
+    "ast_hash": "46d191a7d8540c250aefe55e3ce38480",
+    "semantic_hash": "46d191a7d8540c250aefe55e3ce38480"
+  },
+  "lib/content.ts": {
+    "mtime": 1784576673.0932784,
+    "ast_hash": "e07c545ba19df8438ea694661b871c79",
+    "semantic_hash": "e07c545ba19df8438ea694661b871c79"
+  },
+  "lib/outline.ts": {
+    "mtime": 1784601128.995526,
+    "ast_hash": "6696fe9e98f89a4c4931068928464d6f",
+    "semantic_hash": "6696fe9e98f89a4c4931068928464d6f"
+  },
+  "lib/progress-store.ts": {
+    "mtime": 1784650171.7508633,
+    "ast_hash": "020a34acbff12b18d65c44dc4015029e",
+    "semantic_hash": "020a34acbff12b18d65c44dc4015029e"
+  },
+  "lib/search.ts": {
+    "mtime": 1784600107.2303133,
+    "ast_hash": "20776c1951d914084525550d8512bdf2",
+    "semantic_hash": "20776c1951d914084525550d8512bdf2"
+  },
+  "lib/treasure.ts": {
+    "mtime": 1784601052.472521,
+    "ast_hash": "3467dc9e814182de8e6fae6de74c447d",
+    "semantic_hash": "3467dc9e814182de8e6fae6de74c447d"
+  },
+  "next.config.mjs": {
+    "mtime": 1784560791.211008,
+    "ast_hash": "d9e44909aed27c384e6af0990c60029f",
+    "semantic_hash": "d9e44909aed27c384e6af0990c60029f"
+  },
+  "package.json": {
+    "mtime": 1784686736.2921412,
+    "ast_hash": "2ffb534784670c158aa9705cbff90d15",
+    "semantic_hash": "2ffb534784670c158aa9705cbff90d15"
+  },
+  "postcss.config.mjs": {
+    "mtime": 1784560791.738176,
+    "ast_hash": "6b5c4cb81230b2fed05f0216b775c0f5",
+    "semantic_hash": "6b5c4cb81230b2fed05f0216b775c0f5"
+  },
+  "public/search-index.json": {
+    "mtime": 1784686078.0867145,
+    "ast_hash": "cb93becfad1770c38af80979547772bb",
+    "semantic_hash": "cb93becfad1770c38af80979547772bb"
+  },
+  "public/treasure-map.json": {
+    "mtime": 1784686078.1115713,
+    "ast_hash": "42f142cc8dc300b51ddd8f2afac35aa1",
+    "semantic_hash": "42f142cc8dc300b51ddd8f2afac35aa1"
+  },
+  "scripts/audit-provenance.mjs": {
+    "mtime": 1784640393.3968852,
+    "ast_hash": "344f00867197b06793a652b6b1a424ba",
+    "semantic_hash": "344f00867197b06793a652b6b1a424ba"
+  },
+  "scripts/build-ebook-flipbook.mjs": {
+    "mtime": 1784686384.3916545,
+    "ast_hash": "1cdc9ecd304056ce996d69ca20b73655",
+    "semantic_hash": "1cdc9ecd304056ce996d69ca20b73655"
+  },
+  "scripts/build-ebook-pdf.mjs": {
+    "mtime": 1784686063.3751438,
+    "ast_hash": "413f61101f42e78f4793b52dcea86127",
+    "semantic_hash": "413f61101f42e78f4793b52dcea86127"
+  },
+  "scripts/build-guide-flipbook.mjs": {
+    "mtime": 1784686556.218604,
+    "ast_hash": "f3af1938989144a5ece09da0db35f158",
+    "semantic_hash": "f3af1938989144a5ece09da0db35f158"
+  },
+  "scripts/build-guide-pdf.mjs": {
+    "mtime": 1784686594.936874,
+    "ast_hash": "58859746a573bcdeafc3c71a849a1cd3",
+    "semantic_hash": "58859746a573bcdeafc3c71a849a1cd3"
+  },
+  "scripts/build-search-index.mjs": {
+    "mtime": 1784601079.237849,
+    "ast_hash": "5cafa4b0925e6e8ce14c76da505a3d28",
+    "semantic_hash": "5cafa4b0925e6e8ce14c76da505a3d28"
+  },
+  "scripts/ebook-content.mjs": {
+    "mtime": 1784686032.7344642,
+    "ast_hash": "51cf1573d8ac1ac585d09bf6cbaf2b69",
+    "semantic_hash": "51cf1573d8ac1ac585d09bf6cbaf2b69"
+  },
+  "scripts/flipbook.mjs": {
+    "mtime": 1784686518.5254018,
+    "ast_hash": "5a228c437e66fa2f50d1519d4e10aea8",
+    "semantic_hash": "5a228c437e66fa2f50d1519d4e10aea8"
+  },
+  "scripts/guide-content.mjs": {
+    "mtime": 1784686539.6327996,
+    "ast_hash": "78c4a2b2c3b562a7ae6a52b0f9972b0d",
+    "semantic_hash": "78c4a2b2c3b562a7ae6a52b0f9972b0d"
+  },
+  "scripts/pdf-art.mjs": {
+    "mtime": 1784642957.0484169,
+    "ast_hash": "6e7e33026705ed80d8b6385b7cdc7430",
+    "semantic_hash": "6e7e33026705ed80d8b6385b7cdc7430"
+  },
+  "tsconfig.json": {
+    "mtime": 1784600098.1686094,
+    "ast_hash": "f88592634fd5349ed599a025647f28aa",
+    "semantic_hash": "f88592634fd5349ed599a025647f28aa"
+  },
+  "velite.config.ts": {
+    "mtime": 1784576512.9485137,
+    "ast_hash": "b2a073e56aaf180d47b637b5cdb01dd5",
+    "semantic_hash": "b2a073e56aaf180d47b637b5cdb01dd5"
+  },
+  "CHANGELOG.md": {
+    "mtime": 1784686718.5310743,
+    "ast_hash": "31714af47a98f79c1cf11db537a48718",
+    "semantic_hash": "31714af47a98f79c1cf11db537a48718"
+  },
+  "CLAUDE.md": {
+    "mtime": 1784640739.9300451,
+    "ast_hash": "20c52736297483538e0478bf149da073",
+    "semantic_hash": "20c52736297483538e0478bf149da073"
+  },
+  "OMNISCIENT CLAUDE.md": {
+    "mtime": 1783610993.0,
+    "ast_hash": "7fc7be74c856bbbea1ac4a437323dddd",
+    "semantic_hash": "7fc7be74c856bbbea1ac4a437323dddd"
+  },
+  "PRODUCT_SPEC.md": {
+    "mtime": 1784640720.7395663,
+    "ast_hash": "77fca29131a5f856953732e8eee3aaff",
+    "semantic_hash": "77fca29131a5f856953732e8eee3aaff"
+  },
+  "README.md": {
+    "mtime": 1784686728.4645433,
+    "ast_hash": "0b1a4a7cfdd3bee61100f1c1cc4cb785",
+    "semantic_hash": "0b1a4a7cfdd3bee61100f1c1cc4cb785"
+  },
+  "ROADMAP.md": {
+    "mtime": 1784686747.7776084,
+    "ast_hash": "94396b5816d519cb8c90b314941db100",
+    "semantic_hash": "94396b5816d519cb8c90b314941db100"
+  },
+  "content/chapters/cash-flow-savings-net-worth-wealth-stages/best-periods-to-make-wealth-in-your-life.mdx": {
+    "mtime": 1784576775.837861,
+    "ast_hash": "8d52da462d8f079448274ef04624b3f5",
+    "semantic_hash": "8d52da462d8f079448274ef04624b3f5"
+  },
+  "content/chapters/cash-flow-savings-net-worth-wealth-stages/chapter.mdx": {
+    "mtime": 1784576493.9405737,
+    "ast_hash": "25527f1eb4b3df5127d416627217d657",
+    "semantic_hash": "25527f1eb4b3df5127d416627217d657"
+  },
+  "content/chapters/cash-flow-savings-net-worth-wealth-stages/compound-growth-over-time.mdx": {
+    "mtime": 1784576875.6459992,
+    "ast_hash": "716ad498b85cef33ddac08f0e337f2c7",
+    "semantic_hash": "716ad498b85cef33ddac08f0e337f2c7"
+  },
+  "content/chapters/cash-flow-savings-net-worth-wealth-stages/family-size-and-its-impact-on-financial-planning.mdx": {
+    "mtime": 1784640383.0994368,
+    "ast_hash": "302bf132abff04926e3d174bdbf1726b",
+    "semantic_hash": "302bf132abff04926e3d174bdbf1726b"
+  },
+  "content/chapters/cash-flow-savings-net-worth-wealth-stages/household-budgeting-by-relationship-status.mdx": {
+    "mtime": 1784576956.4868023,
+    "ast_hash": "064db353f38cc753025e9b4bb81c90d9",
+    "semantic_hash": "064db353f38cc753025e9b4bb81c90d9"
+  },
+  "content/chapters/cash-flow-savings-net-worth-wealth-stages/monthly-cash-flow-blueprint-for-u-s-households-in-their-30s.mdx": {
+    "mtime": 1784576855.2520247,
+    "ast_hash": "9fa327758cdf8be77f0e5a34045c8e8d",
+    "semantic_hash": "9fa327758cdf8be77f0e5a34045c8e8d"
+  },
+  "content/chapters/cash-flow-savings-net-worth-wealth-stages/net-worth-by-age-band-in-the-united-states.mdx": {
+    "mtime": 1784600009.556449,
+    "ast_hash": "6357dc61af5ef890300d8a751675750e",
+    "semantic_hash": "6357dc61af5ef890300d8a751675750e"
+  },
+  "content/chapters/cash-flow-savings-net-worth-wealth-stages/net-worth-dashboard-for-u-s-households-in-their-30s.mdx": {
+    "mtime": 1784599977.208874,
+    "ast_hash": "a07160e6418fd1b2b1b3dd9f981f6cfb",
+    "semantic_hash": "a07160e6418fd1b2b1b3dd9f981f6cfb"
+  },
+  "content/chapters/cash-flow-savings-net-worth-wealth-stages/order-of-operations-for-u-s-households-in-their-30s.mdx": {
+    "mtime": 1784576901.6619952,
+    "ast_hash": "f4bf4e5403f56079f54d68feeff2d6d6",
+    "semantic_hash": "f4bf4e5403f56079f54d68feeff2d6d6"
+  },
+  "content/chapters/cash-flow-savings-net-worth-wealth-stages/savings-rate-vs-time-to-financial-independence.mdx": {
+    "mtime": 1784601299.1944892,
+    "ast_hash": "3516cde1ff39fde0d872ae1313f5895a",
+    "semantic_hash": "3516cde1ff39fde0d872ae1313f5895a"
+  },
+  "content/chapters/cash-flow-savings-net-worth-wealth-stages/the-30s-40s-50s-money-map.mdx": {
+    "mtime": 1784599977.2199526,
+    "ast_hash": "c26162fb867147edcdd658b348c95a1c",
+    "semantic_hash": "c26162fb867147edcdd658b348c95a1c"
+  },
+  "content/chapters/cash-flow-savings-net-worth-wealth-stages/the-net-worth-map.mdx": {
+    "mtime": 1784640246.7078357,
+    "ast_hash": "47d569ed80e85736e75e40099acf5232",
+    "semantic_hash": "47d569ed80e85736e75e40099acf5232"
+  },
+  "content/chapters/cash-flow-savings-net-worth-wealth-stages/the-wealth-conversion-ladder.mdx": {
+    "mtime": 1784576934.8434408,
+    "ast_hash": "ff44f9676694d61967adde606d6b60ac",
+    "semantic_hash": "ff44f9676694d61967adde606d6b60ac"
+  },
+  "content/chapters/cash-flow-savings-net-worth-wealth-stages/top-best-life-decisions-you-can-make.mdx": {
+    "mtime": 1784640383.1000197,
+    "ast_hash": "6115d3f2a26e6d1909a30973bd771e2b",
+    "semantic_hash": "6115d3f2a26e6d1909a30973bd771e2b"
+  },
+  "content/chapters/debt-credit-financial-safety/chapter.mdx": {
+    "mtime": 1784576493.9407563,
+    "ast_hash": "587d2a5cda73422ba745a59de929d91a",
+    "semantic_hash": "587d2a5cda73422ba745a59de929d91a"
+  },
+  "content/chapters/debt-credit-financial-safety/credit-score-credit-health.mdx": {
+    "mtime": 1784576952.526124,
+    "ast_hash": "4eaf811a1993d86104eb323501a75c70",
+    "semantic_hash": "4eaf811a1993d86104eb323501a75c70"
+  },
+  "content/chapters/debt-credit-financial-safety/debt-payoff-strategy.mdx": {
+    "mtime": 1784576905.3271778,
+    "ast_hash": "08b0a6f2c9a288c014bbe7e49a5d5384",
+    "semantic_hash": "08b0a6f2c9a288c014bbe7e49a5d5384"
+  },
+  "content/chapters/debt-credit-financial-safety/emergency-fund-blueprint.mdx": {
+    "mtime": 1784640383.1005244,
+    "ast_hash": "e1b8673e310570d04a82b0ecb13f6995",
+    "semantic_hash": "e1b8673e310570d04a82b0ecb13f6995"
+  },
+  "content/chapters/family-couples-kids-college-planning/529-college-savings.mdx": {
+    "mtime": 1784601303.0446732,
+    "ast_hash": "68c339392c9ab480b188e71f4845ae31",
+    "semantic_hash": "68c339392c9ab480b188e71f4845ae31"
+  },
+  "content/chapters/family-couples-kids-college-planning/chapter.mdx": {
+    "mtime": 1784576493.9422472,
+    "ast_hash": "d1e4d60cd6b1d212f4c1809e3532fc8d",
+    "semantic_hash": "d1e4d60cd6b1d212f4c1809e3532fc8d"
+  },
+  "content/chapters/family-couples-kids-college-planning/child-rearing-costs.mdx": {
+    "mtime": 1784640383.1008224,
+    "ast_hash": "5c81940885bcbd8eca588a0e3e5d018d",
+    "semantic_hash": "5c81940885bcbd8eca588a0e3e5d018d"
+  },
+  "content/chapters/family-couples-kids-college-planning/cost-of-raising-a-family.mdx": {
+    "mtime": 1784601334.537806,
+    "ast_hash": "8eabd08b48e2b8b50ad5dc93385407ab",
+    "semantic_hash": "8eabd08b48e2b8b50ad5dc93385407ab"
+  },
+  "content/chapters/family-couples-kids-college-planning/shared-living-expenses-cost-splitting.mdx": {
+    "mtime": 1784601131.660436,
+    "ast_hash": "c258b26e36c8b896fdd6e053f75e633d",
+    "semantic_hash": "c258b26e36c8b896fdd6e053f75e633d"
+  },
+  "content/chapters/family-couples-kids-college-planning/single-vs-married-finances.mdx": {
+    "mtime": 1784599977.2490847,
+    "ast_hash": "50a080b32f0abc399e5ddcdecc6707e3",
+    "semantic_hash": "50a080b32f0abc399e5ddcdecc6707e3"
+  },
+  "content/chapters/family-couples-kids-college-planning/the-college-map-top-100-u-s-colleges-and-how-to-pay-for-them.mdx": {
+    "mtime": 1784640271.2130926,
+    "ast_hash": "f7ec14ad3e328b0847c90dcd8c48bb41",
+    "semantic_hash": "f7ec14ad3e328b0847c90dcd8c48bb41"
+  },
+  "content/chapters/family-couples-kids-college-planning/the-college-map.mdx": {
+    "mtime": 1784601197.696699,
+    "ast_hash": "ad399d366794667b3b0c043049b03637",
+    "semantic_hash": "ad399d366794667b3b0c043049b03637"
+  },
+  "content/chapters/family-couples-kids-college-planning/the-college-roi.mdx": {
+    "mtime": 1784576961.9438663,
+    "ast_hash": "369f59158ba3786b29dc0525951b1b72",
+    "semantic_hash": "369f59158ba3786b29dc0525951b1b72"
+  },
+  "content/chapters/family-couples-kids-college-planning/the-family-wealth-map.mdx": {
+    "mtime": 1784599977.2617295,
+    "ast_hash": "4c49c123edb37e31d1b25dec37e77b22",
+    "semantic_hash": "4c49c123edb37e31d1b25dec37e77b22"
+  },
+  "content/chapters/housing-real-estate/chapter.mdx": {
+    "mtime": 1784576493.942014,
+    "ast_hash": "2a408b6906772d9187fff78c523759ba",
+    "semantic_hash": "2a408b6906772d9187fff78c523759ba"
+  },
+  "content/chapters/housing-real-estate/down-payment-cash-to-close.mdx": {
+    "mtime": 1784576944.7423077,
+    "ast_hash": "7ef02666881bf8e974145e28e07c0b1a",
+    "semantic_hash": "7ef02666881bf8e974145e28e07c0b1a"
+  },
+  "content/chapters/housing-real-estate/home-affordability.mdx": {
+    "mtime": 1784576478.069404,
+    "ast_hash": "ccb04913f73245f6240d049ddfc919db",
+    "semantic_hash": "ccb04913f73245f6240d049ddfc919db"
+  },
+  "content/chapters/housing-real-estate/the-real-estate-map.mdx": {
+    "mtime": 1784601235.2382674,
+    "ast_hash": "b1275fbb7bb9cf6e035b80870f742442",
+    "semantic_hash": "b1275fbb7bb9cf6e035b80870f742442"
+  },
+  "content/chapters/income-entrepreneurship-alternative-assets/chapter.mdx": {
+    "mtime": 1784576493.942951,
+    "ast_hash": "7535644fb70136604e40534eee7cae9b",
+    "semantic_hash": "7535644fb70136604e40534eee7cae9b"
+  },
+  "content/chapters/income-entrepreneurship-alternative-assets/collectibles-investing-optimal-asset-allocation.mdx": {
+    "mtime": 1784601155.7986388,
+    "ast_hash": "3e82a4a784f6ccfdbfa6bc0df69c1007",
+    "semantic_hash": "3e82a4a784f6ccfdbfa6bc0df69c1007"
+  },
+  "content/chapters/income-entrepreneurship-alternative-assets/generation-earn.mdx": {
+    "mtime": 1784599977.2742946,
+    "ast_hash": "38373cd0efcd6dc5ce198937f0664910",
+    "semantic_hash": "38373cd0efcd6dc5ce198937f0664910"
+  },
+  "content/chapters/income-entrepreneurship-alternative-assets/retail-online-arbitrage-playbook.mdx": {
+    "mtime": 1784601282.9033875,
+    "ast_hash": "a56e245872bd4396f13a945ad5cea904",
+    "semantic_hash": "a56e245872bd4396f13a945ad5cea904"
+  },
+  "content/chapters/income-entrepreneurship-alternative-assets/the-alternative-assets-map.mdx": {
+    "mtime": 1784601207.4125276,
+    "ast_hash": "9aaede3df3d3a1dc056ec9a8271a30c8",
+    "semantic_hash": "9aaede3df3d3a1dc056ec9a8271a30c8"
+  },
+  "content/chapters/income-entrepreneurship-alternative-assets/the-economy-of-you.mdx": {
+    "mtime": 1784640174.950403,
+    "ast_hash": "17b2504b846945b0105be5a2f9fcd3fa",
+    "semantic_hash": "17b2504b846945b0105be5a2f9fcd3fa"
+  },
+  "content/chapters/income-entrepreneurship-alternative-assets/top-alternative-income-ideas-outside-9-to-5.mdx": {
+    "mtime": 1784601225.9859078,
+    "ast_hash": "7b30599924adae12bbd4509c84e091ab",
+    "semantic_hash": "7b30599924adae12bbd4509c84e091ab"
+  },
+  "content/chapters/income-entrepreneurship-alternative-assets/top-income-streams-for-anyone-in-life.mdx": {
+    "mtime": 1784640246.8076801,
+    "ast_hash": "c38f69bb9472a1a140843044bb327b18",
+    "semantic_hash": "c38f69bb9472a1a140843044bb327b18"
+  },
+  "content/chapters/insurance-healthcare-protection-planning/chapter.mdx": {
+    "mtime": 1784576493.9414816,
+    "ast_hash": "54f60825c3000e7ab8dcd86c876b4a75",
+    "semantic_hash": "54f60825c3000e7ab8dcd86c876b4a75"
+  },
+  "content/chapters/insurance-healthcare-protection-planning/coverage-vs-cost-trade-offs-in-insurance.mdx": {
+    "mtime": 1784631946.7996657,
+    "ast_hash": "f32b88e004759accb1d7a70801f1e042",
+    "semantic_hash": "f32b88e004759accb1d7a70801f1e042"
+  },
+  "content/chapters/insurance-healthcare-protection-planning/health-insurance-costs-in-the-united-states.mdx": {
+    "mtime": 1784600009.5567842,
+    "ast_hash": "736606452acee253580f6ab1695ffe16",
+    "semantic_hash": "736606452acee253580f6ab1695ffe16"
+  },
+  "content/chapters/insurance-healthcare-protection-planning/healthcare-planning-by-age-life-stage.mdx": {
+    "mtime": 1784576965.6285086,
+    "ast_hash": "98577527056994446a68fb7e4a8b2b99",
+    "semantic_hash": "98577527056994446a68fb7e4a8b2b99"
+  },
+  "content/chapters/insurance-healthcare-protection-planning/insurance-protection-stack.mdx": {
+    "mtime": 1784576933.6447818,
+    "ast_hash": "4e37ce62d59e873424fb067f2f9e6d2f",
+    "semantic_hash": "4e37ce62d59e873424fb067f2f9e6d2f"
+  },
+  "content/chapters/insurance-healthcare-protection-planning/medicare-vs-medicaid-vs-private-insurance.mdx": {
+    "mtime": 1784601172.4243584,
+    "ast_hash": "65c3b70586d305a9bbf97b908cd59af5",
+    "semantic_hash": "65c3b70586d305a9bbf97b908cd59af5"
+  },
+  "content/chapters/investing-markets-portfolio-strategy/asset-allocation-diversification.mdx": {
+    "mtime": 1784601142.8096287,
+    "ast_hash": "81b3515c162643f9b942b1e5a09d74d2",
+    "semantic_hash": "81b3515c162643f9b942b1e5a09d74d2"
+  },
+  "content/chapters/investing-markets-portfolio-strategy/asset-location-strategy.mdx": {
+    "mtime": 1784576922.1663268,
+    "ast_hash": "a067eddeae02bad27dbd90ec342b36b2",
+    "semantic_hash": "a067eddeae02bad27dbd90ec342b36b2"
+  },
+  "content/chapters/investing-markets-portfolio-strategy/building-an-algorithmic-trading-model.mdx": {
+    "mtime": 1784640383.1012037,
+    "ast_hash": "5af15b3625e9c7e23e8c18a096a6d9de",
+    "semantic_hash": "5af15b3625e9c7e23e8c18a096a6d9de"
+  },
+  "content/chapters/investing-markets-portfolio-strategy/chapter.mdx": {
+    "mtime": 1784576493.9409466,
+    "ast_hash": "23f1ecb9e228ae976f1e09022eb52627",
+    "semantic_hash": "23f1ecb9e228ae976f1e09022eb52627"
+  },
+  "content/chapters/investing-markets-portfolio-strategy/decoding-george-tritch-s-periods-to-make-money.mdx": {
+    "mtime": 1784599977.3055432,
+    "ast_hash": "0317b6ad415734a1e08a8d7afb115bb4",
+    "semantic_hash": "0317b6ad415734a1e08a8d7afb115bb4"
+  },
+  "content/chapters/investing-markets-portfolio-strategy/optimized-selling-cycles-timing-for-stocks.mdx": {
+    "mtime": 1784576814.2851207,
+    "ast_hash": "03d3974633f9d79635b334ca0c18b033",
+    "semantic_hash": "03d3974633f9d79635b334ca0c18b033"
+  },
+  "content/chapters/investing-markets-portfolio-strategy/peak-times-to-buy-sell-stock-market-equities.mdx": {
+    "mtime": 1784576957.7621467,
+    "ast_hash": "249de0b1fc69203021ea74e6cf5f2376",
+    "semantic_hash": "249de0b1fc69203021ea74e6cf5f2376"
+  },
+  "content/chapters/investing-markets-portfolio-strategy/portfolio-rebalancing.mdx": {
+    "mtime": 1784599952.3587863,
+    "ast_hash": "a30f7f899908c33c5daaf803866295e6",
+    "semantic_hash": "a30f7f899908c33c5daaf803866295e6"
+  },
+  "content/chapters/investing-markets-portfolio-strategy/top-key-financial-indicators-to-track-for-a-stock.mdx": {
+    "mtime": 1784640383.1016245,
+    "ast_hash": "320189df85a1eedefbc79095de61980f",
+    "semantic_hash": "320189df85a1eedefbc79095de61980f"
+  },
+  "content/chapters/life-morality-meaning-legacy/biggest-life-regrets-people-commonly-have.mdx": {
+    "mtime": 1784601363.8732018,
+    "ast_hash": "cbfa92af8957ea8fe3fe4d5267eaac53",
+    "semantic_hash": "cbfa92af8957ea8fe3fe4d5267eaac53"
+  },
+  "content/chapters/life-morality-meaning-legacy/chapter.mdx": {
+    "mtime": 1784576493.9431744,
+    "ast_hash": "55b856065cf3b58bbbf32ce9efd9474a",
+    "semantic_hash": "55b856065cf3b58bbbf32ce9efd9474a"
+  },
+  "content/chapters/life-morality-meaning-legacy/die-with-zero.mdx": {
+    "mtime": 1784599952.3693166,
+    "ast_hash": "0ac24da080047a817a65a946dba5f0cd",
+    "semantic_hash": "0ac24da080047a817a65a946dba5f0cd"
+  },
+  "content/chapters/life-morality-meaning-legacy/elderly-wisdom-for-a-life-with-no-regrets.mdx": {
+    "mtime": 1784640246.8674932,
+    "ast_hash": "218e6c7e13c6295a9b5769bbddb62fc0",
+    "semantic_hash": "218e6c7e13c6295a9b5769bbddb62fc0"
+  },
+  "content/chapters/life-morality-meaning-legacy/estate-planning-basics.mdx": {
+    "mtime": 1784601268.7435718,
+    "ast_hash": "86973aab2ea2d9bc8f6215ce11391691",
+    "semantic_hash": "86973aab2ea2d9bc8f6215ce11391691"
+  },
+  "content/chapters/life-morality-meaning-legacy/optimizing-life-for-money-health-meaning-happiness.mdx": {
+    "mtime": 1784601258.8763034,
+    "ast_hash": "75bf8d1632ead061a0cb3d4071fee416",
+    "semantic_hash": "75bf8d1632ead061a0cb3d4071fee416"
+  },
+  "content/chapters/life-morality-meaning-legacy/the-fire-morals-map.mdx": {
+    "mtime": 1784640246.8818798,
+    "ast_hash": "65ec19ba5035d73a1e311742e8742492",
+    "semantic_hash": "65ec19ba5035d73a1e311742e8742492"
+  },
+  "content/chapters/life-morality-meaning-legacy/top-key-life-lessons-morals-to-live-by.mdx": {
+    "mtime": 1784601329.8810713,
+    "ast_hash": "099dc7d947f56a20f35f401f64860b21",
+    "semantic_hash": "099dc7d947f56a20f35f401f64860b21"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/a-random-walk-down-wall-street.mdx": {
+    "mtime": 1784640246.8922038,
+    "ast_hash": "1e6c1d873dc1b1b73c112e0e53e71496",
+    "semantic_hash": "1e6c1d873dc1b1b73c112e0e53e71496"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/broke-millennial.mdx": {
+    "mtime": 1784599952.3796158,
+    "ast_hash": "e8fab97428b810506d61d5131a3a65c0",
+    "semantic_hash": "e8fab97428b810506d61d5131a3a65c0"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/chapter.mdx": {
+    "mtime": 1784576493.9403677,
+    "ast_hash": "cc4b66500b315f6cccb2be3cee74ca04",
+    "semantic_hash": "cc4b66500b315f6cccb2be3cee74ca04"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/from-monk-to-money-manager.mdx": {
+    "mtime": 1784576859.261333,
+    "ast_hash": "a3a88e5ea6bbaf95a937181a5f87c8ff",
+    "semantic_hash": "a3a88e5ea6bbaf95a937181a5f87c8ff"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/get-a-financial-life.mdx": {
+    "mtime": 1784599977.3338795,
+    "ast_hash": "9c0608cfedea2b7acdb409c9fc6e07ee",
+    "semantic_hash": "9c0608cfedea2b7acdb409c9fc6e07ee"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/how-to-money.mdx": {
+    "mtime": 1784576833.2535057,
+    "ast_hash": "3adb75b5ca5a3df18996e6eaca6b77fd",
+    "semantic_hash": "3adb75b5ca5a3df18996e6eaca6b77fd"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/how-to-think-about-money.mdx": {
+    "mtime": 1784599952.392572,
+    "ast_hash": "269a7d55508a44d660658ee2608df77f",
+    "semantic_hash": "269a7d55508a44d660658ee2608df77f"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/i-will-teach-you-to-be-rich.mdx": {
+    "mtime": 1784576878.5940237,
+    "ast_hash": "c0a2e08ff4daf64acfc7c8dbf1d8cd14",
+    "semantic_hash": "c0a2e08ff4daf64acfc7c8dbf1d8cd14"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/rich-dad-poor-dad.mdx": {
+    "mtime": 1784599977.3532941,
+    "ast_hash": "7d44d21a6b30684f81eb703ce2434e61",
+    "semantic_hash": "7d44d21a6b30684f81eb703ce2434e61"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/same-as-ever.mdx": {
+    "mtime": 1784576890.6735787,
+    "ast_hash": "5511309bb463589195020f9135bd2e7a",
+    "semantic_hash": "5511309bb463589195020f9135bd2e7a"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/smart-mom-rich-mom.mdx": {
+    "mtime": 1784576694.1809864,
+    "ast_hash": "5c6d1189c8ee42ceb0a55a657249059a",
+    "semantic_hash": "5c6d1189c8ee42ceb0a55a657249059a"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/soul-of-wealth.mdx": {
+    "mtime": 1784599952.402631,
+    "ast_hash": "26e9677edf4b3e211672e4e2e9cf8481",
+    "semantic_hash": "26e9677edf4b3e211672e4e2e9cf8481"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/taming-your-money-monster.mdx": {
+    "mtime": 1784576890.3601594,
+    "ast_hash": "df1e2bc1d781da57aa037583004536f8",
+    "semantic_hash": "df1e2bc1d781da57aa037583004536f8"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/the-behavior-gap.mdx": {
+    "mtime": 1784576911.674946,
+    "ast_hash": "8ecfd7d94ea05a32ad051f49b8c92dc4",
+    "semantic_hash": "8ecfd7d94ea05a32ad051f49b8c92dc4"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/the-index-card.mdx": {
+    "mtime": 1784640246.9433286,
+    "ast_hash": "45be40bc874b2ea6a61c9764959fa8b7",
+    "semantic_hash": "45be40bc874b2ea6a61c9764959fa8b7"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/the-intelligent-investor.mdx": {
+    "mtime": 1784599977.3817253,
+    "ast_hash": "6e843aac9ecc316ef5e206de9bfff04a",
+    "semantic_hash": "6e843aac9ecc316ef5e206de9bfff04a"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/the-little-book-of-behavioural-investing.mdx": {
+    "mtime": 1784599977.3902202,
+    "ast_hash": "6bcee1af19653785c16de4d9ffe1f0b9",
+    "semantic_hash": "6bcee1af19653785c16de4d9ffe1f0b9"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/the-one-page-financial-plan.mdx": {
+    "mtime": 1784576880.2912238,
+    "ast_hash": "8c6b2ac9d353edd2a4fc9ae873d54dad",
+    "semantic_hash": "8c6b2ac9d353edd2a4fc9ae873d54dad"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/the-only-investment-guide-you-ll-ever-need.mdx": {
+    "mtime": 1784576832.9838266,
+    "ast_hash": "1ab4416bb8d41e8928907fc3b1752899",
+    "semantic_hash": "1ab4416bb8d41e8928907fc3b1752899"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/the-psychology-of-money.mdx": {
+    "mtime": 1784576810.9852285,
+    "ast_hash": "a5b1a1d889547999ad38bdd34f6e52d7",
+    "semantic_hash": "a5b1a1d889547999ad38bdd34f6e52d7"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/the-richest-man-in-babylon.mdx": {
+    "mtime": 1784599977.4074862,
+    "ast_hash": "e739bc24f710c064eeaaf4bdce1b5c45",
+    "semantic_hash": "e739bc24f710c064eeaaf4bdce1b5c45"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/thinking-fast-and-slow.mdx": {
+    "mtime": 1784576728.6523001,
+    "ast_hash": "231501d2e8471a3beebc039ecf3d355a",
+    "semantic_hash": "231501d2e8471a3beebc039ecf3d355a"
+  },
+  "content/chapters/purpose-money-mindset-behavioral-finance/your-money-or-your-life.mdx": {
+    "mtime": 1784599952.4155781,
+    "ast_hash": "30c78d283d09e9cb9a1305439238f0d7",
+    "semantic_hash": "30c78d283d09e9cb9a1305439238f0d7"
+  },
+  "content/chapters/retirement-fire-benefits/chapter.mdx": {
+    "mtime": 1784576493.9412498,
+    "ast_hash": "a28507cceba1e291357f4c63bc3deaef",
+    "semantic_hash": "a28507cceba1e291357f4c63bc3deaef"
+  },
+  "content/chapters/retirement-fire-benefits/early-access-to-retirement-account-money.mdx": {
+    "mtime": 1784601324.9643192,
+    "ast_hash": "b99a19d5d09b7e9652cabb3ae2d7e492",
+    "semantic_hash": "b99a19d5d09b7e9652cabb3ae2d7e492"
+  },
+  "content/chapters/retirement-fire-benefits/fire-planning-with-kids-vs-without-kids.mdx": {
+    "mtime": 1784601179.3598003,
+    "ast_hash": "011f52fd478e58a23d85f8719b7badfc",
+    "semantic_hash": "011f52fd478e58a23d85f8719b7badfc"
+  },
+  "content/chapters/retirement-fire-benefits/fire-progress-tracker-for-u-s-households-in-their-30s.mdx": {
+    "mtime": 1784599977.4207935,
+    "ast_hash": "f1edbc48961132ae0132a621a7023282",
+    "semantic_hash": "f1edbc48961132ae0132a621a7023282"
+  },
+  "content/chapters/retirement-fire-benefits/retirement-account-map-for-u-s-households-in-their-30s.mdx": {
+    "mtime": 1784601300.6437447,
+    "ast_hash": "29722b0d4b323e4c8d5181e8c0512b85",
+    "semantic_hash": "29722b0d4b323e4c8d5181e8c0512b85"
+  },
+  "content/chapters/retirement-fire-benefits/retirement-planning-for-singles-vs-couples.mdx": {
+    "mtime": 1784576971.500097,
+    "ast_hash": "3623bf4b3c645c7cf6dc07642f20af39",
+    "semantic_hash": "3623bf4b3c645c7cf6dc07642f20af39"
+  },
+  "content/chapters/retirement-fire-benefits/retirement-withdrawal-strategy.mdx": {
+    "mtime": 1784599977.430749,
+    "ast_hash": "fe4851f726c104d09868c758df9bbbd6",
+    "semantic_hash": "fe4851f726c104d09868c758df9bbbd6"
+  },
+  "content/chapters/retirement-fire-benefits/social-security-foundation.mdx": {
+    "mtime": 1784576997.420861,
+    "ast_hash": "cb09c80c16f63a6d6a636175f2faa12b",
+    "semantic_hash": "cb09c80c16f63a6d6a636175f2faa12b"
+  },
+  "content/chapters/retirement-fire-benefits/the-retirement-map.mdx": {
+    "mtime": 1784576455.731067,
+    "ast_hash": "3671e16820dd9de4c5c785437411f83f",
+    "semantic_hash": "3671e16820dd9de4c5c785437411f83f"
+  },
+  "content/chapters/retirement-fire-benefits/workplace-benefits-playbook.mdx": {
+    "mtime": 1784601109.8932285,
+    "ast_hash": "217c3f366c64d386713ec9c12d2d399d",
+    "semantic_hash": "217c3f366c64d386713ec9c12d2d399d"
+  },
+  "content/chapters/taxes-capital-gains-account-buckets/brokerage-accounts-capital-gains.mdx": {
+    "mtime": 1784599977.4439943,
+    "ast_hash": "0afe638e8e544f1beff3cf6cb50cbe36",
+    "semantic_hash": "0afe638e8e544f1beff3cf6cb50cbe36"
+  },
+  "content/chapters/taxes-capital-gains-account-buckets/chapter.mdx": {
+    "mtime": 1784576493.941098,
+    "ast_hash": "6e59458828496da5c7e2d84c2f53c673",
+    "semantic_hash": "6e59458828496da5c7e2d84c2f53c673"
+  },
+  "content/chapters/taxes-capital-gains-account-buckets/tax-bracket-planning.mdx": {
+    "mtime": 1784576971.8955433,
+    "ast_hash": "c3422827ea9e9904c873f258cd217ea4",
+    "semantic_hash": "c3422827ea9e9904c873f258cd217ea4"
+  },
+  "content/chapters/taxes-capital-gains-account-buckets/tax-buckets-of-investing.mdx": {
+    "mtime": 1784576867.325803,
+    "ast_hash": "0f9e3499ba15f7532973e167b72f3c8e",
+    "semantic_hash": "0f9e3499ba15f7532973e167b72f3c8e"
+  },
+  "content/chapters/taxes-capital-gains-account-buckets/tax-differences-for-single-vs-married-households.mdx": {
+    "mtime": 1784576912.392185,
+    "ast_hash": "012efa626bffaa32373ebd787cce1bff",
+    "semantic_hash": "012efa626bffaa32373ebd787cce1bff"
+  },
+  "content/chapters/taxes-capital-gains-account-buckets/tax-optimization-in-retirement.mdx": {
+    "mtime": 1784599952.4239821,
+    "ast_hash": "f51820169745ff5057111a26d4d5f907",
+    "semantic_hash": "f51820169745ff5057111a26d4d5f907"
+  },
+  "content/chapters/taxes-capital-gains-account-buckets/the-tax-map.mdx": {
+    "mtime": 1784576981.4153752,
+    "ast_hash": "be01da0a0462516f72ced3c2c3222b65",
+    "semantic_hash": "be01da0a0462516f72ced3c2c3222b65"
+  },
+  "docs/EXTRACTION_GUIDE.md": {
+    "mtime": 1784576552.2032068,
+    "ast_hash": "db73c8c5123db8615ea0a1d589977081",
+    "semantic_hash": "db73c8c5123db8615ea0a1d589977081"
+  },
+  "docs/superpowers/specs/2026-07-20-money-map-design.md": {
+    "mtime": 1784560679.6633713,
+    "ast_hash": "fb9696a0091f0a1268cae99a43250426",
+    "semantic_hash": "fb9696a0091f0a1268cae99a43250426"
+  },
+  "memory/00_identity.md": {
+    "mtime": 1784576959.9327636,
+    "ast_hash": "160dcbc7ae6dddf4eba6c8c114c9f46d",
+    "semantic_hash": "160dcbc7ae6dddf4eba6c8c114c9f46d"
+  },
+  "memory/01_product.md": {
+    "mtime": 1784640648.6805835,
+    "ast_hash": "8f0275a82e7714de72d89dec68e17850",
+    "semantic_hash": "8f0275a82e7714de72d89dec68e17850"
+  },
+  "memory/02_brand.md": {
+    "mtime": 1784600265.2546663,
+    "ast_hash": "d11b86c509bb75ec411b94fa14be5a17",
+    "semantic_hash": "d11b86c509bb75ec411b94fa14be5a17"
+  },
+  "memory/03_ui.md": {
+    "mtime": 1784643221.6239595,
+    "ast_hash": "3de4eaf8b28351fc735a5cb9fa6ae5a4",
+    "semantic_hash": "3de4eaf8b28351fc735a5cb9fa6ae5a4"
+  },
+  "memory/04_content_style.md": {
+    "mtime": 1784600273.8487236,
+    "ast_hash": "ce5524f7f18f1b5c1b13d94d61d1af01",
+    "semantic_hash": "ce5524f7f18f1b5c1b13d94d61d1af01"
+  },
+  "memory/05_finance_rules.md": {
+    "mtime": 1784600279.8419962,
+    "ast_hash": "4bfa6179cc5e4d0f7fc478f2268cce99",
+    "semantic_hash": "4bfa6179cc5e4d0f7fc478f2268cce99"
+  },
+  "memory/06_writing_guidelines.md": {
+    "mtime": 1784600285.3353727,
+    "ast_hash": "20297de998dfc64e20cb5fda10b54e2b",
+    "semantic_hash": "20297de998dfc64e20cb5fda10b54e2b"
+  },
+  "memory/07_markdown_rules.md": {
+    "mtime": 1784600295.0315413,
+    "ast_hash": "88dfcb521cfb64cab52f2b52bfcb5586",
+    "semantic_hash": "88dfcb521cfb64cab52f2b52bfcb5586"
+  },
+  "memory/08_components.md": {
+    "mtime": 1784600306.2665393,
+    "ast_hash": "0510a732eac688741ceb68f47a111cb0",
+    "semantic_hash": "0510a732eac688741ceb68f47a111cb0"
+  },
+  "memory/09_generation_pipeline.md": {
+    "mtime": 1784600313.7184453,
+    "ast_hash": "865f4ee8eb8ca2644f91e9574e72b362",
+    "semantic_hash": "865f4ee8eb8ca2644f91e9574e72b362"
+  },
+  "memory/10_pdf_generation.md": {
+    "mtime": 1784666383.6419668,
+    "ast_hash": "40292a694096c570643a44ec42700612",
+    "semantic_hash": "40292a694096c570643a44ec42700612"
+  },
+  "memory/11_flipbook.md": {
+    "mtime": 1784686707.2009094,
+    "ast_hash": "0d7bbd8aec10c69613cdc80592f9d02f",
+    "semantic_hash": "0d7bbd8aec10c69613cdc80592f9d02f"
+  },
+  "memory/12_search.md": {
+    "mtime": 1784600331.0318928,
+    "ast_hash": "5056934b3a4d5806749c1239e4bc99b9",
+    "semantic_hash": "5056934b3a4d5806749c1239e4bc99b9"
+  },
+  "memory/13_release_process.md": {
+    "mtime": 1784600340.2186165,
+    "ast_hash": "2b19fb7717148c89b92cd67e6adce77a",
+    "semantic_hash": "2b19fb7717148c89b92cd67e6adce77a"
+  },
+  "memory/14_future_features.md": {
+    "mtime": 1784600347.351407,
+    "ast_hash": "d2264b3ea62d968ebb01d92e2bbb52d0",
+    "semantic_hash": "d2264b3ea62d968ebb01d92e2bbb52d0"
+  },
+  "memory/15_gamification.md": {
+    "mtime": 1784650739.5803907,
+    "ast_hash": "dd19a6065dd66547ec4b588ac7da7e90",
+    "semantic_hash": "dd19a6065dd66547ec4b588ac7da7e90"
+  }
+}

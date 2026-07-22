@@ -23,3 +23,8 @@
 next-env.d.ts
 .env*
 !.env.example
+
+# graphify: keep the graph outputs, ignore machine-specific interpreter paths
+graphify-out/.graphify_python
+graphify-out/.graphify_root
+graphify-out/cache/
