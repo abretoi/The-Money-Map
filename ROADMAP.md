@@ -33,9 +33,13 @@ this), and achievement badges beyond chapter chests.
 
 ## Milestone 2 — Flipbook
 
-Apple Books-style reader. CSS 3D page-turn (not react-pageflip). Paginated block
-spreads, keyboard/touch/fullscreen, TOC, progress, reduced-motion cross-fade.
-→ `memory/11_flipbook.md`.
+**Standalone HTML flipbooks: built.** `generated/pdf/ebook.html` and
+`launch-guide.html` are self-contained, page-turning pirate flipbooks (3D
+page-turn, TOC, progress, keyboard/touch/fullscreen, deep links) — `npm run
+flipbook`. Engine in `scripts/flipbook.mjs`. → `memory/11_flipbook.md`.
+
+**Remaining:** an in-app `/flipbook` route reusing the React block components +
+`useProgress` (bookmarks/resume).
 
 ## Milestone 3 — PDF + print
 

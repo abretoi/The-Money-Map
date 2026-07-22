@@ -1,6 +1,6 @@
 {
   "name": "the-money-map",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "private": true,
   "description": "Navigate Your Journey to Financial Freedom. Markdown-sourced personal finance education platform.",
   "scripts": {
@@ -12,6 +12,9 @@
     "pdf": "npm run generate && node scripts/build-guide-pdf.mjs && node scripts/build-ebook-pdf.mjs",
     "pdf:guide": "node scripts/build-guide-pdf.mjs",
     "pdf:ebook": "node scripts/build-ebook-pdf.mjs",
+    "flipbook": "npm run generate && node scripts/build-guide-flipbook.mjs && node scripts/build-ebook-flipbook.mjs",
+    "flipbook:guide": "node scripts/build-guide-flipbook.mjs",
+    "flipbook:ebook": "node scripts/build-ebook-flipbook.mjs",
     "audit:provenance": "node scripts/audit-provenance.mjs",
     "typecheck": "tsc --noEmit --incremental --tsBuildInfoFile node_modules/.cache/tsc.tsbuildinfo",
     "lint": "next lint"

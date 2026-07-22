@@ -9,104 +9,19 @@ import { existsSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
 import path from 'node:path'
 import * as art from './pdf-art.mjs'
+import { esc, proseToHtml, rawBody, renderBlock } from './ebook-content.mjs'
 
 const ROOT = process.cwd()
 const OUT_DIR = path.join(ROOT, 'generated/pdf')
-const HTML = path.join(OUT_DIR, 'ebook.html')
+// Print-only intermediate; the interactive flipbook owns ebook.html.
+const HTML = path.join(OUT_DIR, 'ebook-print.html')
 const PDF = path.join(OUT_DIR, 'The-Money-Map-Ebook.pdf')
 const CHROME =
   process.env.CHROME_BIN ||
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 
-const esc = (s) =>
-  String(s ?? '').replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c])
-
-/** Minimal, safe Markdown → HTML for the short framing prose. */
-function proseToHtml(md) {
-  const paras = md.trim().split(/\n\s*\n/)
-  return paras
-    .map((p) => {
-      let t = esc(p.replace(/\n/g, ' ').trim())
-      t = t.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      t = t.replace(/(^|[^*])\*(?!\*)([^*]+?)\*(?!\*)/g, '$1<em>$2</em>')
-      return t ? `<p>${t}</p>` : ''
-    })
-    .join('')
-}
-
-/** Extract the Markdown body (after frontmatter) from a raw .mdx file. */
-async function rawBody(chapter, slug) {
-  const f = path.join(ROOT, 'content/chapters', chapter, `${slug}.mdx`)
-  try {
-    const raw = await readFile(f, 'utf8')
-    const parts = raw.split('---')
-    return parts.slice(2).join('---')
-  } catch {
-    return ''
-  }
-}
-
-/* ---- Block → HTML (mirrors components/blocks, print-styled) ---- */
-const blockTitle = (b) =>
-  b.title ? `<h4 class="bt">${esc(b.title)}${b.asOf ? `<span class="asof">${b.asOf}</span>` : ''}</h4>` : ''
-
-function renderBlock(b) {
-  switch (b.type) {
-    case 'timeline':
-      return `${blockTitle(b)}<div class="grid">${b.nodes
-        .map(
-          (n, i) =>
-            `<div class="tile"><div class="tlabel">${i + 1}. ${esc(n.label)}</div>${n.value ? `<div class="tval">${esc(n.value)}</div>` : ''}${n.detail ? `<div class="tdet">${esc(n.detail)}</div>` : ''}</div>`
-        )
-        .join('')}</div>`
-    case 'comparison':
-      return `${blockTitle(b)}<div class="grid cols">${b.options
-        .map(
-          (o) =>
-            `<div class="tile"><div class="tlabel">${esc(o.label)}</div>${o.subtitle ? `<div class="tsub">${esc(o.subtitle)}</div>` : ''}${(o.rows || []).map((r) => `<div class="row">${esc(r)}</div>`).join('')}${o.highlight ? `<div class="hi">${o.highlightLabel ? `<span>${esc(o.highlightLabel)}</span>` : ''}<strong>${esc(o.highlight)}</strong></div>` : ''}</div>`
-        )
-        .join('')}</div>`
-    case 'buckets':
-      return `${blockTitle(b)}<div class="${b.layout === 'chips' ? 'chips' : 'grid two'}">${b.items
-        .map((i) =>
-          b.layout === 'chips'
-            ? `<span class="chip">${esc(i.label)}</span>`
-            : `<div class="tile"><div class="tlabel">${esc(i.label)}</div>${i.description ? `<div class="tdet">${esc(i.description)}</div>` : ''}</div>`
-        )
-        .join('')}</div>`
-    case 'flow':
-      return `${blockTitle(b)}<ol class="flow">${b.steps
-        .map(
-          (s) =>
-            `<li><strong>${esc(s.label)}</strong>${s.detail ? ` — ${esc(s.detail)}` : ''}</li>`
-        )
-        .join('')}</ol>`
-    case 'table':
-      return `${blockTitle(b)}<table><thead><tr>${b.headers
-        .map((h) => `<th>${esc(h)}</th>`)
-        .join('')}</tr></thead><tbody>${b.rows
-        .map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join('')}</tr>`)
-        .join('')}</tbody></table>`
-    case 'phases':
-      return `${blockTitle(b)}<div class="grid four">${b.bands
-        .map(
-          (x) =>
-            `<div class="tile"><div class="tlabel">${esc(x.label)}</div>${x.range ? `<div class="range">${esc(x.range)}</div>` : ''}${x.detail ? `<div class="tdet">${esc(x.detail)}</div>` : ''}</div>`
-        )
-        .join('')}</div>`
-    case 'stat':
-      return `${blockTitle(b)}<div class="stats">${b.stats
-        .map(
-          (s) =>
-            `<div class="stat"><div class="fig">${esc(s.figure)}</div><div class="slabel">${esc(s.label)}</div>${s.footnote ? `<div class="fn">${esc(s.footnote)}</div>` : ''}</div>`
-        )
-        .join('')}</div>`
-    case 'note':
-      return `<div class="note ${b.variant}">${b.title ? `<strong>${esc(b.title)}</strong> ` : ''}${esc(b.body)}</div>`
-    default:
-      return ''
-  }
-}
+// Block renderers, prose, and rawBody are shared with the flipbook via
+// ebook-content.mjs — one source of truth for the block → HTML markup.
 
 async function main() {
   const chapters = JSON.parse(

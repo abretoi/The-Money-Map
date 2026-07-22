@@ -13,8 +13,9 @@
 /generated/batches
 /data/missing.json
 
-# PDF intermediates — keep the .pdf deliverables, drop the HTML source
-/generated/pdf/*.html
+# PDF print intermediates — keep the .pdf deliverables and the flipbook .html
+# (ebook.html, launch-guide.html); ignore only the print-source HTML.
+/generated/pdf/*-print.html
 
 # misc
 .DS_Store

@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>The Money Map — Launch Guide</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%AD%3C/text%3E%3C/svg%3E" />
+<style>
+:root{
+  --gold:#c9a24a; --gold-bright:#ecca77; --gold-deep:#8a6a1f;
+  --serif: Garamond,'EB Garamond','Adobe Garamond Pro','Cormorant Garamond','Iowan Old Style',Georgia,serif;
+  --pw: 520px; --ph: 718px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{
+  font-family:var(--serif); background:#08090a; color:#e8e2d0; overflow:hidden;
+  background-image:
+    radial-gradient(circle at 15% -5%, rgba(201,162,74,.10), transparent 40%),
+    radial-gradient(circle at 85% 8%, rgba(201,162,74,.08), transparent 38%),
+    radial-gradient(ellipse 120% 90% at 50% 50%, #14150f 0%, #08090a 70%);
+}
+body::after{ content:''; position:fixed; inset:0; pointer-events:none; z-index:5; opacity:.05; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* ---- chrome ---- */
+.bar{ position:fixed; top:0; left:0; right:0; z-index:20; display:flex; align-items:center; gap:.6rem;
+  padding:.6rem 1rem; background:linear-gradient(#0c0d09ee,#0c0d0999); border-bottom:1px solid rgba(201,162,74,.28); backdrop-filter:blur(8px); }
+.bar .ttl{ font-size:.95rem; color:var(--gold-bright); letter-spacing:.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.bar .kick{ font-size:.6rem; text-transform:uppercase; letter-spacing:.2em; color:var(--gold); margin-right:.4rem; }
+.spacer{ flex:1 }
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:.35rem; height:34px; min-width:34px; padding:0 .6rem;
+  border:1px solid rgba(201,162,74,.34); background:rgba(201,162,74,.10); color:var(--gold-bright);
+  border-radius:9px; cursor:pointer; font-family:var(--serif); font-size:.85rem; transition:.15s; }
+.btn:hover{ border-color:var(--gold); background:rgba(201,162,74,.2); transform:translateY(-1px); }
+.pageno{ font-size:.85rem; color:#cbb98a; min-width:78px; text-align:center; font-variant-numeric:tabular-nums; }
+
+/* ---- stage + book ---- */
+.stage{ position:absolute; inset:56px 0 8px; display:grid; place-items:center; perspective:2400px; }
+.book{ position:relative; width:var(--pw); height:var(--ph); }
+.paper{ position:absolute; inset:0; border-radius:6px 10px 10px 6px; overflow:hidden;
+  background:linear-gradient(#fdf8e9,#f3e9cd); box-shadow:0 26px 70px rgba(0,0,0,.6), inset 0 0 0 1px rgba(120,96,40,.18);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.35'/%3E%3C/svg%3E"), linear-gradient(#fdf8e9,#f3e9cd); }
+/* spine shading on the left edge */
+.paper::before{ content:''; position:absolute; left:0; top:0; bottom:0; width:26px; pointer-events:none;
+  background:linear-gradient(90deg, rgba(90,70,25,.28), transparent); }
+.leaf-inner{ position:absolute; inset:0; padding:34px 34px; overflow:hidden; }
+.dark-leaf .leaf-inner{ padding:0; }
+.dark-leaf.paper{ background:#0c0d09; }
+.dark-leaf.paper::before{ display:none; }
+
+/* the turning page */
+.turn{ position:absolute; inset:0; transform-style:preserve-3d; transform-origin:left center;
+  transition:transform .72s cubic-bezier(.4,.15,.2,1); will-change:transform; z-index:8; }
+.turn.left-origin{ transform-origin:left center; }
+.turn.right-origin{ transform-origin:right center; }
+.face{ position:absolute; inset:0; backface-visibility:hidden; border-radius:6px 10px 10px 6px; overflow:hidden;
+  background:linear-gradient(#fdf8e9,#f3e9cd); box-shadow:0 26px 70px rgba(0,0,0,.5); }
+.face.back{ transform:rotateY(180deg); }
+.face .shade{ position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .72s; }
+.face.front .shade{ background:linear-gradient(90deg, transparent 55%, rgba(0,0,0,.28)); }
+.face.back .shade{ background:linear-gradient(270deg, transparent 55%, rgba(0,0,0,.22)); }
+.turning .face .shade{ opacity:1; }
+
+/* click zones */
+.zone{ position:absolute; top:0; bottom:0; width:22%; z-index:9; cursor:pointer; }
+.zone.prev{ left:0; } .zone.next{ right:0; }
+
+/* progress */
+.prog{ position:fixed; left:0; right:0; bottom:0; height:4px; background:rgba(255,255,255,.06); z-index:20; }
+.prog > i{ display:block; height:100%; width:0; background:linear-gradient(90deg,var(--gold-deep),var(--gold-bright)); transition:width .4s; }
+
+/* TOC drawer */
+.toc{ position:fixed; top:0; bottom:0; left:0; width:min(86vw,340px); z-index:30; transform:translateX(-100%);
+  transition:transform .3s cubic-bezier(.4,.15,.2,1); background:#0c0d09f2; border-right:1px solid rgba(201,162,74,.3);
+  backdrop-filter:blur(10px); padding:1rem; overflow-y:auto; }
+.toc.open{ transform:none; }
+.toc h4{ color:var(--gold); font-size:.7rem; text-transform:uppercase; letter-spacing:.2em; margin:.2rem 0 1rem; }
+.toc a{ display:block; padding:.5rem .4rem; color:#d8cba0; text-decoration:none; border-radius:8px; font-size:.9rem; border-bottom:1px solid rgba(201,162,74,.12); }
+.toc a:hover{ background:rgba(201,162,74,.12); color:var(--gold-bright); }
+.toc a .il{ display:block; font-size:.58rem; text-transform:uppercase; letter-spacing:.12em; color:var(--gold); }
+.scrim{ position:fixed; inset:0; z-index:29; background:rgba(0,0,0,.5); opacity:0; pointer-events:none; transition:opacity .3s; }
+.scrim.show{ opacity:1; pointer-events:auto; }
+
+.loader{ position:fixed; inset:0; z-index:40; display:grid; place-items:center; background:#08090a; color:var(--gold); font-size:1rem; letter-spacing:.1em; }
+.loader.hide{ display:none; }
+
+#measure{ position:fixed; left:-9999px; top:0; width:var(--pw); }
+#measure .leaf-inner{ position:static; }
+
+@media (max-width:600px){ :root{ --pw:88vw; --ph:calc(88vw * 1.38); } .bar .ttl{ max-width:40vw; } }
+
+
+  .leaf-inner { font-family: var(--serif); color: #2c2413; }
+  .leaf-inner h3 { font-size: 1.5rem; margin: 0 0 .4rem; color: #1c1708; letter-spacing: -.01em; }
+  .leaf-inner h2 { font-size: 1.8rem; margin: 0 0 .5rem; color: #1c1708; }
+  .lhead { display:flex; justify-content:space-between; font-size:.62rem; text-transform:uppercase; letter-spacing:.14em; color:#9a8149; margin-bottom:.5rem; }
+  .summary { font-style: italic; color:#4a4020; font-size:1.02rem; margin:0 0 .7rem; }
+  .prose p { margin:0 0 .6rem; line-height:1.55; }
+  .prose em { font-style: italic; }
+  .prose strong, .leaf-inner strong { color:#241d0c; font-weight:600; }
+  .bt { font-size:1.02rem; margin:1.1rem 0 .5rem; color:#3a2f14; }
+  .bt .asof { float:right; font-size:.6rem; color:#9a8149; border:1px solid #cdb87f; border-radius:10px; padding:0 6px; }
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem; }
+  .grid.two { grid-template-columns:repeat(2,1fr); }
+  .grid.four { grid-template-columns:repeat(2,1fr); }
+  .grid.cols { grid-template-columns:repeat(3,1fr); }
+  .tile { border:1px solid #cdb87f; border-radius:8px; padding:.5rem .6rem; background:#fbf4de; }
+  .tlabel { font-weight:600; font-size:.86rem; color:#241d0c; }
+  .tval { font-size:.82rem; margin-top:.15rem; }
+  .tsub,.tdet,.row { font-size:.76rem; color:#544a2a; margin-top:.2rem; line-height:1.4; }
+  .range { color:#8a6b1f; font-size:.8rem; }
+  .hi { margin-top:.4rem; border-top:1px dotted #cdb87f; padding-top:.3rem; }
+  .hi span { display:block; font-size:.58rem; text-transform:uppercase; letter-spacing:.1em; color:#9a8149; }
+  .hi strong { font-size:1.05rem; color:#0a5c3e; }
+  .chips { display:flex; flex-wrap:wrap; gap:.4rem; }
+  .chip { border:1px solid #cdb87f; border-radius:20px; padding:.2rem .7rem; font-size:.78rem; background:#fbf4de; }
+  .flow { padding-left:1.1rem; margin:.3rem 0; } .flow li { margin:.3rem 0; font-size:.85rem; }
+  .bullets { padding-left:1.1rem; margin:.3rem 0; } .bullets li { margin:.25rem 0; font-size:.85rem; }
+  table { width:100%; border-collapse:collapse; font-size:.76rem; margin-top:.3rem; }
+  th { text-align:left; border-bottom:1.5px solid var(--gold); padding:.3rem .4rem; text-transform:uppercase; font-size:.62rem; letter-spacing:.06em; color:#8a6b1f; }
+  td { border-bottom:1px solid #ddcfa5; padding:.3rem .4rem; vertical-align:top; }
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:.4rem; }
+  .stat { border:1px solid #cdb87f; border-radius:6px; padding:.5rem; text-align:center; background:#fbf4de; }
+  .fig { font-size:1.2rem; color:#0a5c3e; font-weight:600; }
+  .slabel { font-size:.68rem; color:#544a2a; margin-top:.15rem; }
+  .fn { font-size:.6rem; color:#9a8149; }
+  .note { border:1px solid #cdb87f; border-left:3px solid var(--gold); border-radius:4px; padding:.5rem .6rem; margin:.6rem 0; font-size:.82rem; background:#f7edcf; }
+  .note.disclaimer { border-left-color:#9a8149; color:#5a5030; font-size:.76rem; }
+  .note.warning { border-left-color:#c07000; }
+  .note.insight { border-left-color:var(--gold); font-style:italic; }
+  .frieze { display:flex; align-items:center; justify-content:center; gap:1.4rem; height:52px; margin:1rem 0; }
+  .frieze svg { height:100%; width:auto; }
+  /* dark plates (cover / chapter divider) */
+  .cover, .chapter-open { background:radial-gradient(ellipse 90% 70% at 50% 34%, #1c1d14 0%, #0c0d09 74%);
+    color:#f4ecd8; border-radius:12px; text-align:center; height:100%; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; padding:2rem; box-shadow: inset 0 0 60px rgba(0,0,0,.6); }
+  .cover .rose, .cmotif { width:120px; margin:0 auto 1rem; }
+  .cover h1 { font-size:2.6rem; text-transform:uppercase; letter-spacing:-.01em; margin:.4rem 0; color:#f6edd6; }
+  .kicker { letter-spacing:.24em; text-transform:uppercase; color:var(--gold); font-size:.7rem; }
+  .tag { font-style:italic; color:#cbb98a; font-size:1.05rem; margin-top:.3rem; }
+  .sub { margin-top:1rem; letter-spacing:.1em; color:#a99b78; font-size:.82rem; }
+  .chapter-open .ctitle { color:#f6edd6; font-size:2rem; margin:.4rem 0; }
+  .chapter-open .cintro { color:#c3b790; max-width:34ch; margin:.6rem auto 0; font-size:.92rem; line-height:1.5; }
+  .toc-page h2 { border-bottom:2px solid var(--gold); padding-bottom:.4rem; }
+  .toc-page ol { list-style:none; padding:0; margin:.6rem 0 0; }
+  .toc-page li { padding:.5rem 0; border-bottom:1px solid #ddcfa5; font-size:.9rem; }
+  .toc-page .isle { color:var(--gold); text-transform:uppercase; font-size:.6rem; letter-spacing:.12em; margin-right:.5rem; }
+  .toc-page .n { float:right; color:#9a8149; font-size:.72rem; }
+
+
+  .leaf-inner h2 { font-size:1.5rem; margin:0 0 .5rem; border-bottom:2px solid var(--gold); padding-bottom:.3rem; }
+  .leaf-inner .lead { font-size:1.02rem; line-height:1.55; }
+  .leaf-inner p { line-height:1.55; margin:0 0 .7rem; }
+  .leaf-inner ul, .leaf-inner ol { padding-left:1.2rem; margin:.3rem 0 .7rem; }
+  .leaf-inner li { margin:.3rem 0; }
+  .leaf-inner code { font-family:'SF Mono',ui-monospace,monospace; font-size:.82em; background:#eadfbf; padding:1px 5px; border-radius:4px; }
+  .leaf-inner pre { font-family:'SF Mono',ui-monospace,monospace; font-size:.8rem; background:#efe6cd; border:1px solid #d9cfb4; border-radius:8px; padding:.7rem .9rem; overflow-x:auto; line-height:1.5; }
+  .leaf-inner .card { border:1px solid #cdb87f; border-radius:8px; padding:.6rem .8rem; margin:.5rem 0; background:#fbf4de; }
+  .leaf-inner .card svg { height:26px; vertical-align:middle; margin-right:.5rem; }
+  .leaf-inner .foot { text-align:center; color:#8a7a4c; font-style:italic; font-size:.85rem; margin-top:1rem; }
+  .cover .cover-lead { color:#b9ad8e; max-width:38ch; margin:1rem auto 0; font-size:.95rem; line-height:1.5; }
+
+</style>
+</head>
+<body>
+<!-- Gold paint defs must live in the visible DOM (a display:none ancestor
+     stops SVG gradients resolving as paint servers). 0-size, no layout cost. -->
+<div style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="mm-gold" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#fff2c2"/>
+    <stop offset="24%" stop-color="#ecca77"/>
+    <stop offset="52%" stop-color="#c9a24a"/>
+    <stop offset="76%" stop-color="#9a7526"/>
+    <stop offset="100%" stop-color="#6b4e12"/>
+  </linearGradient>
+  <radialGradient id="mm-gold-radial" cx="50%" cy="42%" r="60%">
+    <stop offset="0%" stop-color="#ecca77" stop-opacity="0.5"/>
+    <stop offset="60%" stop-color="#9a7526" stop-opacity="0.1"/>
+    <stop offset="100%" stop-color="#6b4e12" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="mm-relief" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="1" stdDeviation="1.1" flood-color="#000" flood-opacity="0.45"/>
+  </filter>
+</defs></svg></div>
+<div class="loader" id="loader">Charting the pages…</div>
+
+<div class="bar">
+  <button class="btn" id="tocBtn" aria-label="Contents">☰ <span class="k-lg">Contents</span></button>
+  <span class="kick">Guide</span>
+  <span class="ttl">The Money Map — Launch Guide</span>
+  <span class="spacer"></span>
+  <button class="btn" id="prevBtn" aria-label="Previous page">‹</button>
+  <span class="pageno" id="pageno">— / —</span>
+  <button class="btn" id="nextBtn" aria-label="Next page">›</button>
+  <button class="btn" id="fsBtn" aria-label="Fullscreen">⛶</button>
+</div>
+
+<aside class="toc" id="toc"><h4>Chart · Contents</h4><nav id="tocNav"></nav></aside>
+<div class="scrim" id="scrim"></div>
+
+<div class="stage" id="stage">
+  <div class="book" id="book">
+    <div class="paper" id="paper"><div class="leaf-inner" id="paperInner"></div></div>
+    <div class="zone prev" id="zPrev"></div>
+    <div class="zone next" id="zNext"></div>
+  </div>
+</div>
+
+<div class="prog"><i id="progFill"></i></div>
+
+<div id="measure"><div class="leaf-inner" id="measureInner"></div></div>
+
+<div id="source" style="display:none"><div class="cover">
+  <div class="rose">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="47" fill="url(#mm-gold-radial)"/>
+  <g filter="url(#mm-relief)">
+    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#mm-gold)" stroke-width="2.5"/>
+    <circle cx="50" cy="50" r="45" fill="none" stroke="#2a1e06" stroke-width="0.8"/>
+    <circle cx="50" cy="50" r="37" fill="none" stroke="#2a1e06" stroke-width="0.8" stroke-opacity="0.5"/>
+    <path d="M50 50 L26 26 L44 42 Z M50 50 L74 26 L56 42 Z M50 50 L74 74 L56 58 Z M50 50 L26 74 L44 58 Z" fill="#2a1e06" fill-opacity="0.55"/>
+    <path d="M50 6 L56 46 L50 50 L44 46 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1"/>
+    <path d="M50 94 L44 54 L50 50 L56 54 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1" opacity="0.85"/>
+    <path d="M6 50 L46 44 L50 50 L46 56 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1"/>
+    <path d="M94 50 L54 56 L50 50 L54 44 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1"/>
+    <circle cx="50" cy="50" r="4.5" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.2"/>
+  </g>
+</svg></div>
+  <div class="kicker">Launch Guide</div>
+  <h1>The Money Map</h1>
+  <div class="tag">Navigate Your Journey to Financial Freedom</div>
+  
+<div class="frieze" style="opacity:0.9">
+  
+<svg viewBox="0 0 56 92" xmlns="http://www.w3.org/2000/svg"><g filter="url(#mm-relief)">
+  <path d="M20 30 L18 84 H38 L36 30 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.6"/>
+  <path d="M18.6 44 H37.4 L37 52 H19 Z M18.2 62 H37.8 L37.4 70 H18.6 Z" fill="#2a1e06" fill-opacity="0.28"/>
+  <rect x="17" y="20" width="22" height="10" rx="1.5" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+  <path d="M22 20 V11 H34 V20 Z" fill="#2a1e06" fill-opacity="0.5" stroke="#2a1e06" stroke-width="1.2"/>
+  <path d="M23 11 L28 3 L33 11 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+</g>
+<path d="M39 15 L56 8 M39 24 L56 30 M17 15 L0 8 M17 24 L0 30" stroke="url(#mm-gold)" stroke-width="1.4" opacity="0.5"/>
+<circle cx="28" cy="25" r="3" fill="#fff2c2"/></svg>
+<svg viewBox="0 0 74 74" xmlns="http://www.w3.org/2000/svg"><g filter="url(#mm-relief)">
+  <path d="M12 8 L54 54 L50 58 L8 12 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.2"/>
+  <path d="M62 8 L20 54 L24 58 L66 12 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.2"/>
+  <path d="M6 6 L22 6 L14 18 Z" fill="#2a1e06"/><path d="M68 6 L52 6 L60 18 Z" fill="#2a1e06"/>
+  <path d="M50 58 L60 68 M24 58 L14 68" stroke="#2a1e06" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="61" cy="69" r="3.4" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1"/>
+  <circle cx="13" cy="69" r="3.4" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1"/>
+</g></svg>
+<svg viewBox="0 0 84 62" xmlns="http://www.w3.org/2000/svg"><g filter="url(#mm-relief)">
+  <ellipse cx="26" cy="50" rx="22" ry="8" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+  <ellipse cx="26" cy="43" rx="22" ry="8" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+  <ellipse cx="56" cy="52" rx="24" ry="9" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+  <circle cx="42" cy="20" r="13" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.8"/>
+  <path d="M42 13 L44 19 L42 20 Z M42 27 L40 21 L42 20 Z M35 20 L41 18 L42 20 Z M49 20 L43 22 L42 20 Z" fill="#2a1e06"/>
+  <circle cx="66" cy="32" r="9" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.6"/>
+  <circle cx="18" cy="32" r="8" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.6"/>
+</g></svg>
+<svg viewBox="0 0 120 104" xmlns="http://www.w3.org/2000/svg"><g filter="url(#mm-relief)">
+  <path d="M40 10 V64 M72 4 V64 M40 20 L72 14 M40 34 L72 30" stroke="#2a1e06" stroke-width="1.6"/>
+  <path d="M40 14 C20 18 18 34 24 48 L40 44 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+  <path d="M40 18 C58 22 60 38 55 52 L40 48 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4" opacity="0.92"/>
+  <path d="M72 8 C50 13 48 34 54 52 L72 47 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+  <path d="M72 12 C94 17 96 36 90 54 L72 49 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4" opacity="0.92"/>
+  <path d="M72 4 L88 7 L72 11 Z" fill="#2a1e06"/>
+  <path d="M12 64 L108 64 C102 84 84 92 60 92 C36 92 18 84 12 64 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="2"/>
+  <path d="M12 64 L108 64 C106 70 104 73 102 74 L18 74 C16 73 14 70 12 64 Z" fill="#2a1e06" fill-opacity="0.22"/>
+  <path d="M24 78 h6 v6 h-6 Z M40 78 h6 v6 h-6 Z M56 78 h6 v6 h-6 Z M72 78 h6 v6 h-6 Z M88 78 h6 v6 h-6 Z" fill="#2a1e06" fill-opacity="0.5"/>
+</g><path d="M4 96 C14 91 20 100 32 95 C44 90 50 100 62 95 C74 90 80 100 92 95 C104 90 110 100 116 96" fill="none" stroke="url(#mm-gold)" stroke-width="2" opacity="0.6"/></svg>
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="47" fill="url(#mm-gold-radial)"/>
+  <g filter="url(#mm-relief)">
+    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#mm-gold)" stroke-width="2.5"/>
+    <circle cx="50" cy="50" r="45" fill="none" stroke="#2a1e06" stroke-width="0.8"/>
+    <circle cx="50" cy="50" r="37" fill="none" stroke="#2a1e06" stroke-width="0.8" stroke-opacity="0.5"/>
+    <path d="M50 50 L26 26 L44 42 Z M50 50 L74 26 L56 42 Z M50 50 L74 74 L56 58 Z M50 50 L26 74 L44 58 Z" fill="#2a1e06" fill-opacity="0.55"/>
+    <path d="M50 6 L56 46 L50 50 L44 46 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1"/>
+    <path d="M50 94 L44 54 L50 50 L56 54 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1" opacity="0.85"/>
+    <path d="M6 50 L46 44 L50 50 L46 56 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1"/>
+    <path d="M94 50 L54 56 L50 50 L54 44 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1"/>
+    <circle cx="50" cy="50" r="4.5" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.2"/>
+  </g>
+</svg>
+<svg viewBox="0 0 74 82" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 3 V80" stroke="#2a1e06" stroke-width="2.4"/>
+  <path d="M12 5 L70 5 L61 22 L70 39 L12 39 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.6" filter="url(#mm-relief)"/>
+  <path d="M35 11 C41 11 45 15 45 20 C45 23 43 25 43 27 L41 30 H29 L27 27 C27 25 25 23 25 20 C25 15 29 11 35 11 Z" fill="#2a1e06"/>
+  <circle cx="31" cy="20" r="2.4" fill="url(#mm-gold)"/><circle cx="39" cy="20" r="2.4" fill="url(#mm-gold)"/>
+  <path d="M22 33 L48 15 M22 15 L48 33" stroke="#2a1e06" stroke-width="2.4" stroke-linecap="round"/>
+</svg>
+<svg viewBox="0 0 92 58" xmlns="http://www.w3.org/2000/svg"><g filter="url(#mm-relief)">
+  <path d="M14 24 H66 C72 24 78 28 78 33 C78 38 72 42 66 42 H14 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.6"/>
+  <ellipse cx="14" cy="33" rx="5" ry="9" fill="#2a1e06"/>
+  <path d="M18 42 L28 54 H58 L66 42 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.6"/>
+  <circle cx="32" cy="53" r="4.5" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+  <circle cx="58" cy="53" r="4.5" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+  <circle cx="86" cy="30" r="5.5" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.2"/>
+</g></svg>
+<svg viewBox="0 0 40 74" xmlns="http://www.w3.org/2000/svg"><g filter="url(#mm-relief)">
+  <path d="M15 5 H25 V16 C25 18 30 22 30 30 V62 C30 66 27 69 24 69 H16 C13 69 10 66 10 62 V30 C10 22 15 18 15 16 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.6"/>
+  <rect x="13" y="1" width="14" height="5" rx="1" fill="#2a1e06"/>
+  <rect x="11" y="34" width="18" height="22" rx="2" fill="#2a1e06" fill-opacity="0.85"/>
+  <path d="M15 41 h10 M15 45 h10 M15 49 h10" stroke="url(#mm-gold)" stroke-width="1" opacity="0.7"/>
+</g></svg>
+<svg viewBox="0 0 58 58" xmlns="http://www.w3.org/2000/svg"><g filter="url(#mm-relief)">
+  <path d="M15 20 H43 L54 29 L29 54 L4 29 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.6"/>
+  <path d="M15 20 L21 29 L29 54 L37 29 L43 20 M4 29 H54 M21 29 L29 20 L37 29" fill="none" stroke="#2a1e06" stroke-width="1" stroke-opacity="0.55"/>
+  <path d="M15 20 L21 12 H37 L43 20 Z" fill="#2a1e06" fill-opacity="0.3" stroke="#2a1e06" stroke-width="1.2"/>
+</g></svg>
+</div>
+  <p class="lead cover-lead">A local-first atlas of personal finance — 92 maps, a doubloon economy, and a voyage certificate. This guide gets it running in minutes.</p></div>
+<div class="fb-soft"></div>
+<h2>What you are launching</h2>
+<p class="lead">The Money Map is a Next.js application where <strong>Markdown is the source of truth</strong>. Ninety-two infographics have been extracted into structured, searchable content that renders as an interactive website — and powers a flipbook, PDF, and search index from one source.</p>
+<div class="card">
+<svg viewBox="0 0 44 36" xmlns="http://www.w3.org/2000/svg"><g filter="url(#mm-relief)">
+  <circle cx="15" cy="13" r="2.6" fill="url(#mm-gold)"/><circle cx="22" cy="11" r="2.6" fill="url(#mm-gold)"/><circle cx="29" cy="13" r="2.6" fill="url(#mm-gold)"/>
+  <path d="M6 17 Q6 7 22 7 Q38 7 38 17" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.5"/>
+  <rect x="6" y="17" width="32" height="15" rx="2" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.5"/>
+  <line x1="6" y1="22" x2="38" y2="22" stroke="#2a1e06" stroke-width="1.5"/>
+  <rect x="20" y="20" width="4" height="5" rx="0.8" fill="#2a1e06"/>
+</g></svg> <strong>Gamified:</strong> reading a map earns doubloons; filling a chapter chest pays a bounty; charting all 92 mints your certificate.</div>
+<div class="card">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="47" fill="url(#mm-gold-radial)"/>
+  <g filter="url(#mm-relief)">
+    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#mm-gold)" stroke-width="2.5"/>
+    <circle cx="50" cy="50" r="45" fill="none" stroke="#2a1e06" stroke-width="0.8"/>
+    <circle cx="50" cy="50" r="37" fill="none" stroke="#2a1e06" stroke-width="0.8" stroke-opacity="0.5"/>
+    <path d="M50 50 L26 26 L44 42 Z M50 50 L74 26 L56 42 Z M50 50 L74 74 L56 58 Z M50 50 L26 74 L44 58 Z" fill="#2a1e06" fill-opacity="0.55"/>
+    <path d="M50 6 L56 46 L50 50 L44 46 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1"/>
+    <path d="M50 94 L44 54 L50 50 L56 54 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1" opacity="0.85"/>
+    <path d="M6 50 L46 44 L50 50 L46 56 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1"/>
+    <path d="M94 50 L54 56 L50 50 L54 44 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1"/>
+    <circle cx="50" cy="50" r="4.5" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.2"/>
+  </g>
+</svg> <strong>Themed:</strong> a black / white / green design system with gold reserved for treasure, in Garamond throughout.</div>
+
+<div class="fb-soft"></div>
+<h2>Requirements</h2>
+<ul>
+  <li><strong>Node.js 20+</strong> — check with <code>node -v</code></li>
+  <li><strong>npm</strong> (ships with Node)</li>
+  <li>A modern browser (Chrome, Safari, Firefox, or Edge)</li>
+</ul>
+
+<h2>Launch in three commands</h2>
+<pre>cd The-Money-Map
+npm install
+npm run dev</pre>
+<p>Then open <code>http://localhost:3000</code>. That's the whole voyage — the content pipeline builds automatically as the dev server starts.</p>
+
+<div class="fb-soft"></div>
+<h2>Everyday commands</h2>
+<pre>npm run dev        # develop (content watch + Next dev server)
+npm run build      # production build (static, 108 pages)
+npm run start      # serve the production build
+npm run generate   # rebuild content JSON + search + treasure manifest
+npm run audit:provenance   # verify figures + table integrity
+npm run pdf        # regenerate the guide + e-book PDFs
+npm run flipbook   # regenerate the guide + e-book flipbooks</pre>
+
+<div class="fb-soft"></div>
+<h2>Adding or editing a map</h2>
+<p>Every lesson is one Markdown file at <code>content/chapters/&lt;chapter&gt;/&lt;lesson&gt;.mdx</code>. Frontmatter holds the typed content blocks; the body is short framing prose. After editing:</p>
+<pre>npx velite --clean   # validate — the build fails closed on any error</pre>
+<p>No code change is needed to add content unless you introduce a new block type.</p>
+
+<div class="fb-soft"></div>
+<h2>Deploying</h2>
+<ol>
+  <li>Run <code>npm run build</code> — output is fully static.</li>
+  <li>Deploy the app to any Node host (Vercel, Netlify, a container), or export static HTML.</li>
+  <li>Progress, bookmarks, and doubloons live in the browser (local-first) — no server or database required.</li>
+</ol>
+
+<div class="fb-soft"></div>
+<h2>Where things live</h2>
+<ul>
+  <li><code>content/</code> — the source of truth (Markdown maps)</li>
+  <li><code>components/</code> — blocks, reader, treasure, and pirate art</li>
+  <li><code>scripts/</code> — search index, provenance audit, PDF + flipbook generators</li>
+  <li><code>memory/</code> — the project knowledge base (load these first)</li>
+  <li><code>generated/</code> — disposable build output (never hand-edit)</li>
+</ul>
+<div class="frieze">
+<svg viewBox="0 0 120 104" xmlns="http://www.w3.org/2000/svg"><g filter="url(#mm-relief)">
+  <path d="M40 10 V64 M72 4 V64 M40 20 L72 14 M40 34 L72 30" stroke="#2a1e06" stroke-width="1.6"/>
+  <path d="M40 14 C20 18 18 34 24 48 L40 44 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+  <path d="M40 18 C58 22 60 38 55 52 L40 48 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4" opacity="0.92"/>
+  <path d="M72 8 C50 13 48 34 54 52 L72 47 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+  <path d="M72 12 C94 17 96 36 90 54 L72 49 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4" opacity="0.92"/>
+  <path d="M72 4 L88 7 L72 11 Z" fill="#2a1e06"/>
+  <path d="M12 64 L108 64 C102 84 84 92 60 92 C36 92 18 84 12 64 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="2"/>
+  <path d="M12 64 L108 64 C106 70 104 73 102 74 L18 74 C16 73 14 70 12 64 Z" fill="#2a1e06" fill-opacity="0.22"/>
+  <path d="M24 78 h6 v6 h-6 Z M40 78 h6 v6 h-6 Z M56 78 h6 v6 h-6 Z M72 78 h6 v6 h-6 Z M88 78 h6 v6 h-6 Z" fill="#2a1e06" fill-opacity="0.5"/>
+</g><path d="M4 96 C14 91 20 100 32 95 C44 90 50 100 62 95 C74 90 80 100 92 95 C104 90 110 100 116 96" fill="none" stroke="url(#mm-gold)" stroke-width="2" opacity="0.6"/></svg>
+<svg viewBox="0 0 56 92" xmlns="http://www.w3.org/2000/svg"><g filter="url(#mm-relief)">
+  <path d="M20 30 L18 84 H38 L36 30 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.6"/>
+  <path d="M18.6 44 H37.4 L37 52 H19 Z M18.2 62 H37.8 L37.4 70 H18.6 Z" fill="#2a1e06" fill-opacity="0.28"/>
+  <rect x="17" y="20" width="22" height="10" rx="1.5" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+  <path d="M22 20 V11 H34 V20 Z" fill="#2a1e06" fill-opacity="0.5" stroke="#2a1e06" stroke-width="1.2"/>
+  <path d="M23 11 L28 3 L33 11 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+</g>
+<path d="M39 15 L56 8 M39 24 L56 30 M17 15 L0 8 M17 24 L0 30" stroke="url(#mm-gold)" stroke-width="1.4" opacity="0.5"/>
+<circle cx="28" cy="25" r="3" fill="#fff2c2"/></svg>
+<svg viewBox="0 0 84 62" xmlns="http://www.w3.org/2000/svg"><g filter="url(#mm-relief)">
+  <ellipse cx="26" cy="50" rx="22" ry="8" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+  <ellipse cx="26" cy="43" rx="22" ry="8" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+  <ellipse cx="56" cy="52" rx="24" ry="9" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.4"/>
+  <circle cx="42" cy="20" r="13" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.8"/>
+  <path d="M42 13 L44 19 L42 20 Z M42 27 L40 21 L42 20 Z M35 20 L41 18 L42 20 Z M49 20 L43 22 L42 20 Z" fill="#2a1e06"/>
+  <circle cx="66" cy="32" r="9" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.6"/>
+  <circle cx="18" cy="32" r="8" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.6"/>
+</g></svg>
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="47" fill="url(#mm-gold-radial)"/>
+  <g filter="url(#mm-relief)">
+    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#mm-gold)" stroke-width="2.5"/>
+    <circle cx="50" cy="50" r="45" fill="none" stroke="#2a1e06" stroke-width="0.8"/>
+    <circle cx="50" cy="50" r="37" fill="none" stroke="#2a1e06" stroke-width="0.8" stroke-opacity="0.5"/>
+    <path d="M50 50 L26 26 L44 42 Z M50 50 L74 26 L56 42 Z M50 50 L74 74 L56 58 Z M50 50 L26 74 L44 58 Z" fill="#2a1e06" fill-opacity="0.55"/>
+    <path d="M50 6 L56 46 L50 50 L44 46 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1"/>
+    <path d="M50 94 L44 54 L50 50 L56 54 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1" opacity="0.85"/>
+    <path d="M6 50 L46 44 L50 50 L46 56 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1"/>
+    <path d="M94 50 L54 56 L50 50 L54 44 Z" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1"/>
+    <circle cx="50" cy="50" r="4.5" fill="url(#mm-gold)" stroke="#2a1e06" stroke-width="1.2"/>
+  </g>
+</svg></div>
+<p class="foot">Educational content, not financial advice. Fair winds and following seas.</p></div>
+
+<script>
+(function(){
+  "use strict";
+  var source = document.getElementById('source');
+  var measure = document.getElementById('measure');
+  var measureInner = document.getElementById('measureInner');
+  var book = document.getElementById('book');
+  var paper = document.getElementById('paper');
+  var paperInner = document.getElementById('paperInner');
+  var loader = document.getElementById('loader');
+
+  // ---- Paginate the source flow into leaves (arrays of HTML) ----
+  var leaves = [];          // { html, dark, chapter, title }
+  var chapters = [];        // { title, island, leaf }
+
+  function pageInnerHeight(){
+    // measureInner lives in a var(--pw)-wide box; use the real leaf padding box height
+    return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--ph')) - 68;
+  }
+
+  function paginate(){
+    var kids = Array.prototype.slice.call(source.children);
+    var maxH = pageInnerHeight();
+    var cur = null; // buffer of the leaf currently being filled
+    function flush(){
+      if(cur && cur.innerHTML.trim()){ leaves.push({ html: cur.innerHTML, dark: false }); }
+    }
+    function startLeaf(){ cur = document.createElement('div'); }
+    startLeaf();
+
+    for(var i=0;i<kids.length;i++){
+      var node = kids[i];
+      if(node.tagName === 'svg' && node.getAttribute('width') === '0'){ continue; } // global defs — leave in place
+
+      var isPlate = node.classList.contains('cover') || node.classList.contains('chapter-open') || node.classList.contains('toc-page');
+      var isSoft = node.classList.contains('fb-soft'); // start a new leaf, but flowing content follows
+
+      if(isPlate){
+        flush(); startLeaf();
+        leaves.push({
+          html: node.outerHTML,
+          dark: node.classList.contains('cover') || node.classList.contains('chapter-open'),
+          chapter: node.getAttribute('data-chapter'),
+          title: node.getAttribute('data-title'),
+          island: node.getAttribute('data-island'),
+        });
+        continue;
+      }
+      if(isSoft){ flush(); startLeaf(); continue; }
+
+      // measure: does adding this node overflow the current leaf?
+      measureInner.innerHTML = cur.innerHTML + node.outerHTML;
+      if(measureInner.offsetHeight > maxH && cur.innerHTML.trim()){
+        flush(); startLeaf();
+      }
+      cur.insertAdjacentHTML('beforeend', node.outerHTML);
+    }
+    flush();
+
+    // chapter index for the TOC (from the dark divider plates)
+    leaves.forEach(function(lf, li){ if(lf.chapter){ chapters.push({ title: lf.title, island: lf.island, chapter: lf.chapter, leaf: li }); } });
+  }
+
+  // ---- Rendering & page-turn ----
+  var idx = 0;
+  var animating = false;
+
+  function renderLeaf(el, lf){
+    if(lf.dark){ el.classList.add('dark-leaf'); } else { el.classList.remove('dark-leaf'); }
+    el.querySelector('.leaf-inner') ? (el.querySelector('.leaf-inner').innerHTML = lf.html)
+      : (el.innerHTML = '<div class="leaf-inner">'+lf.html+'</div>');
+  }
+
+  function setStatic(){
+    var lf = leaves[idx];
+    if(lf.dark){ paper.classList.add('dark-leaf'); } else { paper.classList.remove('dark-leaf'); }
+    paperInner.innerHTML = lf.html;
+    document.getElementById('pageno').textContent = (idx+1)+' / '+leaves.length;
+    document.getElementById('progFill').style.width = ((idx)/(leaves.length-1)*100)+'%';
+    if(location.replace){ try{ history.replaceState(null,'','#p'+(idx+1)); }catch(e){} }
+  }
+
+  function turn(dir){
+    if(animating) return;
+    var target = idx + dir;
+    if(target < 0 || target >= leaves.length) return;
+    animating = true;
+
+    var turnEl = document.createElement('div');
+    turnEl.className = 'turn ' + (dir>0 ? 'left-origin' : 'right-origin');
+    var frontLf = leaves[idx];
+    var backLf = leaves[target];
+    var front = document.createElement('div'); front.className='face front';
+    var back = document.createElement('div'); back.className='face back';
+    function fill(faceEl, lf){
+      var inner = document.createElement('div'); inner.className='leaf-inner'+(lf.dark?' ':''); inner.innerHTML = lf.html;
+      if(lf.dark){ faceEl.classList.add('dark-leaf'); }
+      faceEl.appendChild(inner);
+      var sh=document.createElement('div'); sh.className='shade'; faceEl.appendChild(sh);
+    }
+    fill(front, frontLf); fill(back, backLf);
+    turnEl.appendChild(front); turnEl.appendChild(back);
+    book.appendChild(turnEl);
+
+    // reveal target underneath
+    idx = target; setStatic();
+
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        turnEl.classList.add('turning');
+        turnEl.style.transform = 'rotateY(' + (dir>0 ? -180 : 180) + 'deg)';
+      });
+    });
+    var done = false;
+    function finish(){ if(done) return; done=true; turnEl.remove(); animating=false; }
+    turnEl.addEventListener('transitionend', finish);
+    setTimeout(finish, 820);
+  }
+
+  function next(){ turn(1); }
+  function prev(){ turn(-1); }
+  function goto(n){ if(n<0||n>=leaves.length||animating) return; idx=n; setStatic(); }
+
+  // ---- controls ----
+  document.getElementById('nextBtn').onclick = next;
+  document.getElementById('prevBtn').onclick = prev;
+  document.getElementById('zNext').onclick = next;
+  document.getElementById('zPrev').onclick = prev;
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') { e.preventDefault(); next(); }
+    if(e.key==='ArrowLeft'||e.key==='PageUp') { e.preventDefault(); prev(); }
+    if(e.key==='Home') goto(0);
+    if(e.key==='End') goto(leaves.length-1);
+    if(e.key.toLowerCase()==='f') toggleFs();
+    if(e.key==='Escape') closeToc();
+  });
+  // touch / swipe
+  var tx=0, ty=0;
+  book.addEventListener('touchstart', function(e){ tx=e.changedTouches[0].clientX; ty=e.changedTouches[0].clientY; }, {passive:true});
+  book.addEventListener('touchend', function(e){
+    var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0 ? next() : prev(); }
+  }, {passive:true});
+
+  function toggleFs(){ if(!document.fullscreenElement){ document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); } else { document.exitFullscreen && document.exitFullscreen(); } }
+  document.getElementById('fsBtn').onclick = toggleFs;
+
+  var toc = document.getElementById('toc'), scrim = document.getElementById('scrim');
+  function openToc(){ toc.classList.add('open'); scrim.classList.add('show'); }
+  function closeToc(){ toc.classList.remove('open'); scrim.classList.remove('show'); }
+  document.getElementById('tocBtn').onclick = function(){ toc.classList.contains('open') ? closeToc() : openToc(); };
+  scrim.onclick = closeToc;
+
+  // ---- boot ----
+  function boot(){
+    paginate();
+    // TOC
+    var nav = document.getElementById('tocNav');
+    nav.innerHTML = chapters.map(function(c){
+      return '<a href="#p'+(c.leaf+1)+'" data-leaf="'+c.leaf+'"><span class="il">'+(c.island||'')+'</span>'+(c.title||'')+'</a>';
+    }).join('');
+    Array.prototype.forEach.call(nav.querySelectorAll('a'), function(a){
+      a.onclick = function(e){ e.preventDefault(); goto(parseInt(a.getAttribute('data-leaf'),10)); closeToc(); };
+    });
+    // deep link
+    var m = location.hash.match(/p(\d+)/); if(m){ var n=parseInt(m[1],10)-1; if(n>=0 && n<leaves.length) idx=n; }
+    setStatic();
+    loader.classList.add('hide');
+  }
+  // run after fonts/layout settle
+  if(document.readyState==='complete'){ setTimeout(boot,30); }
+  else { window.addEventListener('load', function(){ setTimeout(boot,30); }); }
+
+  // re-paginate on significant resize (debounced)
+  var rt; window.addEventListener('resize', function(){
+    clearTimeout(rt); rt=setTimeout(function(){
+      var keepChapter = null; // keep place roughly by nearest chapter
+      for(var i=chapters.length-1;i>=0;i--){ if(chapters[i].leaf<=idx){ keepChapter=chapters[i].chapter; break; } }
+      leaves=[]; chapters=[]; paginate();
+      var nav=document.getElementById('tocNav');
+      nav.innerHTML = chapters.map(function(c){ return '<a href="#p'+(c.leaf+1)+'" data-leaf="'+c.leaf+'"><span class="il">'+(c.island||'')+'</span>'+(c.title||'')+'</a>'; }).join('');
+      Array.prototype.forEach.call(nav.querySelectorAll('a'), function(a){ a.onclick=function(e){ e.preventDefault(); goto(parseInt(a.getAttribute('data-leaf'),10)); closeToc(); }; });
+      var tgt=0; if(keepChapter){ for(var j=0;j<chapters.length;j++){ if(chapters[j].chapter===keepChapter){ tgt=chapters[j].leaf; break; } } }
+      idx=Math.min(tgt, leaves.length-1); setStatic();
+    }, 260);
+  });
+})();
+</script>
+</body></html>

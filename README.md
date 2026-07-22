@@ -49,7 +49,7 @@ npm run dev           # http://localhost:3000
 | `npm run audit:provenance` | Verify figures grounded + table integrity |
 | `npx velite --clean` | Validate content against the schema (fails closed) |
 
-## PDF outputs
+## PDF & flipbook outputs
 
 `npm run pdf` renders two self-contained PDFs into `generated/pdf/` using your
 system Chrome (no extra dependency):
@@ -58,7 +58,14 @@ system Chrome (no extra dependency):
 - **The-Money-Map-Ebook.pdf** — the complete atlas, all 92 maps with their
   blocks and pirate imagery, ready to read or print.
 
-Set `CHROME_BIN` if Chrome lives somewhere non-standard.
+`npm run flipbook` renders two **pirate flipbooks** — self-contained,
+page-turning HTML you can open in any browser (no server):
+
+- **generated/pdf/launch-guide.html** — the guide as a flipbook.
+- **generated/pdf/ebook.html** — the whole atlas as a flipbook (TOC, progress,
+  keyboard / swipe / fullscreen).
+
+Set `CHROME_BIN` if Chrome lives somewhere non-standard (PDFs only).
 
 ## Writing content
 

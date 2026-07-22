@@ -3,6 +3,31 @@
 All notable changes to The Money Map. Format follows
 [Keep a Changelog](https://keepachangelog.com/); versioning is semver.
 
+## [0.6.0] — 2026-07-21
+
+### Added
+
+- **Pirate flipbooks.** The two generated HTML deliverables are now
+  self-contained, page-turning flipbooks instead of print-flow HTML:
+  `generated/pdf/ebook.html` (the full atlas, ~517 leaves) and
+  `generated/pdf/launch-guide.html` (7 leaves). A dark leather desk, a centred
+  parchment page, a 3D page-turn (transform/opacity only), struck-gold chrome,
+  a chapter TOC drawer, progress bar, and keyboard / click / swipe / fullscreen
+  navigation with `#pN` deep links. Zero dependencies, CSP-safe.
+  Build: `npm run flipbook` (`:guide` / `:ebook` for one).
+- Flipbook engine in `scripts/flipbook.mjs` (runtime paginates the content into
+  leaves at load). Shared content extracted to `scripts/ebook-content.mjs` and
+  `scripts/guide-content.mjs`, now the single source of the block markup for
+  both the PDFs and the flipbooks.
+
+### Changed
+
+- The PDF generators now write their print HTML to `*-print.html` (gitignored)
+  so the interactive flipbooks own `ebook.html` / `launch-guide.html`; both are
+  committed. PDFs are unchanged in output.
+- Removed the duplicated block renderers from `build-ebook-pdf.mjs` (now imports
+  the shared module).
+
 ## [0.5.1] — 2026-07-21
 
 ### Fixed
